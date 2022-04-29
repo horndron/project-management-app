@@ -7,4 +7,4 @@ import { CommonModule } from '@angular/common';
     CommonModule,
   ],
 })
-export default class CoreModule { }
+export class CoreModule { }
