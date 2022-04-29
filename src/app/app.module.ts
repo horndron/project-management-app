@@ -20,7 +20,7 @@ import AppEffects from './redux/effects/app.effects';
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    environment.production ? [] : StoreDevtoolsModule.instrument({ maxAge: 25 }),
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
