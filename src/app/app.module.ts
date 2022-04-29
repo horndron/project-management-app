@@ -8,7 +8,7 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux/reducers';
 import { environment } from '../environments/environment';
-import { AppEffects } from './app.effects';
+import AppEffects from './redux/effects/app.effects';
 
 @NgModule({
   declarations: [
