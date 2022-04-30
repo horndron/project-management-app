@@ -6,9 +6,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
-import { reducers, metaReducers } from './redux/reducers';
 import { environment } from '../environments/environment';
 import AppEffects from './redux/effects/app.effects';
+import { UserStoreModule } from './auth/store/user-store.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,8 @@ import AppEffects from './redux/effects/app.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-    }),
+    StoreModule.forRoot({}),
+    UserStoreModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AppEffects]),
   ],

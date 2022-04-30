@@ -1,1 +1,10 @@
-<p>login works!</p>
+<section class="container login-container">
+  <div class="login-form">
+    <h2>Sign in</h2>
+    <form novalidate autocomplete="off" [formGroup]="authForm" (ngSubmit)="authForm.valid && onSignIn()">
+      <app-email [authForm]="authForm"></app-email>
+      <app-password [authForm]="authForm"></app-password>
+      <button type="submit" [disabled]="authForm.invalid">Sign in</button>
+    </form>
+  </div>
+</section>
