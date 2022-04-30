@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequestModel } from '../../models/user.model';
 import { AuthHttpService } from '../../services/auth-http.service';
+import { PasswordValidator } from '../../validators/password.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent {
   public authForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    password: ['', [Validators.required, PasswordValidator.check]],
   });
 
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthHttpService) {}
