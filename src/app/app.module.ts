@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-import AppRoutingModule from './app-routing.module';
-import AppComponent from './app.component';
 import { environment } from '../environments/environment';
-import AppEffects from './redux/effects/app.effects';
-import { UserStoreModule } from './auth/store/user-store.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppStoreModule } from './app-store.module';
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -17,12 +14,11 @@ import { UserStoreModule } from './auth/store/user-store.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    UserStoreModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AppEffects]),
+    CoreModule,
+    AppStoreModule,
+    environment.production ? [] : StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppModule { }
+export class AppModule { }
