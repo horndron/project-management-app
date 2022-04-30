@@ -1,11 +1,14 @@
-<label for="email" [formGroup]="authForm">Email:
-  <input type="email" 
-    [formControlName]="'email'"
-    placeholder="pat@example.com"
-    name="email"
-    class="user-email">
-</label>
-<div class="input-error" *ngIf="email !== null && (email.dirty || email.touched)">
-  <span *ngIf="email.errors && email.hasError('required')">Please enter a login email</span>
-  <span *ngIf="email.invalid && !email.pending && !email.hasError('required')">The login email is invalid</span>
+<div class="form-field">
+  <label for="email" [formGroup]="authForm">
+    <input type="email" 
+      [formControlName]="'email'"
+      placeholder="Email*"
+      name="email"
+      class="user-email"
+    >
+  </label>
+  <div class="input-error" *ngIf="email !== null && (email.dirty || email.touched)">
+    <span *ngIf="email.errors && email.hasError('required')">Please enter a login email</span>
+    <span *ngIf="email.invalid && !email.pending && !email.hasError('required')">The login email is invalid</span>
+  </div>
 </div>

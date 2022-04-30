@@ -1,0 +1,34 @@
+@import '~src/styles/style-import';
+
+.login-container {
+  @include flex-center;
+  height: 100vh;
+  background-color: $bg-color;
+
+  .login-form {
+    @include box-shadow;
+    background-color: $white-bg;
+    width: 460px;
+    padding: 20px 40px;
+    text-align: center;
+
+    h2 {
+      font-size: 1.6em;
+      font-weight: normal;
+    }
+
+    .auth-btn {
+      margin: 80px 0 20px;
+      @include filled-btn(145px);
+    }
+
+    p {
+      color: $grey-color;
+      font-size: .8em;
+
+      a {
+        color: $red-color;
+      }
+    }
+  }
+}

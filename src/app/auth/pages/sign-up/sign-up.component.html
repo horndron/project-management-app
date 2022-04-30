@@ -1,11 +1,16 @@
 <section class="container signup-container">
   <div class="signup-form">
-    <h2>Sign up</h2>
+    <h2>Create an account</h2>
     <form novalidate autocomplete="off" [formGroup]="authForm" (ngSubmit)="authForm.valid && onSignUp()">
-      <input type="text" formControlName="name" name="userName" class="user-name">
+      <input type="text" 
+        formControlName="name"
+        placeholder="Name*"
+        name="userName"
+        class="user-name"
+      >
       <app-email [authForm]="authForm"></app-email>
       <app-password [authForm]="authForm"></app-password>
-      <button type="submit" [disabled]="authForm.invalid">Sign up</button>
+      <button type="submit" [disabled]="authForm.invalid" class="auth-btn">Sign up</button>
     </form>
   </div>
 </section>

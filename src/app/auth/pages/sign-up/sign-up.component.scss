@@ -1,0 +1,25 @@
+@import '~src/styles/style-import';
+
+.signup-container {
+  @include flex-center;
+  height: 100vh;
+  background-color: $bg-color;
+
+  .signup-form {
+    @include box-shadow;
+    background-color: $white-bg;
+    width: 460px;
+    padding: 20px 40px;
+    text-align: center;
+
+    .user-name {
+      @include auth-input;
+      margin-bottom: 30px;
+    }
+
+    .auth-btn {
+      margin: 80px 0 20px;
+      @include filled-btn(145px);
+    }
+  }
+}
