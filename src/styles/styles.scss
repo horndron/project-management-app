@@ -9,3 +9,29 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.container {
+  max-width: 1470px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.fx-wrap {
+  flex-wrap: wrap;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
