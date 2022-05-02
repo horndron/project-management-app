@@ -1,1 +1,6 @@
-<p>card-with-icon works!</p>
+<img *ngIf="card.imageUrl; else letter" src="{{ card.imageUrl }}" alt="">
+<ng-template #letter>
+  <div class="first-letter">{{ card.title[0] }}</div>
+</ng-template>
+<h3>{{ card.title }}</h3>
+<p>{{ card.description }}</p>
