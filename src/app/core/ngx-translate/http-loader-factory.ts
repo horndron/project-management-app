@@ -3,5 +3,5 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+  return new TranslateHttpLoader(http, '../../../assets/locale/', '.json');
 }

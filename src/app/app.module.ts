@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppStoreModule } from './app-store.module';
@@ -20,6 +20,7 @@ import { HttpLoaderFactory } from './core/ngx-translate/http-loader-factory';
     AppRoutingModule,
     CoreModule,
     AppStoreModule,
+    HttpClientModule,
     environment.production ? [] : StoreDevtoolsModule.instrument({ maxAge: 25 }),
     TranslateModule.forRoot({
       loader: {
