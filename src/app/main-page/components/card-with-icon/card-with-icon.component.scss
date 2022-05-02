@@ -1,13 +1,18 @@
 :host {
-  font-family: Lato;
+  font-size: 14px;
+
+  p {
+    margin: 0;
+  }
+}
+
+:host.card {
   max-width: 250px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   color: #fff;
-  font-size: 14px;
-  line-height: 1.3;
   padding: 33px 29px;
   background: #8CB120;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -16,8 +21,38 @@
     font-size: 1.4em;
     margin: 20px 0;
   }
+}
 
-  p {
-    margin: 0;
+:host.title {
+  max-width: 370px;
+  width: auto;
+  display: block;
+
+  h3 {
+    position: relative;
+    font-size: 1.6em;
+    padding: 14px 0 10px;
+    margin: 0 0 20px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      background: #05704E;
+      animation: lengthening 0.5s 1;
+    }
+  }
+}
+
+@keyframes lengthening {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 40px;
   }
 }

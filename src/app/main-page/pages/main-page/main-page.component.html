@@ -13,8 +13,11 @@
 </div>
 
 <div class="feature-text">
-  <div class="container flex flex-wrap">
-    <rsm-title-with-icon-and-text></rsm-title-with-icon-and-text>
+  <div class="container">
+    <rsm-card-with-icon
+      [card]="cards[4]"
+      class="title"
+    ></rsm-card-with-icon>
     <button pButton label="Sign up for free"></button>
   </div>
 </div>
@@ -24,17 +27,17 @@
     <rsm-title-with-icon-and-text></rsm-title-with-icon-and-text>
 
     <div class="flex flex-wrap justify-content-between">
-      <rsm-card-with-icon
-        [card]="{ title: 'It’s free', imageUrl: './assets/free.svg', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+      <rsm-card-with-icon class="card"
+        [card]="cards[0]"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="{ title: 'Easy UI', imageUrl: './assets/UI.svg', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+        [card]="cards[0]"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="{ title: 'Available for all team', imageUrl: './assets/team.svg', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+        [card]="cards[0]"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="{ title: 'For all devices', imageUrl: './assets/mobile.svg', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+        [card]="cards[0]"
       ></rsm-card-with-icon>
     </div>
   </div>
@@ -46,13 +49,13 @@
   <div class="container flex flex-wrap justify-content-between">
     <div class="teams">
       <rsm-card-with-icon
-        [card]="{ title: 'Tanya', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+      [card]="cards[1]"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="{ title: 'Evgenia', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+      [card]="cards[2]"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="{ title: 'Andrey', description: 'Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation'}"
+        [card]="cards[3]"
       ></rsm-card-with-icon>
     </div>
   </div>
