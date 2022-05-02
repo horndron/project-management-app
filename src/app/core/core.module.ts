@@ -14,6 +14,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 
+import { NotificationComponent } from './components/notification/notification.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -21,6 +24,8 @@ import { UserInformationComponent } from './components/user-information/user-inf
     FooterComponent,
     SearchComponent,
     UserInformationComponent,
+    NotificationComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
