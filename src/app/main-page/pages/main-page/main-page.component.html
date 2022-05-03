@@ -1,9 +1,9 @@
-<div class="banner-block">
-  <div class="container flex flex-wrap justify-content-between">
+<div class="banner-block  flex flex-wrap">
+  <div class="container flex flex-wrap justify-content-between align-items-center">
 
     <div class="text">
-      <h1>Make Business Flow Easyer With Us </h1>
-      <p>Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about.</p>
+      <h1>{{ mainPageText.block1.title }}</h1>
+      <p>{{ mainPageText.block1.description }}</p>
     </div>
 
     <div class="different-preview">
@@ -15,10 +15,12 @@
 <div class="feature-text">
   <div class="container">
     <rsm-card-with-icon
-      [card]="cards[4]"
+      [imageUrl]="cards[4].imageUrl"
+      [title]="cards[4].title"
+      [description]="cards[4].description"
       class="title"
     ></rsm-card-with-icon>
-    <button pButton label="Sign up for free"></button>
+    <button pRipple pButton label="Sign up for free"></button>
   </div>
 </div>
 
@@ -27,17 +29,29 @@
     <rsm-title-with-icon-and-text></rsm-title-with-icon-and-text>
 
     <div class="flex flex-wrap justify-content-between">
-      <rsm-card-with-icon class="card"
-        [card]="cards[0]"
+      <rsm-card-with-icon
+        [imageUrl]="cards[0].imageUrl"
+        [title]="cards[0].title"
+        [description]="cards[0].description"
+        class="card"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="cards[0]"
+        [imageUrl]="cards[0].imageUrl"
+        [title]="cards[0].title"
+        [description]="cards[0].description"
+        class="card"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="cards[0]"
+        [imageUrl]="cards[0].imageUrl"
+        [title]="cards[0].title"
+        [description]="cards[0].description"
+        class="card"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="cards[0]"
+        [imageUrl]="cards[0].imageUrl"
+        [title]="cards[0].title"
+        [description]="cards[0].description"
+        class="card"
       ></rsm-card-with-icon>
     </div>
   </div>
@@ -49,13 +63,22 @@
   <div class="container flex flex-wrap justify-content-between">
     <div class="teams">
       <rsm-card-with-icon
-      [card]="cards[1]"
+        [imageUrl]="cards[1].imageUrl"
+        [title]="cards[1].title"
+        [description]="cards[1].description"
+        class="card"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-      [card]="cards[2]"
+        [imageUrl]="cards[2].imageUrl"
+        [title]="cards[2].title"
+        [description]="cards[2].description"
+        class="card"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
-        [card]="cards[3]"
+        [imageUrl]="cards[3].imageUrl"
+        [title]="cards[3].title"
+        [description]="cards[3].description"
+        class="card"
       ></rsm-card-with-icon>
     </div>
   </div>

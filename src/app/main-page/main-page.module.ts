@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 import { MainPageRoutingModule } from './main-page-routing.module';
 import { CardWithIconComponent } from './components/card-with-icon/card-with-icon.component';
 import { VideoBlockComponent } from './components/video-block/video-block.component';
@@ -20,6 +21,7 @@ import { PreviewOnDifferentSizesComponent } from './components/preview-on-differ
     CommonModule,
     MainPageRoutingModule,
     ButtonModule,
+    RippleModule,
   ],
 })
 export class MainPageModule { }

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CardWithIcon } from '../../models/main-page.models';
 import { enterComponent } from '../../animations';
 
 @Component({
@@ -9,5 +8,9 @@ import { enterComponent } from '../../animations';
   animations: [enterComponent],
 })
 export class CardWithIconComponent {
-  @Input() card!: CardWithIcon;
+  @Input() imageUrl?: string;
+
+  @Input() title!: string;
+
+  @Input() description?: string;
 }
