@@ -1,15 +1,16 @@
 import { createAction, props } from '@ngrx/store';
-import { UserModel } from '../models/user.model';
+import { LoginResponseModel, UserModel } from '../models/user.model';
 
 const actionSource = '[User]';
 
-export const FetchUser = createAction(
+export const RegisterUser = createAction(
   `${actionSource} Fetch User`,
+  props<{ user: LoginResponseModel }>(),
 );
 
-export const FetchUserSuccess = createAction(
+export const LoginUserSuccess = createAction(
   `${actionSource} Fetch User Success`,
-  props<{ user: UserModel }>(),
+  props<{ userInfo: UserModel }>(),
 );
 
 export const FetchUserFailed = createAction(

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-password',
+  selector: 'rsm-password',
   templateUrl: './password.component.html',
   styleUrls: ['./password.component.scss']
 })

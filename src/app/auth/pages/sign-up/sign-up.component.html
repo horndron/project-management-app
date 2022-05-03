@@ -8,8 +8,9 @@
         name="userName"
         class="user-name"
       >
-      <app-email [authForm]="authForm"></app-email>
-      <app-password [authForm]="authForm"></app-password>
+      <rsm-email [authForm]="authForm"></rsm-email>
+      <rsm-password [authForm]="authForm"></rsm-password>
+      <div *ngIf="hasError">{{ errorMessage }}</div>
       <button type="submit" [disabled]="authForm.invalid" class="auth-btn">Sign up</button>
     </form>
   </div>

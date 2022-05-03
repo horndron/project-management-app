@@ -20,13 +20,8 @@ export interface UserState {
   isFetched: boolean,
 }
 
-export enum HttpMethod {
-  GET = 'GET',
-  POST = 'POST',
-  PUT = 'PUT',
-}
-
 export enum UrlPath {
   SIGNIN = 'signin',
   SIGNUP = 'signup',
+  USERS = 'users',
 }

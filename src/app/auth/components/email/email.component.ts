@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-email',
+  selector: 'rsm-email',
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss']
 })

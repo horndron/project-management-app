@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,28 +7,37 @@ import { AuthHttpService } from '../../services/auth-http.service';
 import { PasswordValidator } from '../../validators/password.validator';
 
 @Component({
-  selector: 'app-login',
+  selector: 'rsm-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   public authForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, PasswordValidator.check]],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthHttpService) {}
+  public errorMessage = '';
+
+  public hasError = false;
+
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthHttpService,
+  ) {}
 
   public onSignIn() {
-    // this.router.navigateByUrl('');
     const user: LoginRequestModel = {
       login: this.authForm.value.email,
       password: this.authForm.value.password,
-    }
-    console.log(user);
-    
-    // this.authService.signIn(user).subscribe(console.log);
+    };
+    this.authService.signIn(user).subscribe({
+      next: () => this.router.navigateByUrl('/'),
+      error: (error: HttpErrorResponse) => {
+        this.hasError = true;
+        this.errorMessage = error.statusText;
+      },
+    });
   }
-
 }

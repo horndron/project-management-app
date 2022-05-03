@@ -2,8 +2,9 @@
   <div class="login-form">
     <h2>Login</h2>
     <form novalidate autocomplete="off" [formGroup]="authForm" (ngSubmit)="authForm.valid && onSignIn()">
-      <app-email [authForm]="authForm"></app-email>
-      <app-password [authForm]="authForm"></app-password>
+      <rsm-email [authForm]="authForm"></rsm-email>
+      <rsm-password [authForm]="authForm"></rsm-password>
+      <div *ngIf="hasError">{{ errorMessage }}</div>
       <button type="submit" [disabled]="authForm.invalid" class="auth-btn">Sign in</button>
       <p>Not registered? <a [routerLink]="['/auth/sign-up']">Create an account!</a></p>
     </form>

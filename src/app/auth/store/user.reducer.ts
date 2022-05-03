@@ -9,12 +9,16 @@ export const initialUserState: UserState = {
 
 export const userReducer = createReducer(
   initialUserState,
-  on(UserActions.FetchUser, (state): UserState => ({
+  on(UserActions.RegisterUser, (state, { user }): UserState => ({
     ...state,
+    userInfo: {
+      user,
+      token: '',
+    },
   })),
-  on(UserActions.FetchUserSuccess, (state, { user }): UserState => ({
+  on(UserActions.LoginUserSuccess, (state, { userInfo }): UserState => ({
     ...state,
-    userInfo: { ...user },
+    userInfo,
     isFetched: true,
   })),
   on(UserActions.FetchUserFailed, (state): UserState => ({
