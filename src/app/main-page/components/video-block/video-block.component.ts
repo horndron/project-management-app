@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'rsm-video-block',
   templateUrl: './video-block.component.html',
-  styleUrls: ['./video-block.component.scss']
+  styleUrls: ['./video-block.component.scss'],
 })
-export class VideoBlockComponent implements OnInit {
+export class VideoBlockComponent {
+  @Input() title!: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() videoId!: string;
 }

@@ -1,3 +1,60 @@
 {
-
+  "mainPage": {
+    "banner": {
+      "title": "Make Business Flow Easyer With Us",
+      "description": "Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about."
+    },
+    "featureText": {
+      "title": "A complete feature stack ready to help you",
+      "description": "This application will help you to achieve the set goals for an individual in a team or group of developers.",
+      "button": "Sign up for free"
+    },
+    "features": {
+      "title": "One platform to manage work",
+      "cards": [
+        {
+          "title": "It’s free",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "Easy UI",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "Available for all team",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "For all devices",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "video": {
+      "title": "Watch how to use the app"
+    },
+    "teams": {
+      "title": "Our perspective team",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "button":"Contact us",
+      "teammate": [
+        {
+          "name": "Tanya",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "name": "Evgenia",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "name": "Andrey",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "questionBlock": {
+      "title": "Are you ready?",
+      "buttons": ["Sign in", "Register now"]
+    }
+  }
 }
