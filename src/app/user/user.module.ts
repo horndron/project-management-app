@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthHttpService } from './services/auth-http.service';
+import { UserRoutingModule } from './user-routing.module';
+import { UserHttpService } from './services/user-http.service';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
 
@@ -22,10 +22,10 @@ import { PasswordComponent } from './components/password/password.component';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AuthRoutingModule,
+    UserRoutingModule,
   ],
   providers: [
-    AuthHttpService,
+    UserHttpService,
   ]
 })
-export class AuthModule { }
+export class UserModule { }

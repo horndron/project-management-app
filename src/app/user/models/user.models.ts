@@ -18,10 +18,5 @@ export interface UserModel {
 export interface UserState {
   userInfo: UserModel | null,
   isLoggedIn: boolean,
-}
-
-export enum UrlPath {
-  SIGNIN = 'signin',
-  SIGNUP = 'signup',
-  USERS = 'users',
+  error: string,
 }
