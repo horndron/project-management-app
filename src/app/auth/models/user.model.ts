@@ -17,7 +17,7 @@ export interface UserModel {
 
 export interface UserState {
   userInfo: UserModel | null,
-  isFetched: boolean,
+  isLoggedIn: boolean,
 }
 
 export enum UrlPath {

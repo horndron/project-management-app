@@ -1,7 +1,6 @@
 @import '~src/styles/style-import';
 
 .login-container {
-  @include flex-center;
   height: 100vh;
   background-color: $bg-color;
 

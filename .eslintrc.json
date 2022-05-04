@@ -37,7 +37,9 @@
             "style": "kebab-case"
           }
         ],
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "indent": "off",
+        "@typescript-eslint/indent": ["error"],
       }
     },
     {

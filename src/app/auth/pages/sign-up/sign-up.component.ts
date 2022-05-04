@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { LoginRequestModel } from '../../models/user.model';
 import { AuthHttpService } from '../../services/auth-http.service';
 import { PasswordValidator } from '../../validators/password.validator';
@@ -13,7 +13,7 @@ import { PasswordValidator } from '../../validators/password.validator';
   styleUrls: ['./sign-up.component.scss'],
 })
 
-export class SignUpComponent {
+export class SignUpComponent implements OnDestroy {
   public authForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -24,11 +24,19 @@ export class SignUpComponent {
 
   public hasError = false;
 
+  private signUpSub = new Subscription();
+
   constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private authService: AuthHttpService,
+    private readonly router: Router,
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthHttpService,
   ) {}
+
+  ngOnDestroy(): void {
+    if (this.signUpSub) {
+      this.signUpSub.unsubscribe();
+    }
+  }
 
   get name() {
     return this.authForm.get('name');
@@ -41,7 +49,7 @@ export class SignUpComponent {
       password: this.authForm.value.password,
     };
 
-    this.authService.createUser(user).pipe(
+    this.signUpSub = this.authService.createUser(user).pipe(
       switchMap(() => this.authService.signIn({
         login: user.login,
         password: user.password,
@@ -50,7 +58,7 @@ export class SignUpComponent {
       next: () => this.router.navigateByUrl('/'),
       error: (error: HttpErrorResponse) => {
         this.hasError = true;
-        this.errorMessage = error.statusText;
+        this.errorMessage = error.error.message;
       },
     });
   }

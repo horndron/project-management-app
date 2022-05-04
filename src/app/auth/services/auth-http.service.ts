@@ -4,16 +4,17 @@ import { Store } from '@ngrx/store';
 import {
   catchError, map, Observable, tap, throwError,
 } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import {
   LoginRequestModel, UrlPath, LoginResponseModel,
 } from '../models/user.model';
 import * as UserActions from '../store/user.actions';
 
-const BASE_URL = 'https://vast-bayou-93084.herokuapp.com/';
+const BASE_URL = environment.baseUrl;
 
 @Injectable()
 export class AuthHttpService {
-  private httpHeader = {
+  private readonly httpHeader = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
@@ -36,13 +37,13 @@ export class AuthHttpService {
   }
 
   private getAllUsers(token: string): Observable<LoginResponseModel[]> {
-    const authHeater = {
+    const authHeader = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       }),
     };
-    return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeater);
+    return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeader);
   }
 
   private handleRegisterResponse(user: LoginResponseModel): void {

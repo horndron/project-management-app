@@ -4,7 +4,7 @@ import * as UserActions from './user.actions';
 
 export const initialUserState: UserState = {
   userInfo: null,
-  isFetched: false,
+  isLoggedIn: false,
 };
 
 export const userReducer = createReducer(
@@ -19,10 +19,10 @@ export const userReducer = createReducer(
   on(UserActions.LoginUserSuccess, (state, { userInfo }): UserState => ({
     ...state,
     userInfo,
-    isFetched: true,
+    isLoggedIn: true,
   })),
   on(UserActions.FetchUserFailed, (state): UserState => ({
     ...state,
-    isFetched: true,
+    isLoggedIn: false,
   })),
 );

@@ -6,7 +6,7 @@ export const selectCurrentUser = createSelector(
   selectUserStore,
   (state: UserState) => state.userInfo,
 );
-export const selectIsFetched = createSelector(
+export const selectIsLoggedIn = createSelector(
   selectUserStore,
-  (state: UserState) => state.isFetched,
+  (state: UserState) => state.isLoggedIn,
 );
