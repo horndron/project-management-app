@@ -21,18 +21,10 @@ export class UserHttpService {
 
   public signIn(user: LoginRequestModel): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${BASE_URL}${UrlPath.SIGNIN}`, user, this.httpHeader);
-      // .pipe(
-      //   tap((response) => this.handleLoginResponse(response.token, user)),
-      //   catchError((error) => this.handleError(error)),
-      // );
   }
 
   public createUser(user: LoginRequestModel): Observable<LoginResponseModel> {
     return this.http.post<LoginResponseModel>(`${BASE_URL}${UrlPath.SIGNUP}`, user, this.httpHeader);
-      // .pipe(
-      //   tap((response) => this.handleRegisterResponse(response)),
-      //   catchError((error) => this.handleError(error)),
-      // );
   }
 
   public getAllUsers(token: string): Observable<LoginResponseModel[]> {
@@ -44,28 +36,4 @@ export class UserHttpService {
     };
     return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeader);
   }
-
-  // private handleRegisterResponse(user: LoginResponseModel): void {
-  //   this.store.dispatch(UserActions.RegisterUser({ user }));
-  // }
-
-  // private handleLoginResponse(token: string, currentUser: LoginRequestModel): void {
-  //   this.getAllUsers(token).pipe(
-  //     map((users) => users.find((user) => user.login === currentUser.login)),
-  //   ).subscribe((userData) => {
-  //     if (userData) {
-  //       this.store.dispatch(UserActions.LoginUserSuccess({
-  //         userInfo: {
-  //           user: userData,
-  //           token,
-  //         },
-  //       }));
-  //     }
-  //   });
-  // }
-
-  // private handleError(error: HttpErrorResponse): Observable<HttpErrorResponse> {
-  //   this.store.dispatch(UserActions.FetchUserFailed());
-  //   return throwError(() => error);
-  // }
 }
