@@ -1,6 +1,15 @@
-<img *ngIf="imageUrl; else letter" src="{{ imageUrl }}" alt="">
-<ng-template #letter>
-  <div class="first-letter">{{ title[0] }}</div>
-</ng-template>
-<h3>{{ title }}</h3>
+<div class="top">
+
+  <div *ngIf="imageUrl; else letter" class="img flex flex-wrap justify-content-center align-items-center">
+    <img src="{{ imageUrl }}" alt="">
+  </div>
+
+  <ng-template #letter>
+    <div class="letter flex flex-wrap justify-content-center align-items-center">
+      <span>{{ title[0] }}</span>
+    </div>
+  </ng-template>
+
+  <h3>{{ title }}</h3>
+</div>
 <p *ngIf="description">{{ description }}</p>

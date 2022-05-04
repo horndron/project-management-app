@@ -1,19 +1,19 @@
 <div class="banner-block  flex flex-wrap">
   <div class="container flex flex-wrap justify-content-between align-items-center">
 
-    <div class="text">
+    <div class="text element-animation top">
       <h1>{{ 'mainPage.banner.title' | translate }}</h1>
       <p>{{ 'mainPage.banner.description' | translate }}</p>
     </div>
 
-    <div class="different-preview">
+    <div class="different-preview element-animation right">
       <rsm-preview-on-different-sizes></rsm-preview-on-different-sizes>
     </div>
   </div>
 </div>
 
 <div class="feature-text">
-  <div class="container">
+  <div class="container element-animation left">
     <rsm-card-with-icon
       [imageUrl]="'/assets/main-page/like.svg'"
       [title]="'mainPage.featureText.title' | translate"
@@ -24,38 +24,38 @@
   </div>
 </div>
 
-<div class="feature-items">
-  <div class="container">
+<div class="feature-items mt-5 pt-8">
+  <div class="container flex flex-wrap justify-content-center">
     <rsm-card-with-icon
-      [imageUrl]="'/assets/main-page/like.svg'"
+      [imageUrl]="'/assets/main-page/hands.svg'"
       [title]="'mainPage.features.title' | translate"
-      class="title"
+      class="title mb-4 element-animation top"
     ></rsm-card-with-icon>
 
-    <div class="flex flex-wrap justify-content-between">
+    <div class="flex flex-wrap justify-content-between w-full">
       <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/free.svg'"
         [title]="'mainPage.features.cards.0.title' | translate"
         [description]="'mainPage.features.cards.0.description' | translate"
-        class="card"
+        class="card element-animation left"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/ui.svg'"
         [title]="'mainPage.features.cards.1.title' | translate"
         [description]="'mainPage.features.cards.1.description' | translate"
-        class="card"
+        class="card element-animation left"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/team.svg'"
         [title]="'mainPage.features.cards.2.title' | translate"
         [description]="'mainPage.features.cards.2.description' | translate"
-        class="card"
+        class="card element-animation right"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/mobile.svg'"
         [title]="'mainPage.features.cards.3.title' | translate"
         [description]="'mainPage.features.cards.3.description' | translate"
-        class="card"
+        class="card element-animation right"
       ></rsm-card-with-icon>
     </div>
   </div>
@@ -63,29 +63,30 @@
 
 <rsm-video-block
   [title]="'mainPage.video.title' | translate"
-  [videoId]="'sdsdsf'"
+  [videoId]="'tVooja0Ta5I'"
+  class="element-animation scale"
 ></rsm-video-block>
 
 <div class="block-teams">
   <div class="container flex flex-wrap justify-content-between">
-    <div class="teams">
+    <div class="teams flex flex-wrap justify-content-between">
       <rsm-card-with-icon
         [title]="'mainPage.teams.teammate.0.name' | translate"
         [description]="'mainPage.features.cards.0.description' | translate"
-        class="card teammate"
+        class="card teammate element-animation left"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
         [title]="'mainPage.teams.teammate.1.name' | translate"
         [description]="'mainPage.teams.teammate.1.description' | translate"
-        class="card teammate"
+        class="card teammate element-animation left"
       ></rsm-card-with-icon>
       <rsm-card-with-icon
         [title]="'mainPage.teams.teammate.2.name' | translate"
         [description]="'mainPage.teams.teammate.2.description' | translate"
-        class="card teammate"
+        class="card teammate full element-animation bottom"
       ></rsm-card-with-icon>
     </div>
-    <div class="text">
+    <div class="text element-animation right">
       <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/team-green.svg'"
         [title]="'mainPage.teams.title' | translate"
@@ -98,16 +99,16 @@
   </div>
 </div>
 
-<div class="prefooter-block">
-  <div class="container">
+<div class="question-block flex flex-wrap align-items-center">
+  <div class="container flex flex-wrap flex-column align-items-center">
     <rsm-card-with-icon
         [imageUrl]="'/assets/main-page/team-green.svg'"
         [title]="'mainPage.questionBlock.title' | translate"
-        class="title"
+        class="title element-animation left"
       ></rsm-card-with-icon>
-    <div class="flex flex-wrap justify-content-between">
-      <button pButton label="{{ 'mainPage.questionBlock.buttons.0' | translate }}"></button>
-      <button pButton label="{{ 'mainPage.questionBlock.buttons.1' | translate }}"></button>
+    <div class="buttons flex flex-wrap justify-content-between element-animation right">
+      <button pRipple pButton label="{{ 'mainPage.questionBlock.buttons.0' | translate }}"></button>
+      <button pRipple pButton label="{{ 'mainPage.questionBlock.buttons.1' | translate }}"></button>
     </div>
   </div>
 </div>

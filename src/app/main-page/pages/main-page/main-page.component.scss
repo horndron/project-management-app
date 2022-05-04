@@ -1,9 +1,54 @@
+@import '~src/styles/style-import';
+
 :host {
   display: block;
   background-color: #EFEFCD;
+  overflow: hidden;
 
   button.p-button {
     margin: 30px 0;
+    background: #05704E;
+    border-color: #05704E;
+    transition: 0.5s;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .element-animation {
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .left {
+    transform: translateX(-70%);
+  }
+
+  .right {
+    transform: translateX(70%);
+  }
+
+  .top {
+    transform: translateY(-70%);
+  }
+
+  .bottom {
+    transform: translateY(70%);
+  }
+
+  .scale {
+    transform: scale(0.3);
+  }
+
+  .element-show {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
   }
 
   .banner-block {
@@ -37,5 +82,93 @@
 
   .feature-text {
     margin: 40px 0;
+  }
+
+  .feature-items {
+    position: relative;
+    padding-top: 120px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 145%;
+      background: url('/assets/main-page/features-before.svg') no-repeat;
+      background-size: contain;
+      background-position: left top;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -65%;
+      width: 16%;
+      height: 150%;
+      background: url('/assets/main-page/features-after.svg') no-repeat;
+      background-size: contain;
+      background-position: right top;
+      z-index: 1;
+    }
+  }
+
+  .block-teams {
+    position: relative;
+    padding-top: 50px;
+    margin: 90px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc((100vw - 1270px) / 2);
+      top: -30px;
+      width: 12vw;
+      height: 5.5vw;
+      background: url('/assets/main-page/teams-before.svg') no-repeat;
+      background-size: contain;
+      background-position: right top;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 6vw;
+      width: 30vw;
+      height: 30vw;
+      background: url('/assets/main-page/teams-after.svg') no-repeat;
+      background-size: contain;
+      background-position: right bottom;
+      z-index: 1;
+    }
+
+    .teams {
+      width: 46%;
+      margin-top: 45px;
+      margin-left: 54px;
+      transform: rotate(-9.9deg);
+
+      .teammate {
+        margin-bottom: 60px;
+        background: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  .question-block {
+    min-height: 650px;
+    padding: 45px 0 90px;
+    background: url('/assets/main-page/question.svg') no-repeat;
+    background-size: cover;
+    background-position: center 40%;
+
+    .buttons {
+      width: 230px;
+    }
   }
 }
