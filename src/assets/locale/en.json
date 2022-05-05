@@ -54,7 +54,7 @@
     },
     "questionBlock": {
       "title": "Are you ready?",
-      "buttons": ["Sign in", "Register now"]
+      "buttons": ["Sign in", "Join now"]
     }
   }
 }

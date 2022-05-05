@@ -1,0 +1,16 @@
+<header [class.sticky-header]="sticky">
+  <div class="container flex flex-wrap align-items-center justify-content-between">
+    <img src="/assets/logo.svg" alt="Logo" class="logo">
+    <rsm-search *ngIf="auth"></rsm-search>
+    <rsm-select-language></rsm-select-language>
+    <div class="sign-in" *ngIf="!auth; else userProfile">
+      <button routerLink="/user/login"  pRipple pButton label="{{ 'mainPage.questionBlock.buttons.0' | translate }}"></button>
+      <button pRipple pButton label="{{ 'mainPage.questionBlock.buttons.1' | translate }}"></button>
+    </div>
+
+    <ng-template #userProfile>
+
+    </ng-template>
+  </div>
+</header>
+

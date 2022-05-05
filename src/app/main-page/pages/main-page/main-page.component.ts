@@ -10,8 +10,8 @@ import { environment } from '../../../../environments/environment.prod';
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
   constructor(
-    private primengConfig: PrimeNGConfig,
-    private translateService: TranslateService,
+    private readonly primengConfig: PrimeNGConfig,
+    private readonly translateService: TranslateService,
   ) {}
 
   ngOnInit() {
@@ -23,6 +23,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.addAnimation();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   addAnimation() {
     function onEntry(entry: IntersectionObserverEntry[]) {
       entry.forEach((change) => {

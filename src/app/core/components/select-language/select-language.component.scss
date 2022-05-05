@@ -1,0 +1,32 @@
+:host ::ng-deep {
+
+  .p-element {
+
+    .p-dropdown {
+      background: transparent;
+      border-color: #fff;
+      border-radius: 2px;
+    }
+
+    .p-dropdown-label {
+      color: #fff;
+      font-weight: 600;
+      text-transform: capitalize;
+      padding: 0.15rem 0.4rem 0.3rem;
+    }
+
+    .p-dropdown-trigger {
+      width: 1.5rem;
+      color: #fff;
+    }
+
+    .pi {
+      font-size: 0.8rem;
+    }
+  }
+
+}
+
+:host {
+  margin-right: 15px;
+}

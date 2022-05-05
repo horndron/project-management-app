@@ -1,3 +1,60 @@
 {
-
+  "mainPage": {
+    "banner": {
+      "title": "Упростите бизнес-процесс вместе с нами",
+      "description": "Ваш удивительный продукт заслуживает простого способа управления им. Наше приложение предоставит вам необходимые инструменты, независимо от того, о чем ваша идея."
+    },
+    "featureText": {
+      "title": "Полный стек функций готов помочь вам",
+      "description": "Это приложение поможет вам достичь поставленных целей индивидуально в команде или группе разработчиков.",
+      "button": "Бесплатная регистрация"
+    },
+    "features": {
+      "title": "Одна платформа для управления всем",
+      "cards": [
+        {
+          "title": "Бесплатно",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "Простой интерфейс",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "Доступно для всей команды",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "title": "Для любых устройств",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "video": {
+      "title": "Посмотрите, как использовать приложение"
+    },
+    "teams": {
+      "title": "Наша перспективная команда",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "button":"Contact us",
+      "teammate": [
+        {
+          "name": "Таня",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "name": "Женя",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "name": "Андрей",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "questionBlock": {
+      "title": "Вы готовы?",
+      "buttons": ["Вход", "Регистрация"]
+    }
+  }
 }

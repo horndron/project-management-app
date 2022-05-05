@@ -1,0 +1,29 @@
+:host {
+  header {
+    padding: 15px 0;
+    background: linear-gradient(140.77deg, #F5CE12 -20.7%, #8CB120 46.22%, #05704E 100.74%);
+    transition: 0.5s;
+
+    &.sticky-header {
+      position: fixed;
+      width: 100%;
+      padding: 5px 0;
+      z-index: 10;
+    }
+
+    .container {
+      *:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+
+    .sign-in {
+      margin-right: 0;
+
+      .p-button {
+        margin-left: 15px;
+        padding: 0.25rem 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  margin-right: 20px;
+
+  .p-inputtext {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .pi {
+    font-size: 0.85rem;
+  }
+
+  .p-input-icon-right {
+    i {
+      margin-top: -0.35rem;
+    }
+  }
+}
