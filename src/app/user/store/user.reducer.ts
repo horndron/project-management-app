@@ -20,10 +20,26 @@ export const userReducer = createReducer(
     ...state,
     userInfo,
     isLoggedIn: true,
+    error: '',
   })),
   on(UserActions.LoginUserFailed, (state, { error }): UserState => ({
     ...state,
     isLoggedIn: false,
+    error,
+  })),
+  on(UserActions.EditUser, (state): UserState => ({
+    ...state,
+  })),
+  on(UserActions.EditUserSuccess, (state, { user }): UserState => ({
+    ...state,
+    userInfo: {
+      user,
+      token: state.userInfo!.token,
+    },
+    error: '',
+  })),
+  on(UserActions.EditUserFailed, (state, { error }): UserState => ({
+    ...state,
     error,
   })),
 );

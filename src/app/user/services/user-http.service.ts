@@ -17,7 +17,7 @@ export class UserHttpService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   public signIn(user: LoginRequestModel): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${BASE_URL}${UrlPath.SIGNIN}`, user, this.httpHeader);
@@ -35,5 +35,15 @@ export class UserHttpService {
       }),
     };
     return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeader);
+  }
+
+  public editUser(id: string, userInfo: LoginRequestModel, token: string): Observable<LoginResponseModel> {
+    const authHeader = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.put<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`, userInfo, authHeader);
   }
 }

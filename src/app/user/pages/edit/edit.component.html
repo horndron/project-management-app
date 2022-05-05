@@ -1,0 +1,25 @@
+<section class="container edit-container flex align-items-center justify-content-center">
+  <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
+    <h2 header>Edit user settings</h2>
+    <div class="user-name" field>
+      <input type="text" 
+      formControlName="name"
+      placeholder="New name*"
+      name="userName"
+      class="user-name__input"
+      >
+      <div class="input-error" *ngIf="name !== null && (name.dirty || name.touched)">
+        <span *ngIf="name.errors && name.hasError('required')">Please enter your name</span>
+      </div>
+    </div>
+    <div error *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
+    <button button 
+      type="submit"
+      [disabled]="authForm.invalid"
+      class="auth-btn"
+      (click)="onEdit()"
+    >
+      Save
+    </button>
+  </rsm-user-form>
+</section>

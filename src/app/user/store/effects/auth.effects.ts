@@ -3,15 +3,15 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { catchError, map, mergeMap, Observable, of, switchMap, tap } from 'rxjs';
-import { LoginRequestModel } from '../models/user.models';
-import { UserHttpService } from '../services/user-http.service';
-import * as UserActions from '../store/user.actions';
+import { LoginRequestModel } from '../../models/user.models';
+import { UserHttpService } from '../../services/user-http.service';
+import * as UserActions from '../user.actions';
 
 @Injectable()
 export class AuthEffects {
   public createUser$: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
-      ofType('[User] Register User'),
+      ofType(UserActions.RegisterUser),
       mergeMap((action: { user: LoginRequestModel }) =>
         this.userHttpService.createUser(action.user).pipe(
           map(() => UserActions.LoginUser({ user: {
@@ -26,7 +26,7 @@ export class AuthEffects {
 
   public loginUser$: Observable<Action> = createEffect(() =>
   this.actions$.pipe(
-    ofType('[User] Login User'),
+    ofType(UserActions.LoginUser),
     mergeMap((action: { user: LoginRequestModel }) =>
       this.userHttpService.signIn(action.user).pipe(
         switchMap((response) => this.userHttpService.getAllUsers(response.token).pipe(
@@ -37,7 +37,7 @@ export class AuthEffects {
               token: response.token,
             },
           })),
-          tap(() => this.router.navigateByUrl('/')),
+          tap(() => this.router.navigateByUrl('/user/edit')),
         )),
         catchError((responseError) => of(UserActions.LoginUserFailed({ error: responseError.error.message }))),
       ),

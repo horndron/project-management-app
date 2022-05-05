@@ -8,6 +8,9 @@
         name="userName"
         class="user-name"
       >
+      <div class="input-error" *ngIf="name !== null && (name.dirty || name.touched)">
+        <span *ngIf="name.errors && name.hasError('required')">Please enter your name</span>
+      </div>
       <rsm-email [authForm]="authForm"></rsm-email>
       <rsm-password [authForm]="authForm"></rsm-password>
       <div *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>

@@ -9,6 +9,8 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserHttpService } from './services/user-http.service';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { PasswordComponent } from './components/password/password.component';
     SignUpComponent,
     EmailComponent,
     PasswordComponent,
+    EditComponent,
+    UserFormComponent,
   ],
   imports: [
     CommonModule,
