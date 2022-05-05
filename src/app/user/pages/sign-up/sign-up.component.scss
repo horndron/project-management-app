@@ -4,21 +4,23 @@
   height: 100vh;
   background-color: $bg-color;
 
-  .signup-form {
-    @include box-shadow;
-    background-color: $white-bg;
-    width: 460px;
-    padding: 20px 40px;
-    text-align: center;
+  .user-name {
+    position: relative;
 
-    .user-name {
+    .user-name__input {
       @include auth-input;
       margin-bottom: 30px;
     }
-
-    .auth-btn {
-      margin: 80px 0 20px;
-      @include filled-btn(145px);
+  
+    .input-error {
+      @include input-error;
+      position: absolute;
+      bottom: 0;
     }
+  }
+
+  .auth-btn {
+    margin: 80px 0 20px;
+    @include filled-btn(145px);
   }
 }

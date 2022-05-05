@@ -1,12 +1,15 @@
 <section class="container login-container flex align-items-center justify-content-center">
-  <div class="login-form">
-    <h2>Login</h2>
-    <form novalidate autocomplete="off" [formGroup]="authForm" (ngSubmit)="authForm.valid && onSignIn()">
-      <rsm-email [authForm]="authForm"></rsm-email>
-      <rsm-password [authForm]="authForm"></rsm-password>
-      <div *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
-      <button type="submit" [disabled]="authForm.invalid" class="auth-btn">Sign in</button>
-      <p>Not registered? <a [routerLink]="['/auth/sign-up']">Create an account!</a></p>
-    </form>
-  </div>
+  <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
+    <h2 header>Login</h2>
+    <div error *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
+    <button button 
+      type="submit"
+      [disabled]="authForm.invalid"
+      class="auth-btn"
+      (click)="onSignIn()"
+    >
+      Sign in
+    </button>
+    <p addition>Not registered? <a [routerLink]="['/user/sign-up']">Create an account!</a></p>
+  </rsm-user-form>
 </section>
