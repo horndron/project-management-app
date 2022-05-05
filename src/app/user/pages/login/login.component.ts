@@ -24,7 +24,7 @@ export class LoginComponent {
     private readonly store: Store,
   ) {}
 
-  public onSignIn() {
+  public onSignIn(): void {
     const user: LoginRequestModel = {
       login: this.authForm.value.email,
       password: this.authForm.value.password,

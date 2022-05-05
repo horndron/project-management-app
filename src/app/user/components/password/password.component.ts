@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'rsm-password',
@@ -10,7 +10,7 @@ export class PasswordComponent {
   @Input()
   authForm!: FormGroup;
 
-  get password() {
+  public get password(): AbstractControl | null {
     return this.authForm.get('password');
   }
 

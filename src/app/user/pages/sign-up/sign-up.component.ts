@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
 import { PasswordValidator } from '../../validators/password.validator';
@@ -26,11 +26,11 @@ export class SignUpComponent {
     private readonly store: Store,
   ) {}
 
-  get name() {
+  public get name(): AbstractControl | null {
     return this.authForm.get('name');
   }
 
-  public onSignUp() {
+  public onSignUp(): void {
     const user: LoginRequestModel = {
       name: this.authForm.value.name,
       login: this.authForm.value.email,

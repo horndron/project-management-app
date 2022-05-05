@@ -13,13 +13,22 @@
       </div>
     </div>
     <div error *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
-    <button button 
-      type="submit"
-      [disabled]="authForm.invalid"
-      class="edit-btn"
-      (click)="onEdit()"
-    >
-      Save
-    </button>
+    <div class="form-buttons flex justify-content-between" button>
+      <button button 
+        type="submit"
+        [disabled]="authForm.invalid"
+        class="edit-btn"
+        (click)="onEditUser()"
+      >
+        Save
+      </button>
+      <button button 
+        type="button"
+        class="delete-btn"
+        (click)="onDeleteUser()"
+      >
+        Delete
+      </button>
+    </div>
   </rsm-user-form>
 </section>

@@ -42,4 +42,16 @@ export const userReducer = createReducer(
     ...state,
     error,
   })),
+  on(UserActions.DeleteUser, (state): UserState => ({
+    ...state,
+  })),
+  on(UserActions.DeleteUserSuccess, (state): UserState => ({
+    ...state,
+    userInfo: null,
+    isLoggedIn: false,
+  })),
+  on(UserActions.DeleteUserFailed, (state, { error }): UserState => ({
+    ...state,
+    error,
+  })),
 );

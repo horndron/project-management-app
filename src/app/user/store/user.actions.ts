@@ -38,3 +38,15 @@ export const EditUserFailed = createAction(
   props<{ error: string }>(),
 );
 
+export const DeleteUser = createAction(
+  `${actionSource} Delete User`,
+);
+
+export const DeleteUserSuccess = createAction(
+  `${actionSource} Delete User Success`,
+);
+
+export const DeleteUserFailed = createAction(
+  `${actionSource} Edit User Failed`,
+  props<{ error: string }>(),
+);

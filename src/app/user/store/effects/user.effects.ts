@@ -30,6 +30,20 @@ export class UserEffects {
     )
   );
 
+  public deleteUser$: Observable<Action> = createEffect(() =>
+  this.actions$.pipe(
+    ofType(UserActions.DeleteUser),
+    withLatestFrom(this.currentUser$),
+    mergeMap(([action, currUser]) =>
+      this.userHttpService.deleteUser(currUser!.user.id, currUser!.token).pipe(
+        map(() => UserActions.DeleteUserSuccess()),
+        tap(() => this.router.navigateByUrl('/')),
+      )
+    ),
+    catchError((responseError) => of(UserActions.DeleteUserFailed({ error: responseError.error.message }))),
+  )
+);
+
   constructor(
     private readonly actions$: Actions,
     private readonly userHttpService: UserHttpService,

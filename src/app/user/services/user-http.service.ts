@@ -37,7 +37,8 @@ export class UserHttpService {
     return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeader);
   }
 
-  public editUser(id: string, userInfo: LoginRequestModel, token: string): Observable<LoginResponseModel> {
+  public editUser(id: string, userInfo: LoginRequestModel, token: string)
+    : Observable<LoginResponseModel> {
     const authHeader = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -45,5 +46,14 @@ export class UserHttpService {
       }),
     };
     return this.http.put<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`, userInfo, authHeader);
+  }
+
+  public deleteUser(id: string, token: string): Observable<void> {
+    const authHeader = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http.delete<void>(`${BASE_URL}${UrlPath.USERS}/${id}`, authHeader);
   }
 }

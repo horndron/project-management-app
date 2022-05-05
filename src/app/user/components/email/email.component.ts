@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'rsm-email',
@@ -10,7 +10,7 @@ export class EmailComponent {
   @Input()
   authForm!: FormGroup;
 
-  get email() {
+  public get email(): AbstractControl | null {
     return this.authForm.get('email');
   }
 }

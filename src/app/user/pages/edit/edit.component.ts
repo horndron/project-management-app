@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
 import * as UserActions from '../../store/user.actions';
@@ -21,11 +21,11 @@ export class EditComponent {
 
   constructor(private readonly store: Store, private readonly fb: FormBuilder) { }
 
-  get name() {
+  public get name(): AbstractControl | null {
     return this.authForm.get('name');
   }
 
-  onEdit() {
+  public onEditUser(): void {
     const user: LoginRequestModel = {
       name: this.authForm.value.name,
       login: this.authForm.value.email,
@@ -35,4 +35,7 @@ export class EditComponent {
     this.store.dispatch(UserActions.EditUser({ user }))
   }
 
+  public onDeleteUser(): void {
+    this.store.dispatch(UserActions.DeleteUser());
+  }
 }
