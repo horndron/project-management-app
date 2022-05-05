@@ -11,6 +11,7 @@ import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     HttpClientModule,
     ReactiveFormsModule,
     UserRoutingModule,
+    TranslateModule.forChild(),
   ],
   providers: [
     UserHttpService,

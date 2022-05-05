@@ -8,7 +8,9 @@
     >
   </label>
   <div class="input-error" *ngIf="email !== null && (email.dirty || email.touched)">
-    <span *ngIf="email.errors && email.hasError('required')">Please enter a login email</span>
-    <span *ngIf="email.invalid && !email.pending && !email.hasError('required')">The login email is invalid</span>
+    <span *ngIf="email.errors && email.hasError('required')">{{ 'USER.EMAIL_ERROR_EMPTY' | translate }}</span>
+    <span *ngIf="email.invalid && !email.pending && !email.hasError('required')">
+      {{ 'USER.EMAIL_ERROR_INVALID' | translate }}
+    </span>
   </div>
 </div>

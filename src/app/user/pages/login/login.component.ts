@@ -5,6 +5,8 @@ import { LoginRequestModel } from '../../models/user.models';
 import { PasswordValidator } from '../../validators/password.validator';
 import * as UserActions from '../../store/user.actions';
 import * as UserSelectors from '../../store/user.selectors';
+import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'rsm-login',

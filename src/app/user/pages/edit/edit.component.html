@@ -1,15 +1,15 @@
 <section class="container edit-container flex align-items-center justify-content-center">
   <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
-    <h2 header>Edit user settings</h2>
+    <h2 header>{{ 'USER.EDIT_HEADER' | translate }}</h2>
     <div class="user-name" field>
       <input type="text" 
       formControlName="name"
-      placeholder="New name*"
+      [placeholder]="'USER.NAME' | translate"
       name="userName"
       class="user-name__input"
       >
       <div class="input-error" *ngIf="name !== null && (name.dirty || name.touched)">
-        <span *ngIf="name.errors && name.hasError('required')">Please enter your name</span>
+        <span *ngIf="name.errors && name.hasError('required')">{{ 'USER.NAME_ERROR' | translate }}</span>
       </div>
     </div>
     <div error *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
@@ -20,14 +20,14 @@
         class="edit-btn"
         (click)="onEditUser()"
       >
-        Save
+      {{ 'USER.SAVE' | translate }}
       </button>
       <button button 
         type="button"
         class="delete-btn"
         (click)="onDeleteUser()"
       >
-        Delete
+      {{ 'USER.DELETE' | translate }}
       </button>
     </div>
   </rsm-user-form>

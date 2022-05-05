@@ -1,3 +1,23 @@
 {
-
+  "USER": {
+    "NAME": "Name*",
+    "PASSWORD": "Password*",
+    "LOGIN": "Login",
+    "SIGN_IN": "Sign in",
+    "NOT_REGISTERED": "Not registered?",
+    "CREATE_ACCOUNT": "Create an account",
+    "NAME_ERROR": "Please enter your name",
+    "SIGN_UP": "Sign up",
+    "EDIT_HEADER": "Edit user settings",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "EMAIL_ERROR_EMPTY": "Please enter your Email",
+    "EMAIL_ERROR_INVALID": "Email is invalid",
+    "PASSWORD_ERROR_EMPTY": "Please enter your password",
+    "PASSWORD_ERROR_DIFFICULTY": "Your password isn't strong enough",
+    "PASSWORD_ERROR_LENGTH": "at least 8 characters",
+    "PASSWORD_ERROR_UPPER": "a mixture of both uppercase and lowercase letters",
+    "PASSWORD_ERROR_NUMBER": "a mixture of letters and numbers",
+    "PASSWORD_ERROR_SPECIAL": "at least one special character"
+  }
 }
