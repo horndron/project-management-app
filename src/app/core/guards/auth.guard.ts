@@ -1,36 +1,47 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Router } from '@angular/router';
+import {
+  CanActivate, CanActivateChild, CanLoad, Router,
+} from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 import * as UserSelectors from '../../user/store/user.selectors';
 
 @Injectable()
-export class AuthGuard implements CanLoad {
-  private isLoggedIn$ = this.store.select(UserSelectors.selectIsLoggedIn);
+export class AuthGuard implements CanLoad, CanActivate, CanActivateChild {
+  private readonly isLoggedIn$ = this.store.select(UserSelectors.selectIsLoggedIn);
 
   constructor(
     private readonly router: Router,
     private readonly store: Store,
   ) {}
 
-  public canActivate(): boolean {
-    return this.canLoad();
+  public canActivate(): Observable<boolean> {
+    return this.checkAccess();
   }
 
-  public canLoad(): boolean {
-    let canNavigate = false;
+  public canActivateChild(): Observable<boolean> {
+    return this.checkAccess();
+  }
 
-    this.isLoggedIn$.subscribe((loginData) => {
-      canNavigate = loginData;
-    });
+  public canLoad(): Observable<boolean> {
+    return this.checkAccess();
+  }
 
-    if (!canNavigate) {
-      this.router.navigate(['/user', 'login'], {
-        queryParams: {
-          accessDenied: true,
-        },
-      });
-    }
+  private checkAccess(): Observable<boolean> {
+    return this.isLoggedIn$.pipe(
+      map((isUserLoggedIn) => {
+        if (!isUserLoggedIn) {
+          this.router.navigate(['/user', 'login'], {
+            queryParams: {
+              accessDenied: true,
+            },
+          });
+        }
 
-    return canNavigate;
+        return isUserLoggedIn;
+      }),
+      first(),
+    );
   }
 }
