@@ -5,7 +5,7 @@ import * as UserSelectors from '../../user/store/user.selectors';
 
 @Injectable()
 export class AuthGuard implements CanLoad {
-  private currentUser$ = this.store.select(UserSelectors.selectCurrentUser);
+  private isLoggedIn$ = this.store.select(UserSelectors.selectIsLoggedIn);
 
   constructor(
     private readonly router: Router,
@@ -17,19 +17,20 @@ export class AuthGuard implements CanLoad {
   }
 
   public canLoad(): boolean {
-    let token = '';
-    this.currentUser$.subscribe((currUser) => {
-      token = (currUser) ? currUser.token : '';
-    });
-    if (token !== '') {
-      return true;
-    }
-    this.router.navigate(['/user', 'login'], {
-      queryParams: {
-        accessDenied: true,
-      },
+    let canNavigate = false;
+
+    this.isLoggedIn$.subscribe((loginData) => {
+      canNavigate = loginData;
     });
 
-    return false;
+    if (!canNavigate) {
+      this.router.navigate(['/user', 'login'], {
+        queryParams: {
+          accessDenied: true,
+        },
+      });
+    }
+
+    return canNavigate;
   }
 }
