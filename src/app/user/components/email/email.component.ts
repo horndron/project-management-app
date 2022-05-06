@@ -4,11 +4,10 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'rsm-email',
   templateUrl: './email.component.html',
-  styleUrls: ['./email.component.scss']
+  styleUrls: ['./email.component.scss'],
 })
 export class EmailComponent {
-  @Input()
-  authForm!: FormGroup;
+  @Input() authForm!: FormGroup;
 
   public get email(): AbstractControl | null {
     return this.authForm.get('email');

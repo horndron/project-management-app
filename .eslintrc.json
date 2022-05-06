@@ -38,8 +38,7 @@
           }
         ],
         "import/prefer-default-export": "off",
-        "indent": "off",
-        "@typescript-eslint/indent": ["error"],
+        "ngrx/prefer-effect-callback-in-block-statement": "off"
       }
     },
     {

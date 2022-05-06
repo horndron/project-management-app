@@ -3,10 +3,3 @@ export enum UrlPath {
   SIGNUP = 'signup',
   USERS = 'users',
 }
-
-export const PATHES = {
-  ROOT: '',
-  LOGIN: 'login',
-  SIGNUP: 'sign-up',
-  EDIT: 'edit',
-};

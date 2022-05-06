@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl, FormBuilder, FormGroup, Validators,
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
 import * as UserActions from '../../store/user.actions';
@@ -9,7 +11,7 @@ import { PasswordValidator } from '../../validators/password.validator';
 @Component({
   selector: 'rsm-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent {
   public authForm: FormGroup = this.fb.group({
@@ -17,6 +19,7 @@ export class EditComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, PasswordValidator.check]],
   });
+
   public errorMessage$ = this.store.select(UserSelectors.selectLoginError);
 
   constructor(private readonly store: Store, private readonly fb: FormBuilder) { }
@@ -31,8 +34,8 @@ export class EditComponent {
       login: this.authForm.value.email,
       password: this.authForm.value.password,
     };
-    
-    this.store.dispatch(UserActions.EditUser({ user }))
+
+    this.store.dispatch(UserActions.EditUser({ user }));
   }
 
   public onDeleteUser(): void {

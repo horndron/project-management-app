@@ -23,14 +23,13 @@ export class AuthGuard implements CanLoad {
     });
     if (token !== '') {
       return true;
-    } else {
-      this.router.navigate(['/user', 'login'], {
-        queryParams: {
-          accessDenied: true,
-        },
-      });
-
-      return false;
     }
+    this.router.navigate(['/user', 'login'], {
+      queryParams: {
+        accessDenied: true,
+      },
+    });
+
+    return false;
   }
 }

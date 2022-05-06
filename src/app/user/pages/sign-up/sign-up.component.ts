@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl, FormBuilder, FormGroup, Validators,
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
 import { PasswordValidator } from '../../validators/password.validator';
