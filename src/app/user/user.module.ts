@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -28,6 +29,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     HttpClientModule,
     ReactiveFormsModule,
     UserRoutingModule,
+    ProgressSpinnerModule,
     TranslateModule.forChild(),
   ],
   providers: [

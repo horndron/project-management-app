@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ProgressService } from 'src/app/core/services/progress.service';
 
 @Component({
   selector: 'rsm-user-form',
@@ -7,6 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./user-form.component.scss'],
 })
 export class UserFormComponent {
-  @Input()
-    authForm!: FormGroup;
+  @Input() authForm!: FormGroup;
+
+  constructor(public readonly progressService: ProgressService) {}
 }
