@@ -1,61 +1,61 @@
 {
-  "mainPage": {
-    "banner": {
-      "title": "Make Business Flow Easyer With Us",
-      "description": "Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about."
+  "MAINPAGE": {
+    "BANNER": {
+      "TITLE": "Make Business Flow Easyer With Us",
+      "DESCRIPTION": "Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about."
     },
-    "featureText": {
-      "title": "A complete feature stack ready to help you",
-      "description": "This application will help you to achieve the set goals for an individual in a team or group of developers.",
-      "button": "Sign up for free"
+    "FEATURETEXT": {
+      "TITLE": "A complete feature stack ready to help you",
+      "DESCRIPTION": "This application will help you to achieve the set goals for an individual in a team or group of developers.",
+      "BUTTON": "Sign up for free"
     },
-    "features": {
-      "title": "One platform to manage work",
-      "cards": [
+    "FEATURES": {
+      "TITLE": "One platform to manage work",
+      "CARDS": [
         {
-          "title": "It’s free",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "It’s free",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "Easy UI",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Easy UI",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "Available for all team",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Available for all team",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "For all devices",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "For all devices",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         }
       ]
     },
-    "video": {
-      "title": "Watch how to use the app"
+    "VIDEO": {
+      "TITLE": "Watch how to use the app"
     },
-    "teams": {
-      "title": "Our perspective team",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
-      "button":"Contact us",
-      "teammate": [
+    "TEAMS": {
+      "TITLE": "Our perspective team",
+      "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "BUTTON":"Contact us",
+      "TEAMMATE": [
         {
-          "name": "Tanya",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Tanya",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "name": "Evgenia",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Evgenia",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "name": "Andrey",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Andrey",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         }
       ]
     },
-    "questionBlock": {
-      "title": "Are you ready?",
-      "buttons": ["Sign in", "Join now"]
+    "QUESTIONBLOCK": {
+      "TITLE": "Are you ready?",
+      "BUTTONS": ["Sign in", "Join now"]
     }
   },
-  "headerMenu": ["New board", "Edit profile", "Logout"]
+  "HEADERMENU": ["New board", "Edit profile", "Logout"]
 }

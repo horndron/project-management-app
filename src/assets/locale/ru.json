@@ -1,61 +1,61 @@
 {
-  "mainPage": {
-    "banner": {
-      "title": "Упростите бизнес-процесс вместе с нами",
-      "description": "Ваш удивительный продукт заслуживает простого способа управления им. Наше приложение предоставит вам необходимые инструменты, независимо от того, о чем ваша идея."
+  "MAINPAGE": {
+    "BANNER": {
+      "TITLE": "Упростите бизнес-процесс вместе с нами",
+      "DESCRIPTION": "Ваш удивительный продукт заслуживает простого способа управления им. Наше приложение предоставит вам необходимые инструменты, независимо от того, о чем ваша идея."
     },
-    "featureText": {
-      "title": "Полный стек функций готов помочь вам",
-      "description": "Это приложение поможет вам достичь поставленных целей индивидуально в команде или группе разработчиков.",
-      "button": "Бесплатная регистрация"
+    "FEATURETEXT": {
+      "TITLE": "Полный стек функций готов помочь вам",
+      "DESCRIPTION": "Это приложение поможет вам достичь поставленных целей индивидуально в команде или группе разработчиков.",
+      "BUTTON": "Бесплатная регистрация"
     },
-    "features": {
-      "title": "Одна платформа для управления всем",
-      "cards": [
+    "FEATURES": {
+      "TITLE": "Одна платформа для управления всем",
+      "CARDS": [
         {
-          "title": "Бесплатно",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Бесплатно",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "Простой интерфейс",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Простой интерфейс",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "Доступно для всей команды",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Доступно для всей команды",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "title": "Для любых устройств",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "TITLE": "Для любых устройств",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         }
       ]
     },
-    "video": {
-      "title": "Посмотрите, как использовать приложение"
+    "VIDEO": {
+      "TITLE": "Посмотрите, как использовать приложение"
     },
-    "teams": {
-      "title": "Наша перспективная команда",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
-      "button":"Contact us",
-      "teammate": [
+    "TEAMS": {
+      "TITLE": "Наша перспективная команда",
+      "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "BUTTON":"Связаться с нами",
+      "TEAMMATE": [
         {
-          "name": "Таня",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Таня",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "name": "Женя",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Женя",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         },
         {
-          "name": "Андрей",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "NAME": "Андрей",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
         }
       ]
     },
-    "questionBlock": {
-      "title": "Вы готовы?",
-      "buttons": ["Вход", "Регистрация"]
+    "QUESTIONBLOCK": {
+      "TITLE": "Вы готовы?",
+      "BUTTONS": ["Вход", "Регистрация"]
     }
   },
-  "headerMenu": ["Новая доска", "Редактировать профиль", "Выйти"]
+  "HEADERMENU": ["Новая доска", "Редактировать профиль", "Выйти"]
 }
