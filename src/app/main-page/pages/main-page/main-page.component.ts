@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { VODEOID } from './main-page.constants';
 
 @Component({
   selector: 'rsm-main-page',
@@ -6,7 +7,7 @@ import { AfterViewInit, Component } from '@angular/core';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements AfterViewInit {
-  videoId = 'tVooja0Ta5I';
+  videoId = VODEOID;
 
   ngAfterViewInit() {
     this.addAnimation();

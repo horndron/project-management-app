@@ -4,7 +4,7 @@ import {
   distinctUntilChanged,
   fromEvent, map, Observable, throttleTime,
 } from 'rxjs';
-import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constant';
+import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constants';
 
 @Component({
   selector: 'rsm-header',
