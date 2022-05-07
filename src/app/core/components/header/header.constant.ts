@@ -1,2 +1,2 @@
 export const HEADERSCROLLFORSTICKY = 5;
-export const HEADERSCROLLFORSTICKY = 5;
+export const HEADERTHROTTLETIME = 10;

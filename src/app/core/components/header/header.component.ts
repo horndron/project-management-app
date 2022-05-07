@@ -1,9 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  distinctUntilChanged, fromEvent, map, throttleTime,
+  fromEvent, map, throttleTime,
 } from 'rxjs';
-import { HEADERSCROLLFORSTICKY } from './constant';
+import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constant';
 
 @Component({
   selector: 'rsm-header',
@@ -25,14 +25,14 @@ export class HeaderComponent implements AfterViewInit {
 
   onStickyHeader() {
     const scroll$ = fromEvent(window, 'scroll').pipe(
-      throttleTime(10),
+      throttleTime(HEADERTHROTTLETIME),
       map(() => window.pageYOffset),
     );
 
-    scroll$.subscribe(() => {
-      if (window.pageYOffset > HEADERSCROLLFORSTICKY && !this.isSticky) {
+    scroll$.subscribe((offset) => {
+      if (offset > HEADERSCROLLFORSTICKY && !this.isSticky) {
         this.isSticky = true;
-      } else if ((window.pageYOffset < HEADERSCROLLFORSTICKY && this.isSticky)) {
+      } else if ((offset < HEADERSCROLLFORSTICKY && this.isSticky)) {
         this.isSticky = false;
       }
     });
