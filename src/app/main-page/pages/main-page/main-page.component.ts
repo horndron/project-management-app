@@ -1,7 +1,7 @@
 import {
   AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren,
 } from '@angular/core';
-import { ANIMATION_SHOW_CLASS, ELEMENT_ANIMATION, VODEO_ID } from './main-page.constants';
+import { ANIMATION_SHOW_CLASS, ELEMENT_ANIMATION, VODEO_ID } from '../../main-page.constants';
 
 @Component({
   selector: 'rsm-main-page',

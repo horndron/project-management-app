@@ -1,24 +1,9 @@
-<div class="preview-item">
-  <img src="/assets/main-page/ipad.png" alt="">
+<div
+  class="preview-item"
+  *ngFor="let preview of nameImagesPreviewScreenshot; let i = index"
+>
+  <img src="{{ onFullPathDifferentScreen(i) }}" alt="">
   <div class="preview-image flex flex-wrap justify-content-center align-items-center">
-    <img src="/assets/main-page/mobile6.png" alt="ipad">
-  </div>
-</div>
-<div class="preview-item">
-  <img src="/assets/main-page/mobile.png" alt="">
-  <div class="preview-image flex flex-wrap justify-content-center align-items-center">
-    <img src="/assets/main-page/mobile7.png" alt="ipad">
-  </div>
-</div>
-<div class="preview-item">
-  <img src="/assets/main-page/mobile2.png" alt="">
-  <div class="preview-image flex flex-wrap justify-content-center align-items-center">
-    <img src="/assets/main-page/mobile4.png" alt="ipad">
-  </div>
-</div>
-<div class="preview-item">
-  <img src="/assets/main-page/ipad2.png" alt="">
-  <div class="preview-image flex flex-wrap justify-content-center align-items-center">
-    <img src="/assets/main-page/mobile5.png" alt="ipad">
+    <img src="{{ onFullPathPreviewImage(i) }}" alt="ipad">
   </div>
 </div>
