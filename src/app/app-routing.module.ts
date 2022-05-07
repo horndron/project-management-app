@@ -8,6 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./main-page/main-page.module').then((m) => m.MainPageModule),
     pathMatch: 'full',
   },
+  { path: PATHES.USER, loadChildren: () => import('./user/user.module').then((m) => m.UserModule) },
 ];
 
 @NgModule({

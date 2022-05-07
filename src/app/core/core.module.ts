@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuthGuard } from './guards/auth.guard';
 import { HeaderComponent } from './components/header/header.component';
 import { SelectLanguageComponent } from './components/select-language/select-language.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -36,5 +37,6 @@ import { UserInformationComponent } from './components/user-information/user-inf
     SelectLanguageComponent,
     FooterComponent,
   ],
+  providers: [AuthGuard],
 })
 export class CoreModule { }

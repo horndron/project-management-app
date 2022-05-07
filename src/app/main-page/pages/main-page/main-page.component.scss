@@ -48,14 +48,14 @@
 
   .element-show {
     opacity: 1;
-    transform: translateX(0) translateY(0) scale(1);
+    transform: translate(0) scale(1);
   }
 
   .banner-block {
     min-height: 40vw;
     color: $white-color;
     padding: 0 0 40px;
-    background: url(/assets/main-page/block1.png) no-repeat;
+    background: url('/assets/main-page/block1.png') no-repeat;
     background-size: cover;
     background-position: center bottom;
 
@@ -143,7 +143,8 @@
     }
 
 
-    &::before {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       left: 0;
@@ -157,16 +158,13 @@
     }
 
     &::after {
-      content: '';
-      position: absolute;
+      left: auto;
       right: 0;
       top: -65%;
       width: 16%;
-      height: 150%;
       background: url('/assets/main-page/features-after.svg') no-repeat;
       background-size: contain;
       background-position: right top;
-      z-index: 1;
 
       @media (max-width: $breakpoint767) {
         & {

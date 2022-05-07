@@ -57,5 +57,26 @@
       "BUTTONS": ["Вход", "Регистрация"]
     }
   },
-  "HEADERMENU": ["Новая доска", "Редактировать профиль", "Выйти"]
+  "HEADERMENU": ["Новая доска", "Редактировать профиль", "Выйти"],
+  "USER": {
+    "NAME": "Имя*",
+    "PASSWORD": "Пароль*",
+    "LOGIN": "Вход в приложение",
+    "SIGN_IN": "Войти",
+    "NOT_REGISTERED": "Не зарегистрированы?",
+    "CREATE_ACCOUNT": "Создать аккаунт",
+    "NAME_ERROR": "Пожалуйста, введите имя",
+    "SIGN_UP": "Зарегистрироваться",
+    "EDIT_HEADER": "Редактировать данные пользователя",
+    "SAVE": "Сохранить",
+    "DELETE": "Удалить аккаунт",
+    "EMAIL_ERROR_EMPTY": "Пожалуйста, введите свой Email",
+    "EMAIL_ERROR_INVALID": "Email некорректен",
+    "PASSWORD_ERROR_EMPTY": "Пожалуйста, введите пароль",
+    "PASSWORD_ERROR_DIFFICULTY": "Пароль недостаточно сложный",
+    "PASSWORD_ERROR_LENGTH": "по крайней мере 8 символов",
+    "PASSWORD_ERROR_UPPER": "смесь прописных и заглавных букв",
+    "PASSWORD_ERROR_NUMBER": "смесь цифр и букв",
+    "PASSWORD_ERROR_SPECIAL": "по крайней мере 1 спецсимвол"
+  }
 }

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MissingTranslationService } from './core/ngx-translate/missing-translation.service';
 import { HttpLoaderFactory } from './core/ngx-translate/http-loader-factory';
+import { INTERCEPTOR_PROVIDERS } from './core/interceptors/providers';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { HttpLoaderFactory } from './core/ngx-translate/http-loader-factory';
       useDefaultLang: false,
     }),
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDERS],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

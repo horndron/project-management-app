@@ -1,0 +1,20 @@
+@import '~src/styles/style-import';
+
+.login-container {
+  height: 100vh;
+  background-color: $bg-color;
+
+  .auth-btn {
+    margin: 80px 0 20px;
+    @include filled-btn(145px);
+  }
+
+  p {
+    color: $grey-color;
+    font-size: .8em;
+
+    a {
+      color: $red-color;
+    }
+  }
+}
