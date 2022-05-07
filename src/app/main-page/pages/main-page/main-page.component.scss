@@ -2,14 +2,14 @@
 
 :host {
   display: block;
-  background-color: #EFEFCD;
+  background-color: $bg-color;
   overflow: hidden;
 
   button.p-button {
     margin: 30px 0;
-    background: #05704E;
-    border-color: #05704E;
-    transition: 0.5s;
+    background: $primary-color;
+    border-color: $primary-color;
+    transition: $hover-speed;
 
     &:hover {
       transform: translateY(-3px);
@@ -23,7 +23,7 @@
 
   .element-animation {
     opacity: 0;
-    transition: 0.5s;
+    transition: $hover-speed;
   }
 
   .left {
@@ -53,7 +53,7 @@
 
   .banner-block {
     min-height: 40vw;
-    color: #fff;
+    color: $white-color;
     padding: 0 0 40px;
     background: url(/assets/main-page/block1.png) no-repeat;
     background-size: cover;
@@ -276,7 +276,7 @@
 
       .teammate {
         margin-bottom: 60px;
-        background: #fff;
+        background: $white-color;
         color: #000;
 
         @media (max-width: 1199px) {

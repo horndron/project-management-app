@@ -1,8 +1,10 @@
+@import '~src/styles/style-import';
+
 :host {
   header {
     padding: 15px 0;
     background: linear-gradient(140.77deg, #F5CE12 -20.7%, #8CB120 46.22%, #05704E 100.74%);
-    transition: 0.5s;
+    transition: $hover-speed;
 
     &.sticky-header {
       position: fixed;

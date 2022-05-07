@@ -1,21 +1,23 @@
+@import '~src/styles/style-import';
+
 :host {
   display: block;
   padding: 10px 0;
   background: #042E33;
-  color: #fff;
+  color: $white-color;
 
   .github {
     a {
       position: relative;
       display: block;
-      color: #fff;
+      color: $white-color;
       padding: 1px 0 0 28px;
       background: url('/assets/github.svg') no-repeat;
       background-size: contain;
       background-position: left center;
       text-decoration: none;
       margin: 0 15px;
-      transition: 0.5s;
+      transition: $hover-speed;
 
       &::after {
         content: '';
@@ -24,8 +26,8 @@
         bottom: 0;
         width: 0;
         height: 1px;
-        background-color: #fff;
-        transition: 0.5s;
+        background-color: $white-color;
+        transition: $hover-speed;
       }
 
       &:hover {

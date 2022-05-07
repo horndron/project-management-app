@@ -1,5 +1,5 @@
 export interface CardWithIcon {
-  imageUrl?: string;
   title: string;
+  imageUrl?: string;
   description?: string;
 }

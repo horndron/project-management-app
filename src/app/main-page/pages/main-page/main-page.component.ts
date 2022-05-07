@@ -9,6 +9,8 @@ import { environment } from '../../../../environments/environment.prod';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
+  videoId = 'tVooja0Ta5I';
+
   constructor(
     private readonly primengConfig: PrimeNGConfig,
     private readonly translateService: TranslateService,

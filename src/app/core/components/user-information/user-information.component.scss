@@ -1,3 +1,5 @@
+@import '~src/styles/style-import';
+
 :host {
   position: relative;
   display: flex;
@@ -7,8 +9,8 @@
     margin-left: auto;
 
     span {
-      color: #fff;
-      transition: 0.5s;
+      color: $white-color;
+      transition: $hover-speed;
     }
 
     .icon {
@@ -17,13 +19,13 @@
       line-height: normal;
       padding: 6px 8.5px 3px;
       margin-left: 5px;
-      background-color: #F5CE12;
+      background-color: $yellow-color;
       border-radius: 50%;
     }
 
     &:hover {
       .name {
-        color: #F5CE12;
+        color: $yellow-color;
       }
     }
   }
@@ -34,8 +36,8 @@
     right: 0;
     min-width: 115px;
     display: block;
-    background: #EFEFCD;
-    transition: 0.5s;
+    background: $bg-color;
+    transition: $hover-speed;
     transform: scale(0);
     z-index: 5;
 
@@ -52,14 +54,14 @@
         list-style: none;
         padding: 10px;
         text-align: center;
-        border-bottom: 1px solid #05704E;
+        border-bottom: 1px solid $primary-color;
         background-color: transparent;
-        transition: 0.5s;
+        transition: $hover-speed;
         cursor: pointer;
 
         &:hover {
-          color: #fff;
-          background-color: #05704E;
+          color: $white-color;
+          background-color: $primary-color;
         }
       }
 

@@ -1,15 +1,17 @@
+@import '~src/styles/style-import';
+
 :host ::ng-deep {
 
   .p-element {
 
     .p-dropdown {
       background: transparent;
-      border-color: #fff;
+      border-color: $white-color;
       border-radius: 2px;
     }
 
     .p-dropdown-label {
-      color: #fff;
+      color: $white-color;
       font-weight: 600;
       text-transform: capitalize;
       padding: 0.15rem 0.4rem 0.3rem;
@@ -17,7 +19,7 @@
 
     .p-dropdown-trigger {
       width: 1.5rem;
-      color: #fff;
+      color: $white-color;
     }
 
     .pi {
