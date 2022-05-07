@@ -12,7 +12,7 @@ export class SelectLanguageComponent implements OnInit {
 
   languages: Language[] = [];
 
-  constructor(private languageService: LanguageService) { }
+  constructor(private readonly languageService: LanguageService) { }
 
   ngOnInit(): void {
     this.getCurrentLanguage();

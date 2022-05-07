@@ -15,7 +15,7 @@ export class VideoBlockComponent implements OnInit {
 
   videoUrl!: SafeResourceUrl;
 
-  constructor(private domsanitazer: DomSanitizer) {}
+  constructor(private readonly domsanitazer: DomSanitizer) {}
 
   ngOnInit() {
     this.getVideoUrl();

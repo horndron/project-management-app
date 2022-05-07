@@ -9,7 +9,7 @@ import { Language } from '../models/models';
 })
 
 export class LanguageService {
-  constructor(private translateService: TranslateService) {}
+  constructor(private readonly translateService: TranslateService) {}
 
   getCurrentLanguage(): string {
     return environment.defaultLocale;

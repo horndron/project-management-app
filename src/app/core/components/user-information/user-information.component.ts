@@ -12,6 +12,6 @@ export class UserInformationComponent {
   menu = false;
 
   constructor(
-    private store: Store,
+    private readonly store: Store,
   ) {}
 }
