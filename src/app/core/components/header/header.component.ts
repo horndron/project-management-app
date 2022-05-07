@@ -6,6 +6,7 @@ import {
   distinctUntilChanged, fromEvent, map, throttleTime,
 } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { HEADERSCROLLFORSTICKY } from './constant';
 
 @Component({
   selector: 'rsm-header',
@@ -13,9 +14,9 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  auth: boolean = false;
+  isAuth: boolean = false;
 
-  sticky: boolean = false;
+  isSticky: boolean = false;
 
   constructor(
     private readonly store: Store,
@@ -39,10 +40,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     );
 
     scroll$.subscribe(() => {
-      if (window.pageYOffset > 5 && !this.sticky) {
+      if (window.pageYOffset > HEADERSCROLLFORSTICKY && !this.sticky) {
         this.sticky = true;
         distinctUntilChanged();
-      } else if ((window.pageYOffset < 5 && this.sticky)) {
+      } else if ((window.pageYOffset < HEADERSCROLLFORSTICKY && this.sticky)) {
         this.sticky = false;
         distinctUntilChanged();
       }
