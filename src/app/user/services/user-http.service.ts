@@ -27,33 +27,15 @@ export class UserHttpService {
     return this.http.post<LoginResponseModel>(`${BASE_URL}${UrlPath.SIGNUP}`, user, this.httpHeader);
   }
 
-  public getAllUsers(token: string): Observable<LoginResponseModel[]> {
-    const authHeader = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-    return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, authHeader);
+  public getAllUsers(): Observable<LoginResponseModel[]> {
+    return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`, this.httpHeader);
   }
 
-  public editUser(id: string, userInfo: LoginRequestModel, token: string)
-    : Observable<LoginResponseModel> {
-    const authHeader = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-    return this.http.put<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`, userInfo, authHeader);
+  public editUser(id: string, userInfo: LoginRequestModel): Observable<LoginResponseModel> {
+    return this.http.put<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`, userInfo, this.httpHeader);
   }
 
-  public deleteUser(id: string, token: string): Observable<void> {
-    const authHeader = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-    return this.http.delete<void>(`${BASE_URL}${UrlPath.USERS}/${id}`, authHeader);
+  public deleteUser(id: string): Observable<void> {
+    return this.http.delete<void>(`${BASE_URL}${UrlPath.USERS}/${id}`);
   }
 }

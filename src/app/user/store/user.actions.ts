@@ -13,6 +13,11 @@ export const LoginUser = createAction(
   props<{ user: LoginRequestModel }>(),
 );
 
+export const GetUserSuccess = createAction(
+  `${actionSource} Get User Success`,
+  props<{ token: string, login: string }>(),
+);
+
 export const LoginUserSuccess = createAction(
   `${actionSource} Login User Success`,
   props<{ userInfo: UserModel }>(),

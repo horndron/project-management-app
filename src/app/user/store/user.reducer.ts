@@ -16,6 +16,13 @@ export const userReducer = createReducer(
   on(UserActions.LoginUser, (state): UserState => ({
     ...state,
   })),
+  on(UserActions.GetUserSuccess, (state, { token }): UserState => ({
+    ...state,
+    userInfo: {
+      user: null,
+      token,
+    },
+  })),
   on(UserActions.LoginUserSuccess, (state, { userInfo }): UserState => ({
     ...state,
     userInfo,

@@ -15,14 +15,14 @@ import * as UserSelectors from '../user.selectors';
 export class UserEffects {
   private currentUser$ = this.store.select(UserSelectors.selectCurrentUser);
 
+  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public editUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.EditUser),
     concatLatestFrom(() => this.currentUser$),
     mergeMap(([action, currUser]) => {
-      if (currUser) {
+      if (currUser && currUser.user) {
         const { id } = currUser.user;
-        const { token } = currUser;
-        return this.userHttpService.editUser(id, action.user, token).pipe(
+        return this.userHttpService.editUser(id, action.user).pipe(
           map((response) => UserActions.EditUserSuccess({
             user: {
               id: response.id,
@@ -40,14 +40,20 @@ export class UserEffects {
     }))),
   ));
 
+  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public deleteUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.DeleteUser),
     concatLatestFrom(() => this.currentUser$),
-    mergeMap(([, currUser]) => this.userHttpService.deleteUser(currUser!.user.id, currUser!.token)
-      .pipe(
-        map(() => UserActions.DeleteUserSuccess()),
-        tap(() => this.router.navigateByUrl('/')),
-      )),
+    mergeMap(([, currUser]) => {
+      if (currUser && currUser.user) {
+        return this.userHttpService.deleteUser(currUser.user.id)
+          .pipe(
+            map(() => UserActions.DeleteUserSuccess()),
+            tap(() => this.router.navigateByUrl('/')),
+          );
+      }
+      return EMPTY;
+    }),
     catchError((responseError) => of(UserActions.DeleteUserFailed({
       error: responseError.error.message,
     }))),

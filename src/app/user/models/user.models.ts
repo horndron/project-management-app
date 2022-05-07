@@ -12,7 +12,7 @@ export interface LoginResponseModel {
 
 export interface UserModel {
   token: string;
-  user: LoginResponseModel;
+  user: LoginResponseModel | null;
 }
 
 export interface UserState {

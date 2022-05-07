@@ -10,6 +10,7 @@ import * as UserActions from '../user.actions';
 
 @Injectable()
 export class AuthEffects {
+  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public createUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.RegisterUser),
     mergeMap(({ user }) => this.userHttpService.createUser(user).pipe(
@@ -25,23 +26,33 @@ export class AuthEffects {
     )),
   ));
 
+  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public loginUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.LoginUser),
     mergeMap(({ user }) => this.userHttpService.signIn(user).pipe(
-      switchMap((response) => this.userHttpService.getAllUsers(response.token).pipe(
-        map((users) => users.find((responseUser) => responseUser.login === user.login)),
-        map((currentUser) => UserActions.LoginUserSuccess({
-          userInfo: {
-            user: currentUser!,
-            token: response.token,
-          },
-        })),
-        tap(() => this.router.navigateByUrl('/user/edit')),
-      )),
+      map(({ token }) => UserActions.GetUserSuccess({ token, login: user.login })),
       catchError((responseError) => of(UserActions.LoginUserFailed({
         error: responseError.error.message,
       }))),
     )),
+  ));
+
+  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
+  public getUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(UserActions.GetUserSuccess),
+    switchMap((action) => this.userHttpService.getAllUsers().pipe(
+      map((users) => users.find((responseUser) => responseUser.login === action.login)),
+      map((currentUser) => UserActions.LoginUserSuccess({
+        userInfo: {
+          user: currentUser!,
+          token: action.token,
+        },
+      })),
+      tap(() => this.router.navigateByUrl('/user/edit')),
+    )),
+    catchError((responseError) => of(UserActions.LoginUserFailed({
+      error: responseError.error.message,
+    }))),
   ));
 
   constructor(
