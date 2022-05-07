@@ -11,7 +11,7 @@ export class VideoBlockComponent implements OnInit {
 
   @Input() videoId!: string;
 
-  video = false;
+  isVideo = false;
 
   videoUrl!: SafeResourceUrl;
 
@@ -27,6 +27,6 @@ export class VideoBlockComponent implements OnInit {
   }
 
   onVideo(): void {
-    this.video = true;
+    this.isVideo = true;
   }
 }

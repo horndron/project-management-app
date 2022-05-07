@@ -5,8 +5,8 @@
     class="title"
   ></rsm-card-with-icon>
 
-  <div id="video" [class.image]="!video" (click)="onVideo()">
-    <img *ngIf="!video; else frameVideo" src="/assets/main-page/video-preview.svg" alt="">
+  <div id="video" [class.image]="!isVideo" (click)="onVideo()">
+    <img *ngIf="!isVideo; else frameVideo" src="/assets/main-page/video-preview.svg" alt="">
 
     <ng-template #frameVideo>
       <iframe [src]="videoUrl" frameborder="0" allow="autoplay" allowfullscreen></iframe>
