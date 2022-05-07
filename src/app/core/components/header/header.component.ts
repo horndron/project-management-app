@@ -32,10 +32,8 @@ export class HeaderComponent implements AfterViewInit {
     scroll$.subscribe(() => {
       if (window.pageYOffset > HEADERSCROLLFORSTICKY && !this.isSticky) {
         this.isSticky = true;
-        distinctUntilChanged();
       } else if ((window.pageYOffset < HEADERSCROLLFORSTICKY && this.isSticky)) {
         this.isSticky = false;
-        distinctUntilChanged();
       }
     });
   }
