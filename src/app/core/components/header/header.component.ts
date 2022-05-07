@@ -1,7 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  fromEvent, map, throttleTime,
+  distinctUntilChanged,
+  fromEvent, map, Observable, throttleTime,
 } from 'rxjs';
 import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constant';
 
@@ -13,28 +14,17 @@ import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constant';
 export class HeaderComponent implements AfterViewInit {
   isAuth = false;
 
-  isSticky = false;
+  isSticky$!: Observable<boolean>;
 
   constructor(
     private readonly store: Store,
   ) { }
 
   ngAfterViewInit() {
-    this.onStickyHeader();
-  }
-
-  onStickyHeader() {
-    const scroll$ = fromEvent(window, 'scroll').pipe(
+    this.isSticky$ = fromEvent(window, 'scroll').pipe(
       throttleTime(HEADERTHROTTLETIME),
-      map(() => window.pageYOffset),
+      map(() => window.pageYOffset > HEADERSCROLLFORSTICKY),
+      distinctUntilChanged(),
     );
-
-    scroll$.subscribe((offset) => {
-      if (offset > HEADERSCROLLFORSTICKY && !this.isSticky) {
-        this.isSticky = true;
-      } else if ((offset < HEADERSCROLLFORSTICKY && this.isSticky)) {
-        this.isSticky = false;
-      }
-    });
   }
 }

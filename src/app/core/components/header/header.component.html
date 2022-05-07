@@ -1,4 +1,4 @@
-<header [class.sticky-header]="isSticky">
+<header [class.sticky-header]="isSticky$ | async">
   <div class="container flex flex-wrap align-items-center justify-content-between">
     <img src="/assets/logo.svg" alt="Logo" class="logo">
     <rsm-search *ngIf="isAuth" class="search"></rsm-search>
