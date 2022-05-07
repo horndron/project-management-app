@@ -1,5 +1,5 @@
 import {
-  AfterViewInit, Component, ElementRef, QueryList, ViewChildren,
+  AfterViewInit, Component, ElementRef, OnDestroy, QueryList, ViewChildren,
 } from '@angular/core';
 import { ANIMATION_SHOW_CLASS, ELEMENT_ANIMATION, VODEO_ID } from './main-page.constants';
 

@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 export class UserInformationComponent {
   userName = 'UserName';
 
-  menu = false;
+  isMenuVisible = false;
 
   constructor(
     private readonly store: Store,
