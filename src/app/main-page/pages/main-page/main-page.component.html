@@ -20,7 +20,7 @@
       [description]="'MAINPAGE.FEATURETEXT.DESCRIPTION' | translate"
       class="title"
     ></rsm-card-with-icon>
-    <button pRipple pButton label="{{ 'MAINPAGE.FEATURETEXT.BUTTON' | translate }}"></button>
+    <button routerLink="/user/sign-up" pRipple pButton label="{{ 'MAINPAGE.FEATURETEXT.BUTTON' | translate }}"></button>
   </div>
 </div>
 
@@ -117,8 +117,8 @@
         #animation
       ></rsm-card-with-icon>
     <div class="buttons flex flex-wrap justify-content-between element-animation right" #animation>
-      <button pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.0' | translate }}"></button>
-      <button pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.1' | translate }}"></button>
+      <button routerLink="/user/login" pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.0' | translate }}"></button>
+      <button routerLink="/user/sign-up" pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.1' | translate }}"></button>
     </div>
   </div>
 </div>

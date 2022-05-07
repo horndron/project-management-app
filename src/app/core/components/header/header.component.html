@@ -4,8 +4,18 @@
     <rsm-search *ngIf="isAuth" class="search"></rsm-search>
     <rsm-select-language class="language"></rsm-select-language>
     <div class="sign-in" *ngIf="!isAuth; else userProfile">
-      <button routerLink="/user/login"  pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.0' | translate }}"></button>
-      <button pRipple pButton label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.1' | translate }}"></button>
+      <button
+        routerLink="/user/login"
+        pRipple
+        pButton
+        label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.0' | translate }}"
+      ></button>
+      <button
+        routerLink="/user/sign-up"
+        pRipple
+        pButton
+        label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.1' | translate }}"
+      ></button>
     </div>
 
     <ng-template #userProfile>
