@@ -59,7 +59,7 @@
     background-size: cover;
     background-position: center bottom;
 
-    @media (max-width: 599px) {
+    @media (max-width: $breakpoint599) {
       & {
         padding-bottom: 0;
       }
@@ -69,7 +69,7 @@
       width: 100%;
       padding-top: 20px;
 
-      @media (max-width: 991px) {
+      @media (max-width: $breakpoint991) {
         & {
           flex-direction: column;
           padding-top: 70px;
@@ -91,13 +91,13 @@
       width: 49%;
       margin-bottom: auto;
 
-      @media (max-width: 1500px) {
+      @media (max-width: $breakpoint1500) {
         & {
           margin-right: 5%;
         }
       }
 
-      @media (max-width: 991px) {
+      @media (max-width: $breakpoint991) {
         & {
           width: 52%;
           margin-left: auto;
@@ -105,7 +105,7 @@
         }
       }
 
-      @media (max-width: 767px) {
+      @media (max-width: $breakpoint767) {
         & {
           max-width: 400px;
           width: 100%;
@@ -119,7 +119,7 @@
   .feature-text {
     margin: 40px 0;
 
-    @media (max-width: 991px) {
+    @media (max-width: $breakpoint991) {
       & {
         max-width:400px;
       }
@@ -130,13 +130,13 @@
     position: relative;
     padding-top: 120px;
 
-    @media (max-width: 1299px) {
+    @media (max-width: $breakpoint1299) {
       & {
         padding-top: 70px;
       }
     }
 
-    @media (max-width: 1099px) {
+    @media (max-width: $breakpoint1099) {
       & {
         padding-top: 0;
       }
@@ -168,19 +168,19 @@
       background-position: right top;
       z-index: 1;
 
-      @media (max-width: 767px) {
+      @media (max-width: $breakpoint767) {
         & {
           width: 45%;
         }
       }
 
-      @media (max-width: 519px) {
+      @media (max-width: $breakpoint519) {
         & {
           top: -35%
         }
       }
 
-      @media (max-width: 399px) {
+      @media (max-width: $breakpoint399) {
         & {
           width: 55%;
         }
@@ -189,7 +189,7 @@
 
     .container {
 
-      @media (max-width: 991px) {
+      @media (max-width: $breakpoint991) {
         & {
          max-width: 600px;
         }
@@ -202,13 +202,13 @@
     padding-top: 50px;
     margin: 90px 0;
 
-    @media (max-width: 1149px) {
+    @media (max-width: $breakpoint1149) {
       & {
         padding-top: 0;
       }
     }
 
-    @media (max-width: 599px) {
+    @media (max-width: $breakpoint599) {
       & {
         position: inherit;
         margin: 50px 0 30px;
@@ -241,7 +241,7 @@
       z-index: 1;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: $breakpoint991) {
       .container {
         max-width: 530px;
         flex-direction: column-reverse;
@@ -255,20 +255,20 @@
       margin-left: 54px;
       transform: rotate(-9.9deg);
 
-      @media (max-width: 1079px) {
+      @media (max-width: $breakpoint1079) {
         & {
           width: 50%;
         }
       }
 
-      @media (max-width: 991px) {
+      @media (max-width: $breakpoint991) {
         & {
           width: 100%;
           margin-left: 0;
         }
       }
 
-      @media (max-width: 599px) {
+      @media (max-width: $breakpoint599) {
         & {
           transform: rotate(0);
         }
@@ -279,7 +279,7 @@
         background: $white-color;
         color: #000;
 
-        @media (max-width: 1199px) {
+        @media (max-width: $breakpoint1199) {
           & {
             margin-bottom: 40px;
           }
@@ -295,14 +295,14 @@
     background-size: cover;
     background-position: center 40%;
 
-    @media (max-width: 1399px) {
+    @media (max-width: $breakpoint1399) {
       & {
         min-height: 500px;
         background-position: left 30%;
       }
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: $breakpoint767) {
       & {
         min-height: 350px;
       }

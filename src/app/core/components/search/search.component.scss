@@ -18,7 +18,7 @@
     }
   }
 
-  @media (max-width: 649px) {
+  @media (max-width: $breakpoint649) {
     & {
       position: relative;
       width: 31px;

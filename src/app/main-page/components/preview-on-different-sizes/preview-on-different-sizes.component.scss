@@ -12,14 +12,14 @@
   margin-top: -60px;
   transform: rotate(-11.23deg);
 
-  @media (max-width: 991px) {
+  @media (max-width: $breakpoint991) {
     & {
       position: inherit;
       margin-top: 50px;
     }
   }
 
-  @media (max-width: 599px) {
+  @media (max-width: $breakpoint599) {
     & {
       transform: rotate(0);
     }
@@ -30,7 +30,7 @@
     display: block;
     margin-bottom: 50px;
 
-    @media (max-width: 767px) {
+    @media (max-width: $breakpoint767) {
       & {
         margin-bottom: 30px;
       }

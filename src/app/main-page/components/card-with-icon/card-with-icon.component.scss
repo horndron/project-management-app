@@ -32,7 +32,7 @@
       line-height: 1;
     }
 
-    @media (max-width: 599px) {
+    @media (max-width: $breakpoint599) {
       & {
         width: 70px;
         height: 70px;
@@ -54,14 +54,14 @@
   background: $green-color;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 1149px) {
+  @media (max-width: $breakpoint1149) {
     & {
       max-width: 230px;
       padding: 25px 20px;
     }
   }
 
-  @media (max-width: 519px) {
+  @media (max-width: $breakpoint519) {
     & {
       max-width: 100%;
     }
