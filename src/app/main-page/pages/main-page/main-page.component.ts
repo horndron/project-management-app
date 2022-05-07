@@ -1,25 +1,12 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { PrimeNGConfig } from 'primeng/api';
-import { environment } from '../../../../environments/environment.prod';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'rsm-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements OnInit, AfterViewInit {
+export class MainPageComponent implements AfterViewInit {
   videoId = 'tVooja0Ta5I';
-
-  constructor(
-    private readonly primengConfig: PrimeNGConfig,
-    private readonly translateService: TranslateService,
-  ) {}
-
-  ngOnInit() {
-    this.primengConfig.ripple = true;
-    this.translateService.use(environment.defaultLocale);
-  }
 
   ngAfterViewInit() {
     this.addAnimation();
