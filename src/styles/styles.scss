@@ -1,5 +1,6 @@
 @import './constants.scss';
 @import './common.scss';
+@import './mixins.scss';
 
 * {
   box-sizing: border-box;
@@ -9,4 +10,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
 }

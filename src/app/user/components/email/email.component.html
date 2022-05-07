@@ -1,0 +1,16 @@
+<div class="form-field">
+  <label for="email" [formGroup]="authForm">
+    <input type="email" 
+      [formControlName]="'email'"
+      placeholder="Email*"
+      name="email"
+      class="user-email"
+    >
+  </label>
+  <div class="input-error" *ngIf="email !== null && (email.dirty || email.touched)">
+    <span *ngIf="email.errors && email.hasError('required')">{{ 'USER.EMAIL_ERROR_EMPTY' | translate }}</span>
+    <span *ngIf="email.invalid && !email.pending && !email.hasError('required')">
+      {{ 'USER.EMAIL_ERROR_INVALID' | translate }}
+    </span>
+  </div>
+</div>

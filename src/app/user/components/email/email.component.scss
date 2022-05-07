@@ -1,0 +1,14 @@
+@import '~src/styles/style-import';
+
+.form-field {
+
+  .user-email {
+    @include auth-input;
+    position: relative;
+  }
+
+  .input-error {
+    @include input-error;
+    position: absolute;
+  }
+}
