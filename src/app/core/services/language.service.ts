@@ -7,7 +7,6 @@ import { Language } from '../models/models';
 @Injectable({
   providedIn: 'root',
 })
-
 export class LanguageService {
   constructor(private readonly translateService: TranslateService) {}
 
