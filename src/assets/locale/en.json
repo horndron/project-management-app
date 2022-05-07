@@ -56,5 +56,6 @@
       "title": "Are you ready?",
       "buttons": ["Sign in", "Join now"]
     }
-  }
+  },
+  "headerMenu": ["New board", "Edit profile", "Logout"]
 }

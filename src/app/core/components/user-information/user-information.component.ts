@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'rsm-user-information',
   templateUrl: './user-information.component.html',
-  styleUrls: ['./user-information.component.scss']
+  styleUrls: ['./user-information.component.scss'],
 })
-export class UserInformationComponent implements OnInit {
+export class UserInformationComponent {
+  userName = 'UserName';
 
-  constructor() { }
+  menu = false;
 
-  ngOnInit(): void {
-  }
-
+  constructor(
+    private store: Store,
+  ) {}
 }

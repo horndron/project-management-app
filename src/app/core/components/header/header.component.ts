@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  auth: boolean = true;
+  auth: boolean = false;
 
   sticky: boolean = false;
 

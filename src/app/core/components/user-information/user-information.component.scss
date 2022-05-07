@@ -1,0 +1,71 @@
+:host {
+  position: relative;
+  display: flex;
+
+  .user {
+    cursor: pointer;
+    margin-left: auto;
+
+    span {
+      color: #fff;
+      transition: 0.5s;
+    }
+
+    .icon {
+      font-size: 1.1em;
+      font-weight: 600;
+      line-height: normal;
+      padding: 6px 8.5px 3px;
+      margin-left: 5px;
+      background-color: #F5CE12;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      .name {
+        color: #F5CE12;
+      }
+    }
+  }
+
+  .menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    min-width: 115px;
+    display: block;
+    background: #EFEFCD;
+    transition: 0.5s;
+    transform: scale(0);
+    z-index: 5;
+
+    &.active {
+      transform: scale(1);
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    ul {
+      padding-left: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #05704E;
+        background-color: transparent;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+          background-color: #05704E;
+        }
+      }
+
+      li:last-child {
+        border: none;
+      }
+    }
+  }
+}

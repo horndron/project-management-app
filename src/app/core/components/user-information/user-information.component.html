@@ -1,1 +1,14 @@
-<p>user-information works!</p>
+<div class="user flex align-items-center" (click)="menu = !menu">
+  <span class="name">{{ userName }}</span>
+  <span class="icon">{{ userName[0] }}</span>
+</div>
+
+<div class="menu" [class.active]="menu" (click)="menu = !menu">
+  <nav>
+    <ul>
+      <li routerLink="/user/login">{{ "headerMenu.0" | translate}}</li>
+      <li routerLink="/user/login">{{ "headerMenu.1" | translate}}</li>
+      <li routerLink="/user/login">{{ "headerMenu.2" | translate}}</li>
+    </ul>
+  </nav>
+</div>
