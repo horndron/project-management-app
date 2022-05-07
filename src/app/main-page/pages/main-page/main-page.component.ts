@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { VODEOID } from './main-page.constants';
+import { ANIMATION_SHOW_CLASS, ELEMENT_ANIMATION_CLASS, VODEO_ID } from './main-page.constants';
 
 @Component({
   selector: 'rsm-main-page',
@@ -7,24 +7,25 @@ import { VODEOID } from './main-page.constants';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements AfterViewInit {
-  videoId = VODEOID;
+  videoId = VODEO_ID;
+
+  elementAnimation = ELEMENT_ANIMATION_CLASS;
 
   ngAfterViewInit() {
     this.addAnimation();
   }
 
-  // eslint-disable-next-line class-methods-use-this
   addAnimation() {
-    function onEntry(entry: IntersectionObserverEntry[]) {
+    const onEntry = (entry: IntersectionObserverEntry[]) => {
       entry.forEach((change) => {
         if (change.isIntersecting) {
-          change.target.classList.add('element-show');
+          change.target.classList.add(ANIMATION_SHOW_CLASS);
         }
       });
-    }
+    };
     const options = { threshold: [0.5] };
     const observer: IntersectionObserver = new IntersectionObserver(onEntry, options);
-    const elements = document.querySelectorAll('.element-animation');
+    const elements = document.querySelectorAll(this.elementAnimation);
     elements.forEach((elm) => observer.observe(elm));
   }
 }
