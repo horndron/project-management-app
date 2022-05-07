@@ -10,13 +10,32 @@
   margin-top: -60px;
   transform: rotate(-11.23deg);
 
+  @media (max-width: 991px) {
+    & {
+      position: inherit;
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    & {
+      transform: rotate(0);
+    }
+  }
 
   .preview-item {
     position: relative;
     display: block;
     margin-bottom: 50px;
 
+    @media (max-width: 767px) {
+      & {
+        margin-bottom: 30px;
+      }
+    }
+
     img {
+      width: 100%;
       display: block;
     }
 
@@ -26,11 +45,28 @@
       left: 0;
       top: 0;
       bottom: 5px;
+
+      img {
+        width: 81%;
+      }
     }
   }
 
+  .preview-item:nth-of-type(1) {
+    width: 59.75%;
+  }
+
+  .preview-item:nth-of-type(2) {
+    width: 30%;
+  }
+
   .preview-item:nth-of-type(3) {
+    width: 42.3%;
     margin-bottom: auto;
+  }
+
+  .preview-item:nth-of-type(4) {
+    width: 52.5%;
   }
 
 }
