@@ -12,9 +12,9 @@ import {
   styleUrls: ['./preview-on-different-sizes.component.scss'],
 })
 export class PreviewOnDifferentSizesComponent {
-  private readonly nameImagesDifferentScreen = DIFFERENT_SCREEN_SIZES;
+  readonly nameImagesDifferentScreen = DIFFERENT_SCREEN_SIZES;
 
-  private readonly nameImagesPreviewScreenshot = SCREENSHOT_ON_DIFFERENT_SCREEN_SIZES;
+  readonly nameImagesPreviewScreenshot = SCREENSHOT_ON_DIFFERENT_SCREEN_SIZES;
 
   onFullPathDifferentScreen(index: number): string {
     return `${PATH_TO_DIFFERENT_SCREEN}/${this.nameImagesDifferentScreen[index]}`;

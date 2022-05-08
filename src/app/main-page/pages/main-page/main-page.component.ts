@@ -26,15 +26,8 @@ export class MainPageComponent implements AfterViewInit, OnDestroy {
   }
 
   addAnimation() {
-    const onEntry = (entry: IntersectionObserverEntry[]) => {
-      entry.forEach((change) => {
-        if (change.isIntersecting) {
-          change.target.classList.add(ANIMATION_SHOW_CLASS);
-        }
-      });
-    };
     const options = { threshold: [0.5] };
-    this.observer = new IntersectionObserver(onEntry, options);
+    this.observer = new IntersectionObserver(MainPageComponent.onEntry, options);
     this.animationElements.forEach((element) => {
       const isElement = element.nativeElement;
       if (this.observer) {
@@ -42,4 +35,12 @@ export class MainPageComponent implements AfterViewInit, OnDestroy {
       }
     });
   }
+
+  static onEntry = (entry: IntersectionObserverEntry[]) => {
+    entry.forEach((change) => {
+      if (change.isIntersecting) {
+        change.target.classList.add(ANIMATION_SHOW_CLASS);
+      }
+    });
+  };
 }

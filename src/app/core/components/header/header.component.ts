@@ -12,7 +12,7 @@ import { HEADER_SCROLL_FOR_STICKY, HEADER_THROTTLE_TIME } from './header.constan
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements AfterViewInit {
-  isAuth = false;
+  isAuth = true;
 
   isSticky$!: Observable<boolean>;
 
