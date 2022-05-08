@@ -45,7 +45,7 @@ export class AuthEffects {
           token: action.token,
         },
       })),
-      tap(() => this.router.navigateByUrl('/user/edit')),
+      tap(() => this.router.navigateByUrl('')),
     )),
     catchError((responseError) => of(UserActions.LoginUserFailed({
       error: responseError.error.message,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as UserSelectors from '../../../user/store/user.selectors';
 
 @Component({
   selector: 'rsm-user-information',
@@ -7,7 +8,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./user-information.component.scss'],
 })
 export class UserInformationComponent {
-  userName = 'UserName';
+  userName$ = this.store.select(UserSelectors.selectUserName);
 
   isMenuVisible = false;
 
