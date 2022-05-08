@@ -61,4 +61,9 @@ export const userReducer = createReducer(
     ...state,
     error,
   })),
+  on(UserActions.ClearData, (state) => ({
+    ...state,
+    userInfo: null,
+    isLoggedIn: false,
+  })),
 );

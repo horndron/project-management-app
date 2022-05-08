@@ -8,9 +8,9 @@ describe('PreviewOnDifferentSizesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreviewOnDifferentSizesComponent ]
+      declarations: [PreviewOnDifferentSizesComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

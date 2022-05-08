@@ -8,9 +8,9 @@ describe('SelectLanguageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectLanguageComponent ]
+      declarations: [SelectLanguageComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

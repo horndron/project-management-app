@@ -8,9 +8,9 @@ describe('VideoBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoBlockComponent ]
+      declarations: [VideoBlockComponent],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
