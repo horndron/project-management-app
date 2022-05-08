@@ -4,7 +4,7 @@ import {
   distinctUntilChanged,
   fromEvent, map, Observable, throttleTime,
 } from 'rxjs';
-import { HEADERSCROLLFORSTICKY, HEADERTHROTTLETIME } from './header.constants';
+import { HEADER_SCROLL_FOR_STICKY, HEADER_THROTTLE_TIME } from './header.constants';
 
 @Component({
   selector: 'rsm-header',
@@ -22,8 +22,8 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.isSticky$ = fromEvent(window, 'scroll').pipe(
-      throttleTime(HEADERTHROTTLETIME),
-      map(() => window.pageYOffset > HEADERSCROLLFORSTICKY),
+      throttleTime(HEADER_THROTTLE_TIME),
+      map(() => window.pageYOffset > HEADER_SCROLL_FOR_STICKY),
       distinctUntilChanged(),
     );
   }

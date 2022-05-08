@@ -1,2 +1,2 @@
-export const HEADERSCROLLFORSTICKY = 5;
-export const HEADERTHROTTLETIME = 10;
+export const HEADER_SCROLL_FOR_STICKY = 5;
+export const HEADER_THROTTLE_TIME = 10;
