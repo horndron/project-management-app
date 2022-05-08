@@ -57,7 +57,7 @@
       "BUTTONS": ["Sign in", "Join now"]
     }
   },
-  "HEADERMENU": ["New board", "Edit profile", "Logout"],
+  "HEADERMENU": ["Boards", "Edit profile", "Logout"],
   "USER": {
     "NAME": "Name*",
     "PASSWORD": "Password*",
@@ -78,5 +78,39 @@
     "PASSWORD_ERROR_UPPER": "a mixture of both uppercase and lowercase letters",
     "PASSWORD_ERROR_NUMBER": "a mixture of letters and numbers",
     "PASSWORD_ERROR_SPECIAL": "at least one special character"
+  },
+  "NOTIFICATION": {
+    "SUCCESS": "Success!",
+    "ERROR": "Error!",
+    "WARN": "Warning!",
+    "REJECT": "Reject!",
+    "CANCEL": "Cancelled!"
+  },
+  "MESSAGES": {
+    "REJECT": "You have rejected",
+    "CANCEL": "You have cancelled",
+    "DELETE": "Do you want to delete this element?",
+    "ERROR_DELETE": "Unable to delete data",
+    "SUCCESS_DELETE": "Data has been successfully deleted",
+    "SUCCESS_CREATE": "Data has been successfully created",
+    "ERROR_CREATE": "Unable to create"
+  },
+  "HEADERS": {
+    "DELETE": "Delete confirmation"
+  },
+  "LABELS": {
+    "ACCEPT": "Yes",
+    "REJECT": "No"
+  },
+  "BUTTONS": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+  "BOARDS": {
+    "ADD_BOARD": "Add board",
+    "TITLE": "Title"
+  },
+  "ERRORS": {
+    "REQUIRED": "This is required information"
   }
 }
