@@ -1,0 +1,9 @@
+<div
+  class="preview-item"
+  *ngFor="let preview of nameImagesPreviewScreenshot; let i = index"
+>
+  <img src="{{ onFullPathDifferentScreen(i) }}" alt="">
+  <div class="preview-image flex flex-wrap justify-content-center align-items-center">
+    <img src="{{ onFullPathPreviewImage(i) }}" alt="ipad">
+  </div>
+</div>

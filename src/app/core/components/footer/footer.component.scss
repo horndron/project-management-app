@@ -1,0 +1,100 @@
+@import '~src/styles/style-import';
+
+:host {
+  display: block;
+  padding: 10px 0;
+  background: #042E33;
+  color: $white-color;
+
+  .github {
+    a {
+      position: relative;
+      display: block;
+      color: $white-color;
+      padding: 1px 0 0 28px;
+      background: url('/assets/github.svg') no-repeat;
+      background-size: contain;
+      background-position: left center;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: $hover-speed;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 28px;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background-color: $white-color;
+        transition: $hover-speed;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+
+        &::after {
+          width: calc(100% - 28px);
+        }
+      }
+    }
+  }
+
+  .rs-logo {
+    img {
+      height: 33px;
+    }
+
+  }
+
+  @media (max-width: $breakpoint599) {
+    .container {
+      position: relative;
+
+      .github {
+        width: 100%;
+        order: 1;
+        margin-bottom: 15px;
+
+        @media (max-width: $breakpoint429) {
+          & {
+            width: auto;
+            flex-direction: column;
+            margin-bottom: 0;
+
+            a {
+              margin: auto 0 15px;
+            }
+          }
+        }
+      }
+
+      .copiright {
+        order: 2;
+        margin-left: 15px;
+
+        @media (max-width: $breakpoint429) {
+          & {
+            position: absolute;
+            right: 60px;
+            bottom: 13px;
+          }
+        }
+      }
+
+      .rs-logo {
+        order: 3;
+        margin-right: 15px;
+
+        @media (max-width: $breakpoint429) {
+          & {
+            order: 2;
+            margin-bottom: auto;
+          }
+        }
+      }
+
+    }
+  }
+
+}
