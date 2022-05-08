@@ -1,7 +1,7 @@
 @import '~src/styles/style-import';
 
 .login-container {
-  height: 100vh;
+  height: calc(100vh - 59.13px - 61.46px);
   background-color: $bg-color;
 
   .auth-btn {

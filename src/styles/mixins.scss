@@ -1,7 +1,7 @@
 @import './constants.scss';
 
 @mixin filled-btn() {
-  color: $white-bg;
+  color: $white-color;
   background: $primary-color;
   border-color: $primary-color;
   outline: none;
