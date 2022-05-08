@@ -11,7 +11,7 @@
     <ng-content select="[button]"></ng-content>
     <ng-content select="[addition]"></ng-content>
   </form>
-  <div class="container info-container" *ngIf="progressService.dataLoading$ | async">
+  <div class="progress-container" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>
   </div>
 </div>
