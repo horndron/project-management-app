@@ -10,7 +10,6 @@ import * as UserActions from '../user.actions';
 
 @Injectable()
 export class AuthEffects {
-  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public createUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.RegisterUser),
     mergeMap(({ user }) => this.userHttpService.createUser(user).pipe(
@@ -26,7 +25,6 @@ export class AuthEffects {
     )),
   ));
 
-  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public loginUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.LoginUser),
     mergeMap(({ user }) => this.userHttpService.signIn(user).pipe(
@@ -37,7 +35,6 @@ export class AuthEffects {
     )),
   ));
 
-  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public getUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.GetUserSuccess),
     switchMap((action) => this.userHttpService.getAllUsers().pipe(

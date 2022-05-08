@@ -1,8 +1,8 @@
-<section class="container login-container flex align-items-center justify-content-center">
+<section class="login-container flex align-items-center justify-content-center">
   <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
     <h2 header>{{ 'USER.LOGIN' | translate }}</h2>
     <div error *ngIf="(errorMessage$ | async)">{{ errorMessage$ | async }}</div>
-    <button button 
+    <button button pRipple pButton 
       type="submit"
       [disabled]="authForm.invalid"
       class="auth-btn"

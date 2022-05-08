@@ -32,9 +32,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
     if (request.url.includes(AuthPath.Users) || request.url.includes(AuthPath.Boards)) {
       this.currentUser$.subscribe((user) => {
-        if (user?.token !== '') {
+        if (user && user.token !== '') {
           newRequest = request.clone({
-            setHeaders: { Authorization: `Bearer ${user?.token}` },
+            setHeaders: { Authorization: `Bearer ${user.token}` },
           });
         }
       });

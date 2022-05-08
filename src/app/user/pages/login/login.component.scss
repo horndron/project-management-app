@@ -5,8 +5,7 @@
   background-color: $bg-color;
 
   .auth-btn {
-    margin: 80px 0 20px;
-    @include filled-btn(145px);
+    @include filled-btn;
   }
 
   p {

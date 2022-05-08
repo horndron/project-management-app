@@ -15,7 +15,6 @@ import * as UserSelectors from '../user.selectors';
 export class UserEffects {
   private currentUser$ = this.store.select(UserSelectors.selectCurrentUser);
 
-  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public editUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.EditUser),
     concatLatestFrom(() => this.currentUser$),
@@ -40,7 +39,6 @@ export class UserEffects {
     }))),
   ));
 
-  // eslint-disable-next-line ngrx/prefer-effect-callback-in-block-statement
   public deleteUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.DeleteUser),
     concatLatestFrom(() => this.currentUser$),
