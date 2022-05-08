@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { Message } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +9,12 @@ import { Message } from 'primeng/api';
 export class NotificationService {
   private readonly notificationSubject = new ReplaySubject<Message>(1);
 
+  constructor(private readonly translateService: TranslateService) {}
+
   success(message: string, summary?: string): void {
     this.notificationSubject.next({
       severity: 'success',
-      summary: summary || 'Успех!',
+      summary: summary || this.translateService.instant('NOTIFICATION.SUCCESS'),
       detail: message,
     });
   }
@@ -19,7 +22,7 @@ export class NotificationService {
   error(message: string, summary?: string): void {
     this.notificationSubject.next({
       severity: 'error',
-      summary: summary || 'Ошибка!',
+      summary: summary || this.translateService.instant('NOTIFICATION.ERROR'),
       detail: message,
     });
   }
@@ -27,7 +30,7 @@ export class NotificationService {
   warn(message: string, summary?: string): void {
     this.notificationSubject.next({
       severity: 'warn',
-      summary: summary || 'Предупреждение!',
+      summary: summary || this.translateService.instant('NOTIFICATION.WARN'),
       detail: message,
     });
   }
