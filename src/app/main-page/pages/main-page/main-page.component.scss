@@ -1,0 +1,314 @@
+@import '~src/styles/style-import';
+
+:host {
+  display: block;
+  background-color: $bg-color;
+  overflow: hidden;
+
+  button.p-button {
+    margin: 30px 0;
+    background: $primary-color;
+    border-color: $primary-color;
+    transition: $hover-speed;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .element-animation {
+    opacity: 0;
+    transition: $hover-speed;
+  }
+
+  .left {
+    transform: translateX(-70%);
+  }
+
+  .right {
+    transform: translateX(70%);
+  }
+
+  .top {
+    transform: translateY(-70%);
+  }
+
+  .bottom {
+    transform: translateY(70%);
+  }
+
+  .scale {
+    transform: scale(0.3);
+  }
+
+  .element-show {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+
+  .banner-block {
+    min-height: 40vw;
+    color: $white-color;
+    padding: 0 0 40px;
+    background: url('/assets/main-page/block1.png') no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+
+    @media (max-width: $breakpoint599) {
+      & {
+        padding-bottom: 0;
+      }
+    }
+
+    .container {
+      width: 100%;
+      padding-top: 20px;
+
+      @media (max-width: $breakpoint991) {
+        & {
+          flex-direction: column;
+          padding-top: 70px;
+        }
+      }
+    }
+
+    .text {
+      max-width: 390px;
+
+      h1 {
+        max-width: 350px;
+        margin: 0 0 30px;
+      }
+    }
+
+    .different-preview {
+      position: relative;
+      width: 49%;
+      margin-bottom: auto;
+
+      @media (max-width: $breakpoint1500) {
+        & {
+          margin-right: 5%;
+        }
+      }
+
+      @media (max-width: $breakpoint991) {
+        & {
+          width: 52%;
+          margin-left: auto;
+          margin-bottom: -35%;
+        }
+      }
+
+      @media (max-width: $breakpoint767) {
+        & {
+          max-width: 400px;
+          width: 100%;
+          margin-right: auto;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .feature-text {
+    margin: 40px 0;
+
+    @media (max-width: $breakpoint991) {
+      & {
+        max-width:400px;
+      }
+    }
+  }
+
+  .feature-items {
+    position: relative;
+    padding-top: 120px;
+
+    @media (max-width: $breakpoint1299) {
+      & {
+        padding-top: 70px;
+      }
+    }
+
+    @media (max-width: $breakpoint1099) {
+      & {
+        padding-top: 0;
+      }
+    }
+
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 145%;
+      background: url('/assets/main-page/features-before.svg') no-repeat;
+      background-size: contain;
+      background-position: left top;
+      z-index: 1;
+    }
+
+    &::after {
+      left: auto;
+      right: 0;
+      top: -65%;
+      width: 16%;
+      background: url('/assets/main-page/features-after.svg') no-repeat;
+      background-size: contain;
+      background-position: right top;
+
+      @media (max-width: $breakpoint767) {
+        & {
+          width: 45%;
+        }
+      }
+
+      @media (max-width: $breakpoint519) {
+        & {
+          top: -35%
+        }
+      }
+
+      @media (max-width: $breakpoint399) {
+        & {
+          width: 55%;
+        }
+      }
+    }
+
+    .container {
+
+      @media (max-width: $breakpoint991) {
+        & {
+         max-width: 600px;
+        }
+      }
+    }
+  }
+
+  .block-teams {
+    position: relative;
+    padding-top: 50px;
+    margin: 90px 0;
+
+    @media (max-width: $breakpoint1149) {
+      & {
+        padding-top: 0;
+      }
+    }
+
+    @media (max-width: $breakpoint599) {
+      & {
+        position: inherit;
+        margin: 50px 0 30px;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc((100vw - 1270px) / 2);
+      top: -30px;
+      width: 12vw;
+      height: 5.5vw;
+      background: url('/assets/main-page/teams-before.svg') no-repeat;
+      background-size: contain;
+      background-position: right top;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 6vw;
+      width: 30vw;
+      height: 30vw;
+      background: url('/assets/main-page/teams-after.svg') no-repeat;
+      background-size: contain;
+      background-position: right bottom;
+      z-index: 1;
+    }
+
+    @media (max-width: $breakpoint991) {
+      .container {
+        max-width: 530px;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    }
+
+    .teams {
+      width: 46%;
+      margin-top: 45px;
+      margin-left: 54px;
+      transform: rotate(-9.9deg);
+
+      @media (max-width: $breakpoint1079) {
+        & {
+          width: 50%;
+        }
+      }
+
+      @media (max-width: $breakpoint991) {
+        & {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: $breakpoint599) {
+        & {
+          transform: rotate(0);
+        }
+      }
+
+      .teammate {
+        margin-bottom: 60px;
+        background: $white-color;
+        color: #000;
+
+        @media (max-width: $breakpoint1199) {
+          & {
+            margin-bottom: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .question-block {
+    min-height: 650px;
+    padding: 45px 0;
+    background: url('/assets/main-page/question.svg') no-repeat;
+    background-size: cover;
+    background-position: center 40%;
+
+    @media (max-width: $breakpoint1399) {
+      & {
+        min-height: 500px;
+        background-position: left 30%;
+      }
+    }
+
+    @media (max-width: $breakpoint767) {
+      & {
+        min-height: 350px;
+      }
+    }
+
+
+    .buttons {
+      width: 230px;
+    }
+  }
+}

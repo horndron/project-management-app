@@ -1,0 +1,73 @@
+@import '~src/styles/style-import';
+
+:host {
+  position: relative;
+  display: flex;
+
+  .user {
+    cursor: pointer;
+    margin-left: auto;
+
+    span {
+      color: $white-color;
+      transition: $hover-speed;
+    }
+
+    .icon {
+      font-size: 1.1em;
+      font-weight: 600;
+      line-height: normal;
+      padding: 6px 8.5px 3px;
+      margin-left: 5px;
+      background-color: $yellow-color;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      .name {
+        color: $yellow-color;
+      }
+    }
+  }
+
+  .menu {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    min-width: 115px;
+    display: block;
+    background: $bg-color;
+    transition: $hover-speed;
+    transform: scale(0);
+    z-index: 5;
+
+    &.active {
+      transform: scale(1);
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    ul {
+      padding-left: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid $primary-color;
+        background-color: transparent;
+        transition: $hover-speed;
+        cursor: pointer;
+
+        &:hover {
+          color: $white-color;
+          background-color: $primary-color;
+        }
+      }
+
+      li:last-child {
+        border: none;
+      }
+    }
+  }
+}

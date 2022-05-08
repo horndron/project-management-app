@@ -1,4 +1,63 @@
 {
+  "MAINPAGE": {
+    "BANNER": {
+      "TITLE": "Make Business Flow Easyer With Us",
+      "DESCRIPTION": "Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about."
+    },
+    "FEATURETEXT": {
+      "TITLE": "A complete feature stack ready to help you",
+      "DESCRIPTION": "This application will help you to achieve the set goals for an individual in a team or group of developers.",
+      "BUTTON": "Sign up for free"
+    },
+    "FEATURES": {
+      "TITLE": "One platform to manage work",
+      "CARDS": [
+        {
+          "TITLE": "It’s free",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "Easy UI",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "Available for all team",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "For all devices",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "VIDEO": {
+      "TITLE": "Watch how to use the app"
+    },
+    "TEAMS": {
+      "TITLE": "Our perspective team",
+      "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "BUTTON":"Contact us",
+      "TEAMMATE": [
+        {
+          "NAME": "Tanya",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "NAME": "Evgenia",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "NAME": "Andrey",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "QUESTIONBLOCK": {
+      "TITLE": "Are you ready?",
+      "BUTTONS": ["Sign in", "Join now"]
+    }
+  },
+  "HEADERMENU": ["New board", "Edit profile", "Logout"],
   "USER": {
     "NAME": "Name*",
     "PASSWORD": "Password*",

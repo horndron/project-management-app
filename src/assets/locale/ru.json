@@ -1,4 +1,63 @@
 {
+  "MAINPAGE": {
+    "BANNER": {
+      "TITLE": "Упростите бизнес-процесс вместе с нами",
+      "DESCRIPTION": "Ваш удивительный продукт заслуживает простого способа управления им. Наше приложение предоставит вам необходимые инструменты, независимо от того, о чем ваша идея."
+    },
+    "FEATURETEXT": {
+      "TITLE": "Полный стек функций готов помочь вам",
+      "DESCRIPTION": "Это приложение поможет вам достичь поставленных целей индивидуально в команде или группе разработчиков.",
+      "BUTTON": "Бесплатная регистрация"
+    },
+    "FEATURES": {
+      "TITLE": "Одна платформа для управления всем",
+      "CARDS": [
+        {
+          "TITLE": "Бесплатно",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "Простой интерфейс",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "Доступно для всей команды",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "TITLE": "Для любых устройств",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "VIDEO": {
+      "TITLE": "Посмотрите, как использовать приложение"
+    },
+    "TEAMS": {
+      "TITLE": "Наша перспективная команда",
+      "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "BUTTON":"Связаться с нами",
+      "TEAMMATE": [
+        {
+          "NAME": "Таня",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "NAME": "Женя",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        },
+        {
+          "NAME": "Андрей",
+          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+        }
+      ]
+    },
+    "QUESTIONBLOCK": {
+      "TITLE": "Вы готовы?",
+      "BUTTONS": ["Вход", "Регистрация"]
+    }
+  },
+  "HEADERMENU": ["Новая доска", "Редактировать профиль", "Выйти"],
   "USER": {
     "NAME": "Имя*",
     "PASSWORD": "Пароль*",

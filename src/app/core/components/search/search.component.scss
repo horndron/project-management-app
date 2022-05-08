@@ -1,0 +1,49 @@
+@import '~src/styles/style-import';
+
+:host {
+  display: block;
+  margin-right: 20px;
+
+  .p-inputtext {
+    padding: 0.25rem 1.5rem 0.25rem 0.25rem;
+  }
+
+  .pi {
+    font-size: 0.85rem;
+  }
+
+  .p-input-icon-right {
+    i {
+      margin-top: -0.35rem;
+    }
+  }
+
+  @media (max-width: $breakpoint649) {
+    & {
+      position: relative;
+      width: 31px;
+      height: 30px;
+
+      .p-input-icon-right {
+        position: initial;
+
+        i {
+          z-index: 1;
+        }
+      }
+
+      .p-inputtext {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 30px;
+        width: 31px;
+        transition: $hover-speed;
+
+        &:focus {
+          width: 160px;
+        }
+      }
+    }
+  }
+}

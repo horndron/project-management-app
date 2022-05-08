@@ -1,0 +1,20 @@
+<div class="user flex align-items-center"
+  (click)="isMenuVisible = !isMenuVisible"
+>
+  <span class="name">{{ userName }}</span>
+  <span class="icon">{{ userName[0] }}</span>
+</div>
+
+<div
+  class="menu"
+  [class.active]="isMenuVisible"
+  (click)="isMenuVisible = !isMenuVisible"
+>
+  <nav>
+    <ul>
+      <li routerLink="/new-board">{{ "HEADERMENU.0" | translate}}</li>
+      <li routerLink="/user/edit">{{ "HEADERMENU.1" | translate}}</li>
+      <li routerLink="/user/logout">{{ "HEADERMENU.2" | translate}}</li>
+    </ul>
+  </nav>
+</div>

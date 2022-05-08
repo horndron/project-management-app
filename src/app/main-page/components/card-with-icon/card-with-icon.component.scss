@@ -1,0 +1,139 @@
+@import '~src/styles/style-import';
+
+:host {
+  font-size: 14px;
+
+  .img {
+    height: 65px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .letter {
+    width: 85px;
+    height: 85px;
+    color: $white-color;
+    font-size: 48px;
+    font-weight: 600;
+    border-radius: 50%;
+    background-color: $yellow-color;
+    margin-left: auto;
+    margin-right: auto;
+
+    span {
+      display: block;
+      margin-top: 2px;
+      line-height: 1;
+    }
+
+    @media (max-width: $breakpoint599) {
+      & {
+        width: 70px;
+        height: 70px;
+        font-size: 40px;
+      }
+    }
+  }
+
+  &.card {
+    max-width: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: $white-color;
+    padding: 33px 29px;
+    margin-bottom: 30px;
+    background: $green-color;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: $breakpoint1149) {
+      & {
+        max-width: 230px;
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: $breakpoint519) {
+      & {
+        max-width: 100%;
+      }
+    }
+
+    h3 {
+      font-size: 1.4em;
+      margin: 20px 0;
+    }
+  }
+
+  &.title {
+    max-width: 370px;
+    width: auto;
+    display: block;
+
+    .img {
+      height: auto;
+
+      img {
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+
+    h3 {
+      position: relative;
+      text-align: left;
+      font-size: 1.6em;
+      padding: 14px 0 10px;
+      margin: 0 0 20px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        left: 0;
+        bottom: 0;
+        background: $primary-color;
+        animation: lengthening 0.5s 1;
+      }
+    }
+  }
+
+  @media (min-width: 520px) {
+    &.full {
+      max-width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .top {
+        width: 35%;
+
+        h3 {
+          text-align: center;
+          margin-bottom: 0;
+        }
+      }
+
+      p {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@keyframes lengthening {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 40px;
+  }
+}
