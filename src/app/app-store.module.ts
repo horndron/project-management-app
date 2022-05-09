@@ -4,6 +4,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserStoreModule } from './user/store/user-store.module';
 
+import { BoardsStoreModule } from './boards/store/boards-store.module';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -11,6 +13,7 @@ import { UserStoreModule } from './user/store/user-store.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     UserStoreModule,
+    BoardsStoreModule,
   ],
 })
 export class AppStoreModule { }

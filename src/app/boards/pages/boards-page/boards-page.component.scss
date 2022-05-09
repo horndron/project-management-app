@@ -1,0 +1,10 @@
+
+@import '~src/styles/style-import';
+
+:host ::ng-deep {
+  .btn {
+    .p-button {
+      margin-top: 20px;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { environment } from 'src/environments/environment.prod';
+
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'rsm-root',
