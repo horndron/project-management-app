@@ -13,4 +13,18 @@ describe('ProgressService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('show should change dataLoading value in true', () => {
+    service.show();
+    service.dataLoading$.subscribe((data) => {
+      expect(data).toBeTrue();
+    });
+  });
+
+  it('hide should change dataLoading value in false', () => {
+    service.hide();
+    service.dataLoading$.subscribe((data) => {
+      expect(data).toBeFalse();
+    });
+  });
 });

@@ -24,10 +24,6 @@ export class EditComponent {
 
   constructor(private readonly store: Store, private readonly fb: FormBuilder) { }
 
-  public get name(): AbstractControl | null {
-    return this.authForm.get('name');
-  }
-
   public onEditUser(): void {
     const user: LoginRequestModel = {
       name: this.authForm.value.name,

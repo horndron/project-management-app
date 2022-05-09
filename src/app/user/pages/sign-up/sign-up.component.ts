@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl, FormBuilder, FormGroup, Validators,
+  FormBuilder, FormGroup, Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
@@ -27,10 +27,6 @@ export class SignUpComponent {
     private readonly fb: FormBuilder,
     private readonly store: Store,
   ) {}
-
-  public get name(): AbstractControl | null {
-    return this.authForm.get('name');
-  }
 
   public onSignUp(): void {
     const user: LoginRequestModel = {

@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class CardWithIconComponent {
   @Input() imageUrl?: string;
 
-  @Input() title!: string;
+  @Input() title = 'U';
 
   @Input() description?: string;
 }
