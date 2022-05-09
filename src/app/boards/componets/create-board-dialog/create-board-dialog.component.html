@@ -1,0 +1,52 @@
+<p-dialog
+  [(visible)]="isDialogVisible"
+  [header]="'BOARDS.ADD_BOARD' | translate"  
+  styleClass="form-dialog"
+  [modal]="true"
+  [draggable]="false"
+  (onHide)="cancel()"
+>
+  <form 
+    class="form p-d-flex p-flex-column p-ai-center"
+    [formGroup]="formGroup"
+  >
+    <div class="field">
+      <input 
+        pInputText 
+        type="text" 
+        class="p-inputtext"
+        formControlName="title"
+        [placeholder]="'BOARDS.TITLE' | translate"
+      > 
+      <small 
+        *ngIf="titleControl?.errors?.['required'] && isFormTouched" 
+        class="p-error block"
+      >
+        {{ 'ERRORS.REQUIRED' | translate }}
+      </small>
+    </div>
+    <div class="field">
+      <input 
+        pInputText 
+        type="text" 
+        class="p-inputtext"
+        formControlName="description"
+        [placeholder]="'BOARDS.DESCRIPTION' | translate"
+      > 
+    </div>
+    <div class="buttons-container flex justify-content-between">
+      <p-button 
+        [label]="'BUTTONS.SAVE' | translate"
+        [disabled]="!isFormValid"
+        (onClick)="save()"
+        styleClass="button p-button"
+      ></p-button>
+
+      <p-button 
+        [label]="'BUTTONS.CANCEL' | translate"
+        (onClick)="cancel()"
+        styleClass="button p-button-secondary"
+      ></p-button>
+    </div>
+  </form>
+</p-dialog>

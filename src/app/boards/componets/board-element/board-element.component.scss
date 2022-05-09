@@ -1,0 +1,39 @@
+@import '~src/styles/style-import';
+
+:host ::ng-deep .card {
+  .p-card .p-card-body:hover {
+    cursor: pointer;
+    box-shadow: 0px 5px 10px 2px lighten($green-color, 20%);
+  }
+
+  .p-card {
+    width: 26vw;
+    min-width: 300px;
+    height: 150px;
+    margin: 20px 40px 20px 0;
+  }
+
+  .p-card .p-card-content {
+    padding: 0;
+  }
+}
+
+.text-container {
+  width: 15vw;
+  min-width: 230px;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  font-size: 0.75rem;
+  text-align: justify;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+}

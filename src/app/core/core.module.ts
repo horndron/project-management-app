@@ -1,18 +1,24 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+import { ConfirmationService as PrimeConfirmationService } from 'primeng/api';
+import { NotificationComponent } from './components/notification/notification.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HeaderComponent } from './components/header/header.component';
 import { SelectLanguageComponent } from './components/select-language/select-language.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,8 @@ import { UserInformationComponent } from './components/user-information/user-inf
     FooterComponent,
     SearchComponent,
     UserInformationComponent,
+    NotificationComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -31,12 +39,19 @@ import { UserInformationComponent } from './components/user-information/user-inf
     ButtonModule,
     RippleModule,
     InputTextModule,
+    ToastModule,
+    ConfirmDialogModule,
   ],
   exports: [
     HeaderComponent,
     SelectLanguageComponent,
     FooterComponent,
+    ConfirmationDialogComponent,
+    NotificationComponent,
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    PrimeConfirmationService,
+  ],
 })
 export class CoreModule { }
