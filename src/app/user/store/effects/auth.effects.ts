@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import {
   catchError, map, mergeMap, Observable, of, switchMap, tap,
 } from 'rxjs';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { UserHttpService } from '../../services/user-http.service';
 import * as UserActions from '../user.actions';
 
@@ -19,9 +21,12 @@ export class AuthEffects {
           password: user.password,
         },
       })),
-      catchError((responseError) => of(UserActions.LoginUserFailed({
-        error: responseError.error.message,
-      }))),
+      catchError((responseError) => {
+        this.notificationService.error(this.translateService.instant('USER.MESSAGES.ERROR_SIGNUP'));
+        return of(UserActions.LoginUserFailed({
+          error: responseError.error.message,
+        }));
+      }),
     )),
   ));
 
@@ -29,9 +34,12 @@ export class AuthEffects {
     ofType(UserActions.LoginUser),
     mergeMap(({ user }) => this.userHttpService.signIn(user).pipe(
       map(({ token }) => UserActions.GetUserSuccess({ token, login: user.login })),
-      catchError((responseError) => of(UserActions.LoginUserFailed({
-        error: responseError.error.message,
-      }))),
+      catchError((responseError) => {
+        this.notificationService.error(this.translateService.instant('USER.MESSAGES.ERROR_LOGIN'));
+        return of(UserActions.LoginUserFailed({
+          error: responseError.error.message,
+        }));
+      }),
     )),
   ));
 
@@ -47,14 +55,19 @@ export class AuthEffects {
       })),
       tap(() => this.router.navigateByUrl('')),
     )),
-    catchError((responseError) => of(UserActions.LoginUserFailed({
-      error: responseError.error.message,
-    }))),
+    catchError((responseError) => {
+      this.notificationService.error(responseError.error.message);
+      return of(UserActions.LoginUserFailed({
+        error: responseError.error.message,
+      }));
+    }),
   ));
 
   constructor(
     private readonly actions$: Actions,
     private readonly userHttpService: UserHttpService,
     private readonly router: Router,
+    private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService,
   ) {}
 }

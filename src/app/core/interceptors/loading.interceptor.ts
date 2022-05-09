@@ -10,7 +10,7 @@ import {
   catchError, Observable, tap, throwError,
 } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ProgressService } from '../services/progress.service';
+import { ProgressService } from '../services/progress/progress.service';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {

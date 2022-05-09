@@ -7,6 +7,7 @@ import { Action, Store } from '@ngrx/store';
 import {
   catchError, EMPTY, map, mergeMap, Observable, of, tap,
 } from 'rxjs';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { UserHttpService } from '../../services/user-http.service';
 import * as UserActions from '../user.actions';
 import * as UserSelectors from '../user.selectors';
@@ -34,9 +35,12 @@ export class UserEffects {
       }
       return EMPTY;
     }),
-    catchError((responseError) => of(UserActions.EditUserFailed({
-      error: responseError.error.message,
-    }))),
+    catchError((responseError) => {
+      this.notificationService.error(responseError.error.message);
+      return of(UserActions.EditUserFailed({
+        error: responseError.error.message,
+      }));
+    }),
   ));
 
   public deleteUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
@@ -52,9 +56,12 @@ export class UserEffects {
       }
       return EMPTY;
     }),
-    catchError((responseError) => of(UserActions.DeleteUserFailed({
-      error: responseError.error.message,
-    }))),
+    catchError((responseError) => {
+      this.notificationService.error(responseError.error.message);
+      return of(UserActions.DeleteUserFailed({
+        error: responseError.error.message,
+      }));
+    }),
   ));
 
   constructor(
@@ -62,5 +69,6 @@ export class UserEffects {
     private readonly userHttpService: UserHttpService,
     private readonly router: Router,
     private readonly store: Store,
+    private readonly notificationService: NotificationService,
   ) {}
 }

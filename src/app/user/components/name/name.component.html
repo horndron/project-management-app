@@ -8,7 +8,7 @@
       [formControlName]="'name'"
       [class.ng-invalid]="name?.invalid && name?.dirty"
     >
-    <label for="float-name">Name*</label>
+    <label for="float-name">{{ 'USER.NAME' | translate }}</label>
   </span>
   <small id="name-help" class="p-error block" *ngIf="name !== null && (name.dirty || name.touched)">
     <span *ngIf="name.errors && name.hasError('required')">{{ 'USER.NAME_ERROR' | translate }}</span>
