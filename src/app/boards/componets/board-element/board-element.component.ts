@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { ConfirmService } from '../../../core/services/confirm/confirm.service';
+import { ConfirmationService } from '../../../core/services/confirmation/confirmation.service';
 import { ROUTES } from '../../../constants/routes';
 
 @Component({
@@ -19,11 +19,12 @@ import { ROUTES } from '../../../constants/routes';
 export class BoardElementComponent {
   @Input() id: string;
   @Input() title: string;
+  @Input() description: string;
 
   @Output() deleteBoard = new EventEmitter<string>();
 
   constructor(
-    private readonly confirmationService: ConfirmService,
+    private readonly confirmationService: ConfirmationService,
     private readonly router: Router,
   ) { }
 

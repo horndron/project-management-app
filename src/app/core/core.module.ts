@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService as PrimeConfirmationService } from 'primeng/api';
 import { NotificationComponent } from './components/notification/notification.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HeaderComponent } from './components/header/header.component';
@@ -51,7 +51,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
   ],
   providers: [
     AuthGuard,
-    ConfirmationService,
+    PrimeConfirmationService,
   ],
 })
 export class CoreModule { }

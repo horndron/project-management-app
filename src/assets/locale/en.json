@@ -108,7 +108,8 @@
   },
   "BOARDS": {
     "ADD_BOARD": "Add board",
-    "TITLE": "Title"
+    "TITLE": "Title",
+    "DESCRIPTION": "Description"
   },
   "ERRORS": {
     "REQUIRED": "This is required information"

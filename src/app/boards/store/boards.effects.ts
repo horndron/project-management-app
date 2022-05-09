@@ -4,10 +4,11 @@ import {
   Actions,
   createEffect,
   ofType,
+  concatLatestFrom,
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { switchMap, withLatestFrom } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { isEmpty } from 'lodash';
 
 import { BoardsService } from '../services/boards/boards.service';
@@ -49,7 +50,7 @@ export class BoardsEffects {
   deleteBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.deleteBoard),
     switchMap(({ id }) => this.boardsService.delete$(id)),
-    withLatestFrom(this.store.select(fromBoards.getBoards)),
+    concatLatestFrom(() => this.store.select(fromBoards.getBoards)),
     switchMap(([deletedId, boards]) => {
       if (isEmpty(deletedId)) {
         this.notificationService.error(this.translateService.instant('MESSAGES.ERROR_DELETE'));

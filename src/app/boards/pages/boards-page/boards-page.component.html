@@ -11,6 +11,7 @@
       *ngFor="let board of (boards$ | async)" 
       [id]="board.id"
       [title]="board.title"
+      [description]="board.description"
       (deleteBoard)="deleteBoard(board.id)"
     >
     </rsm-board-element>

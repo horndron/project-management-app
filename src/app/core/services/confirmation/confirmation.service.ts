@@ -1,16 +1,16 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
-import { ConfirmationService, ConfirmEventType } from 'primeng/api';
+import { ConfirmationService as PrimeConfirmationService, ConfirmEventType, PrimeIcons } from 'primeng/api';
 
 import { NotificationService } from '../notification/notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ConfirmService {
+export class ConfirmationService {
   constructor(
     private readonly notificationService: NotificationService,
-    private readonly confirmationService: ConfirmationService,
+    private readonly confirmationService: PrimeConfirmationService,
     private readonly translateService: TranslateService,
   ) { }
 
@@ -36,7 +36,7 @@ export class ConfirmService {
     this.confirmationService.confirm({
       message: this.translateService.instant('MESSAGES.DELETE'),
       header: this.translateService.instant('HEADERS.DELETE'),
-      icon: 'pi pi-info-circle',
+      icon: PrimeIcons.CIRCLE,
       accept: () => {
         deleteHandler();
       },

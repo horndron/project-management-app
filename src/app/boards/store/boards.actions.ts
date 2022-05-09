@@ -1,13 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Board } from 'src/app/models/board';
+import { Board } from '../../models/board';
 
-export const getBoards = createAction('[BOARDS] GET_BOARDS');
+const actionSource = '[BOARDS]';
 
-export const setBoards = createAction('[BOARDS] SET_BOARDS', props<{ boards: Board[] }>());
+export const getBoards = createAction(`${actionSource} GET_BOARDS`);
 
-export const addBoard = createAction('[BOARDS] ADD_BOARD', props<{ board: Partial<Board> }>());
+export const setBoards = createAction(`${actionSource} SET_BOARDS`, props<{ boards: Board[] }>());
 
-export const pushBoard = createAction('[BOARDS] PUSH_BOARD', props<{ board: Board }>());
+export const addBoard = createAction(`${actionSource} ADD_BOARD`, props<{ board: Partial<Board> }>());
 
-export const deleteBoard = createAction('[BOARDS] DELETE_BOARD', props<{ id: string }>());
+export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ board: Board }>());
+
+export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());

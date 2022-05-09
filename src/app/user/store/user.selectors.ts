@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StoreFeature } from 'src/app/app.constants';
+import { StoreFeature } from '../../constants/store.enum';
 import { UserState } from '../models/user.models';
 
 const selectUserStore = createFeatureSelector<UserState>(StoreFeature.User);

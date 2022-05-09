@@ -25,7 +25,15 @@
         {{ 'ERRORS.REQUIRED' | translate }}
       </small>
     </div>
-
+    <div class="field">
+      <input 
+        pInputText 
+        type="text" 
+        class="p-inputtext"
+        formControlName="description"
+        [placeholder]="'BOARDS.DESCRIPTION' | translate"
+      > 
+    </div>
     <div class="buttons-container flex justify-content-between">
       <p-button 
         [label]="'BUTTONS.SAVE' | translate"

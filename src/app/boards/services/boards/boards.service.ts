@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Board } from 'src/app/models/board';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -5,7 +6,6 @@ import {
   catchError,
   Observable,
   of,
-  switchMap,
 } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
@@ -29,7 +29,7 @@ export class BoardsService {
 
   delete$(id: string): Observable<string> {
     return this.http.delete<void>(`${environment.baseUrl}${this.entityName}/${id}`).pipe(
-      switchMap(() => of(id)),
+      map(() => id),
       catchError(() => of('')),
     );
   }

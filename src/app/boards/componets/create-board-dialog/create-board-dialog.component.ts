@@ -32,6 +32,7 @@ export class CreateBoardDialogComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       title: ['', [Validators.required]],
+      description: [],
     });
   }
 
@@ -48,7 +49,10 @@ export class CreateBoardDialogComponent implements OnInit {
   }
 
   save() {
-    this.addBoard.emit({ title: this.formGroup.get('title')?.value });
+    this.addBoard.emit({
+      title: this.formGroup.get('title')?.value,
+      description: this.formGroup.get('description')?.value,
+    });
     this.cancel();
     this.formGroup.reset();
   }
