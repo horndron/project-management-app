@@ -5,7 +5,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardElementComponent } from './componets/board-element/board-element.component';
@@ -32,6 +32,7 @@ import { TaskComponent } from './componets/task/task.component';
     TranslateModule,
     InputTextModule,
     DragDropModule,
+    FormsModule,
   ],
 })
 export class BoardsModule { }

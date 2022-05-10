@@ -113,5 +113,8 @@
   },
   "ERRORS": {
     "REQUIRED": "This is required information"
+  },
+  "COLUMN": {
+    "BUTTON": "Add a task"
   }
 }

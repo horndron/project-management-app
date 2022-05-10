@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'rsm-task',
