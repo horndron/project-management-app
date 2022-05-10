@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
+import { Task } from '../../../models/task';
 import { COLUMN } from './mock';
 
 @Component({
@@ -10,7 +11,7 @@ import { COLUMN } from './mock';
 export class BoardColunmComponent {
   title = COLUMN.name;
 
-  tasks = COLUMN.tasks;
+  tasks: Task[] = COLUMN.tasks as Task[];
 
   list = [];
 
