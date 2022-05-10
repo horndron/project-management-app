@@ -6,17 +6,21 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardElementComponent } from './componets/board-element/board-element.component';
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
+import { BoardColunmComponent } from './componets/board-colunm/board-colunm.component';
+import { TaskComponent } from './componets/task/task.component';
 
 @NgModule({
   declarations: [
     BoardElementComponent,
     BoardsPageComponent,
     CreateBoardDialogComponent,
+    BoardColunmComponent,
+    TaskComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,7 @@ import { CreateBoardDialogComponent } from './componets/create-board-dialog/crea
     ReactiveFormsModule,
     TranslateModule,
     InputTextModule,
+    DragDropModule,
   ],
 })
 export class BoardsModule { }
