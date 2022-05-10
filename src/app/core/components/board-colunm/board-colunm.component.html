@@ -1,0 +1,23 @@
+<div class="colunm">
+  <div class="title flex justify-content-between align-center">
+    <input  type="text" pInputText [(ngModel)]="title">
+    <img src="/assets/delete-white.svg" alt="">
+  </div>
+  <div class="tasks" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="task" *ngFor="let task of tasks" cdkDrag>
+      <div class="task-placeholder" *cdkDragPlaceholder></div>
+      <rsm-task
+      [task]="task"
+
+    ></rsm-task>
+    </div>
+
+  </div>
+  <button
+    pRipple
+    pButton
+    icon="pi pi-plus"
+    label="Add a task"
+  >
+  </button>
+</div>
