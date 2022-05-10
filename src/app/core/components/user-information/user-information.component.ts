@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ROUTES } from '../../../constants/routes';
 
 @Component({
   selector: 'rsm-user-information',
@@ -7,8 +8,9 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./user-information.component.scss'],
 })
 export class UserInformationComponent {
-  userName = 'UserName';
+  readonly routes = ROUTES;
 
+  userName = 'UserName';
   isMenuVisible = false;
 
   constructor(

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 :host {
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
+=======
+@import '~src/styles/style-import';
+
+.wrapper {
+  background-color: $bg-color;
+  min-height: 78vh;
+}
+>>>>>>> develop
