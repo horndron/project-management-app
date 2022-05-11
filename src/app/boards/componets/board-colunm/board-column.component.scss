@@ -2,7 +2,7 @@
 
 :host {
   display: flex;
-  max-height: calc(100vh - 50px - 61px - 59px);
+  max-height: calc(100vh - 50px - $header-height - $footer-height);
   width: 275px;
   margin: 25px 7px;
   background-color: $light-grey-color;
@@ -19,7 +19,7 @@
     background-color: $primary-color;
 
     .p-inputtext {
-      width: calc(100% - 35px);
+      width: calc(100% - $delete-icon-width);
       color: $white-color;
       background-color: $primary-color;
       border: none;
