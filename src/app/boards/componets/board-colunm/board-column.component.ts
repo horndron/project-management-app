@@ -4,11 +4,11 @@ import { Task } from '../../../models/task';
 import { COLUMN } from './mock';
 
 @Component({
-  selector: 'rsm-board-colunm',
-  templateUrl: './board-colunm.component.html',
-  styleUrls: ['./board-colunm.component.scss'],
+  selector: 'rsm-board-column',
+  templateUrl: './board-column.component.html',
+  styleUrls: ['./board-column.component.scss'],
 })
-export class BoardColunmComponent {
+export class BoardColumnComponent {
   title = COLUMN.name;
 
   tasks: Task[] = COLUMN.tasks as Task[];

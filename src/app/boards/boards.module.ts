@@ -11,7 +11,7 @@ import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardElementComponent } from './componets/board-element/board-element.component';
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
-import { BoardColunmComponent } from './componets/board-colunm/board-colunm.component';
+import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 import { TaskComponent } from './componets/task/task.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { TaskComponent } from './componets/task/task.component';
     BoardElementComponent,
     BoardsPageComponent,
     CreateBoardDialogComponent,
-    BoardColunmComponent,
+    BoardColumnComponent,
     TaskComponent,
   ],
   imports: [
