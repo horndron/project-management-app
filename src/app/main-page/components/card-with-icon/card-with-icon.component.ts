@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DEFAULT_FIRST_LETTER } from '../../main-page.constants';
 
 @Component({
   selector: 'rsm-card-with-icon',
@@ -8,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class CardWithIconComponent {
   @Input() imageUrl?: string;
 
-  @Input() title = 'U';
+  @Input() title = DEFAULT_FIRST_LETTER;
 
   @Input() description?: string;
 }

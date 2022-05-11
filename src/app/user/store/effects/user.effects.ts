@@ -4,6 +4,7 @@ import {
   Actions, createEffect, ofType, concatLatestFrom,
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 import {
   catchError, EMPTY, map, mergeMap, Observable, of, tap,
 } from 'rxjs';
@@ -22,6 +23,7 @@ export class UserEffects {
     mergeMap(([action, currUser]) => {
       if (currUser && currUser.user) {
         const { id } = currUser.user;
+
         return this.userHttpService.editUser(id, action.user).pipe(
           map((response) => UserActions.EditUserSuccess({
             user: {
@@ -33,14 +35,10 @@ export class UserEffects {
           tap(() => this.router.navigateByUrl('/')),
         );
       }
+
       return EMPTY;
     }),
-    catchError((responseError) => {
-      this.notificationService.error(responseError.error.message);
-      return of(UserActions.EditUserFailed({
-        error: responseError.error.message,
-      }));
-    }),
+    catchError((responseError) => this.handleError(responseError.error.message)),
   ));
 
   public deleteUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
@@ -54,14 +52,10 @@ export class UserEffects {
             tap(() => this.router.navigateByUrl('/')),
           );
       }
+
       return EMPTY;
     }),
-    catchError((responseError) => {
-      this.notificationService.error(responseError.error.message);
-      return of(UserActions.DeleteUserFailed({
-        error: responseError.error.message,
-      }));
-    }),
+    catchError((responseError) => this.handleError(responseError.error.message)),
   ));
 
   constructor(
@@ -71,4 +65,12 @@ export class UserEffects {
     private readonly store: Store,
     private readonly notificationService: NotificationService,
   ) {}
+
+  private handleError(message: string): Observable<TypedAction<'[User] Login User Failed'>> {
+    this.notificationService.error(message);
+
+    return of(UserActions.LoginUserFailed({
+      error: message,
+    }));
+  }
 }

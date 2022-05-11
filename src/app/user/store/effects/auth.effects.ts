@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import {
   catchError, map, mergeMap, Observable, of, switchMap, tap,
@@ -21,12 +23,7 @@ export class AuthEffects {
           password: user.password,
         },
       })),
-      catchError((responseError) => {
-        this.notificationService.error(this.translateService.instant('USER.MESSAGES.ERROR_SIGNUP'));
-        return of(UserActions.LoginUserFailed({
-          error: responseError.error.message,
-        }));
-      }),
+      catchError((responseError) => this.handleError(responseError, 'USER.MESSAGES.ERROR_SIGNUP')),
     )),
   ));
 
@@ -34,12 +31,7 @@ export class AuthEffects {
     ofType(UserActions.LoginUser),
     mergeMap(({ user }) => this.userHttpService.signIn(user).pipe(
       map(({ token }) => UserActions.GetUserSuccess({ token, login: user.login })),
-      catchError((responseError) => {
-        this.notificationService.error(this.translateService.instant('USER.MESSAGES.ERROR_LOGIN'));
-        return of(UserActions.LoginUserFailed({
-          error: responseError.error.message,
-        }));
-      }),
+      catchError((responseError) => this.handleError(responseError, 'USER.MESSAGES.ERROR_LOGIN')),
     )),
   ));
 
@@ -55,12 +47,7 @@ export class AuthEffects {
       })),
       tap(() => this.router.navigateByUrl('')),
     )),
-    catchError((responseError) => {
-      this.notificationService.error(responseError.error.message);
-      return of(UserActions.LoginUserFailed({
-        error: responseError.error.message,
-      }));
-    }),
+    catchError((responseError) => this.handleError(responseError, responseError.error.message)),
   ));
 
   constructor(
@@ -70,4 +57,13 @@ export class AuthEffects {
     private readonly notificationService: NotificationService,
     private readonly translateService: TranslateService,
   ) {}
+
+  private handleError(responseError: HttpErrorResponse, notification: string)
+    : Observable<TypedAction<'[User] Login User Failed'>> {
+    this.notificationService.error(this.translateService.instant(notification));
+
+    return of(UserActions.LoginUserFailed({
+      error: responseError.error.message,
+    }));
+  }
 }

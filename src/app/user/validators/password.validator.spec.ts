@@ -12,10 +12,11 @@ describe('PasswordValidator', () => {
       hasSpecial: false,
       hasLength: true,
     };
+
     expect(PasswordValidator.check(control)).toEqual(returnedValue);
   });
 
-  it('should return true hasSpecial error if input don\'t contain special caracter', () => {
+  it("should return true hasSpecial error if input don't contain special caracter", () => {
     control.setValue('123456qQ');
     const returnedValue = {
       hasNumberLetter: false,
@@ -23,10 +24,11 @@ describe('PasswordValidator', () => {
       hasSpecial: true,
       hasLength: false,
     };
+
     expect(PasswordValidator.check(control)).toEqual(returnedValue);
   });
 
-  it('should return true hasUpperLower error if input don\'t contain caracters in lower and upper case', () => {
+  it("should return true hasUpperLower error if input don't contain caracters in lower and upper case", () => {
     control.setValue('123456q!');
     const returnedValue = {
       hasNumberLetter: false,
@@ -34,10 +36,11 @@ describe('PasswordValidator', () => {
       hasSpecial: false,
       hasLength: false,
     };
+
     expect(PasswordValidator.check(control)).toEqual(returnedValue);
   });
 
-  it('should return true hasNumberLetter error if input don\'t contain both number and letters', () => {
+  it("should return true hasNumberLetter error if input don't contain both number and letters", () => {
     control.setValue('qwerQWER!');
     const returnedValue = {
       hasNumberLetter: true,
@@ -45,6 +48,7 @@ describe('PasswordValidator', () => {
       hasSpecial: false,
       hasLength: false,
     };
+
     expect(PasswordValidator.check(control)).toEqual(returnedValue);
   });
 });

@@ -1,8 +1,7 @@
 @import '~src/styles/style-import';
 
 .edit-container {
-  height: calc(100vh - 59.13px - 61.46px);
-  background-color: $bg-color;
+  @include form-container;
 
   .edit-btn,
   .delete-btn {

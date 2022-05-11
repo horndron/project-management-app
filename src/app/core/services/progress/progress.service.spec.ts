@@ -10,21 +10,19 @@ describe('ProgressService', () => {
     service = TestBed.inject(ProgressService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  it('show should change dataLoading value in true', () => {
+  it('show should change dataLoading value in true', (done: DoneFn) => {
     service.show();
     service.dataLoading$.subscribe((data) => {
       expect(data).toBeTrue();
+      done();
     });
   });
 
-  it('hide should change dataLoading value in false', () => {
+  it('hide should change dataLoading value in false', (done: DoneFn) => {
     service.hide();
     service.dataLoading$.subscribe((data) => {
       expect(data).toBeFalse();
+      done();
     });
   });
 });

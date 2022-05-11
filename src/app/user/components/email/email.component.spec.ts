@@ -12,8 +12,7 @@ describe('EmailComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [EmailComponent],
       schemas: [NO_ERRORS_SCHEMA],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,19 +21,11 @@ describe('EmailComponent', () => {
     component.authForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     });
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('getter email should return email control', () => {
-    const control = component.authForm.controls['email'];
-    expect(control).toBeTruthy();
-  });
-
-  it('shouldn\'t be empty', () => {
+  it("shouldn't be empty", () => {
     expect(component.authForm.valid).toEqual(false);
   });
 
@@ -42,6 +33,7 @@ describe('EmailComponent', () => {
     component.authForm.setValue({
       email: 'invalidemail',
     });
+
     expect(component.authForm.valid).toEqual(false);
   });
 
@@ -49,6 +41,7 @@ describe('EmailComponent', () => {
     component.authForm.setValue({
       email: 'test@mail.ru',
     });
+
     expect(component.authForm.valid).toEqual(true);
   });
 });

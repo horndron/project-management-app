@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl, FormBuilder, FormGroup, Validators,
+  FormBuilder, FormGroup, Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfirmationService } from 'src/app/core/services/confirmation/confirmation.service';
@@ -41,6 +41,7 @@ export class EditComponent {
 
   public onDeleteUser(event: Event): void {
     event.stopPropagation();
+
     this.confirmationService.delete(() => this.store.dispatch(UserActions.DeleteUser()));
   }
 }

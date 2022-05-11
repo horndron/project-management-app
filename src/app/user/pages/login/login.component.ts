@@ -26,6 +26,7 @@ export class LoginComponent {
       login: this.authForm.value.email,
       password: this.authForm.value.password,
     };
+
     this.store.dispatch(UserActions.LoginUser({ user }));
   }
 }

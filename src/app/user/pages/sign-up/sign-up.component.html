@@ -2,13 +2,9 @@
   <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
     <h2 header>{{ 'USER.CREATE_ACCOUNT' | translate }}</h2>
     <rsm-name field [authForm]="authForm"></rsm-name>
-    <button button pRipple pButton 
-      type="submit"
-      [disabled]="authForm.invalid"
-      class="auth-btn"
-      (click)="onSignUp()"
-    >
-    {{ 'USER.SIGN_UP' | translate }}
+    <button action-button pRipple pButton type="submit" [disabled]="authForm.invalid" class="auth-btn"
+      (click)="onSignUp()">
+      {{ 'USER.SIGN_UP' | translate }}
     </button>
   </rsm-user-form>
 </section>

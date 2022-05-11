@@ -11,16 +11,17 @@ import { ROUTES } from '../../../constants/routes';
   styleUrls: ['./user-information.component.scss'],
 })
 export class UserInformationComponent {
-  userName$ = this.store.select(UserSelectors.selectUserName);
   readonly routes = ROUTES;
+
   isMenuVisible = false;
+  userName$ = this.store.select(UserSelectors.selectUserName);
 
   constructor(
     private readonly store: Store,
     private readonly router: Router,
   ) {}
 
-  onLogout() {
+  public onLogout(): void {
     this.store.dispatch(UserActions.ClearData());
     this.router.navigateByUrl(`${this.routes.USER}/${this.routes.LOGIN}`);
   }

@@ -3,10 +3,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { environment } from 'src/environments/environment';
 import { UserHttpService } from './user-http.service';
 import { LoginResponseModel } from '../models/user.models';
+import { UrlPath } from '../user.constants';
 
 describe('UserHttpService', () => {
-  let service: UserHttpService;
-  let httpMock: HttpTestingController;
   const url = environment.baseUrl;
   const mockUser = {
     name: 'test',
@@ -18,6 +17,9 @@ describe('UserHttpService', () => {
     login: 'test@mail.ru',
     id: '1',
   };
+
+  let service: UserHttpService;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -35,59 +37,63 @@ describe('UserHttpService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call getAllUsers and return an array of Users', () => {
+  it('should call getAllUsers and return an array of Users', (done: DoneFn) => {
     const mockUsersArray: LoginResponseModel[] = [mockResponse];
 
     service.getAllUsers().subscribe((res) => {
       expect(res).toEqual(mockUsersArray);
+      done();
     });
 
     const req = httpMock.expectOne({
       method: 'GET',
-      url: `${url}users`,
+      url: `${url + UrlPath.USERS}`,
     });
 
     req.flush(mockUsersArray);
   });
 
-  it('should call createUser and the API should return the user that was created', () => {
+  it('should call createUser and the API should return the user that was created', (done: DoneFn) => {
     service.createUser(mockUser).subscribe((data) => {
       expect(data).toEqual(mockResponse);
+      done();
     });
 
     const req = httpMock.expectOne({
       method: 'POST',
-      url: `${url}signup`,
+      url: `${url + UrlPath.SIGNUP}`,
     });
 
     req.flush(mockResponse);
   });
 
-  it('should call editUser and the API should return the user that was edited', () => {
+  it('should call editUser and the API should return the user that was edited', (done: DoneFn) => {
     const id = '1';
 
     service.editUser(id, mockUser).subscribe((data) => {
       expect(data).toEqual(mockResponse);
+      done();
     });
 
     const req = httpMock.expectOne({
       method: 'PUT',
-      url: `${url}users/${id}`,
+      url: `${url + UrlPath.USERS}/${id}`,
     });
 
     req.flush(mockResponse);
   });
 
-  it('should call editUser and the API should return the user that was edited', () => {
+  it('should call editUser and the API should return the user that was edited', (done: DoneFn) => {
     const tokenResponse = { token: '12345' };
 
     service.signIn(mockUser).subscribe((data) => {
       expect(data).toEqual(tokenResponse);
+      done();
     });
 
     const req = httpMock.expectOne({
       method: 'POST',
-      url: `${url}signin`,
+      url: `${url + UrlPath.SIGNIN}`,
     });
 
     req.flush(tokenResponse);
