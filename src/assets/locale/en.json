@@ -77,7 +77,11 @@
     "PASSWORD_ERROR_LENGTH": "at least 8 characters",
     "PASSWORD_ERROR_UPPER": "a mixture of both uppercase and lowercase letters",
     "PASSWORD_ERROR_NUMBER": "a mixture of letters and numbers",
-    "PASSWORD_ERROR_SPECIAL": "at least one special character"
+    "PASSWORD_ERROR_SPECIAL": "at least one special character",
+    "MESSAGES": {
+      "ERROR_SIGNUP": "This login already exists!",
+      "ERROR_LOGIN": "User wasn't found"
+    }
   },
   "NOTIFICATION": {
     "SUCCESS": "Success!",

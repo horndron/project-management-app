@@ -13,6 +13,7 @@ export class PasswordValidator {
     const hasLength = control.value.length >= 8;
 
     const valid = hasNumber && hasUpper && hasLower && hasSpecial && hasLength;
+
     if (!valid) {
       return {
         hasNumberLetter: !hasNumber || (!hasUpper && !hasLower),

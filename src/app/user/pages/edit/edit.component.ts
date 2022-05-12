@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {
-  AbstractControl, FormBuilder, FormGroup, Validators,
+  FormBuilder, FormGroup, Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { ConfirmationService } from 'src/app/core/services/confirmation/confirmation.service';
 import { LoginRequestModel } from '../../models/user.models';
 import * as UserActions from '../../store/user.actions';
 import * as UserSelectors from '../../store/user.selectors';
@@ -22,11 +23,11 @@ export class EditComponent {
 
   public errorMessage$ = this.store.select(UserSelectors.selectLoginError);
 
-  constructor(private readonly store: Store, private readonly fb: FormBuilder) { }
-
-  public get name(): AbstractControl | null {
-    return this.authForm.get('name');
-  }
+  constructor(
+    private readonly store: Store,
+    private readonly fb: FormBuilder,
+    private readonly confirmationService: ConfirmationService,
+  ) { }
 
   public onEditUser(): void {
     const user: LoginRequestModel = {
@@ -38,7 +39,9 @@ export class EditComponent {
     this.store.dispatch(UserActions.EditUser({ user }));
   }
 
-  public onDeleteUser(): void {
-    this.store.dispatch(UserActions.DeleteUser());
+  public onDeleteUser(event: Event): void {
+    event.stopPropagation();
+
+    this.confirmationService.delete(() => this.store.dispatch(UserActions.DeleteUser()));
   }
 }

@@ -1,26 +1,9 @@
 @import '~src/styles/style-import';
 
 .signup-container {
-  height: 100vh;
-  background-color: $bg-color;
-
-  .user-name {
-    position: relative;
-
-    .user-name__input {
-      @include auth-input;
-      margin-bottom: 30px;
-    }
-  
-    .input-error {
-      @include input-error;
-      position: absolute;
-      bottom: 0;
-    }
-  }
+  @include form-container;
 
   .auth-btn {
-    margin: 80px 0 20px;
-    @include filled-btn(145px);
+    @include filled-btn;
   }
 }

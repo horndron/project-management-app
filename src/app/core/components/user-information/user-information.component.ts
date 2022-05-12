@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import * as UserSelectors from '../../../user/store/user.selectors';
+import * as UserActions from '../../../user/store/user.actions';
 import { ROUTES } from '../../../constants/routes';
 
 @Component({
@@ -10,10 +13,16 @@ import { ROUTES } from '../../../constants/routes';
 export class UserInformationComponent {
   readonly routes = ROUTES;
 
-  userName = 'UserName';
   isMenuVisible = false;
+  userName$ = this.store.select(UserSelectors.selectUserName);
 
   constructor(
     private readonly store: Store,
+    private readonly router: Router,
   ) {}
+
+  public onLogout(): void {
+    this.store.dispatch(UserActions.ClearData());
+    this.router.navigateByUrl(`${this.routes.USER}/${this.routes.LOGIN}`);
+  }
 }

@@ -1,8 +1,8 @@
 <div class="user flex align-items-center"
   (click)="isMenuVisible = !isMenuVisible"
 >
-  <span class="name">{{ userName }}</span>
-  <span class="icon">{{ userName[0] }}</span>
+  <span class="name">{{ userName$ | async }}</span>
+  <span class="icon">{{ (userName$ | async) | slice:0:1 | uppercase }}</span>
 </div>
 
 <div
@@ -14,7 +14,7 @@
     <ul>
       <li [routerLink]="routes.BOARDS">{{ "HEADERMENU.0" | translate}}</li>
       <li routerLink="/user/edit">{{ "HEADERMENU.1" | translate}}</li>
-      <li routerLink="/user/logout">{{ "HEADERMENU.2" | translate}}</li>
+      <li (click)="onLogout()">{{ "HEADERMENU.2" | translate}}</li>
     </ul>
   </nav>
 </div>

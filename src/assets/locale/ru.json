@@ -77,7 +77,11 @@
     "PASSWORD_ERROR_LENGTH": "по крайней мере 8 символов",
     "PASSWORD_ERROR_UPPER": "смесь прописных и заглавных букв",
     "PASSWORD_ERROR_NUMBER": "смесь цифр и букв",
-    "PASSWORD_ERROR_SPECIAL": "по крайней мере 1 спецсимвол"
+    "PASSWORD_ERROR_SPECIAL": "по крайней мере 1 спецсимвол",
+    "MESSAGES": {
+      "ERROR_SIGNUP": "Пользователь с таким Email уже зарегистрирован",
+      "ERROR_LOGIN": "Пользователь не найден"
+    }
   },
   "NOTIFICATION": {
     "SUCCESS": "Успех!",

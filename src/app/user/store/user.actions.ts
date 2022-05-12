@@ -55,3 +55,7 @@ export const DeleteUserFailed = createAction(
   `${actionSource} Edit User Failed`,
   props<{ error: string }>(),
 );
+
+export const ClearData = createAction(
+  `${actionSource} Clear Data`,
+);

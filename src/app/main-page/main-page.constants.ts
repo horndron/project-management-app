@@ -1,6 +1,7 @@
 export const VODEO_ID = 'tVooja0Ta5I';
 export const ELEMENT_ANIMATION = 'animation';
 export const ANIMATION_SHOW_CLASS = 'element-show';
+export const DEFAULT_FIRST_LETTER = 'U';
 export const PATH_TO_DIFFERENT_SCREEN = '/assets/main-page/preview-on-different-sizes';
 export const PATH_TO_SCREENSHOT_ON_DIFFERENT_SCREEN = '/assets/main-page/preview-on-different-sizes/screenshot';
 export const DIFFERENT_SCREEN_SIZES: string[] = [

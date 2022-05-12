@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '../../models/user.models';
 import { PasswordValidator } from '../../validators/password.validator';
 import * as UserActions from '../../store/user.actions';
-import * as UserSelectors from '../../store/user.selectors';
 
 @Component({
   selector: 'rsm-login',
@@ -17,8 +16,6 @@ export class LoginComponent {
     password: ['', [Validators.required, PasswordValidator.check]],
   });
 
-  public errorMessage$ = this.store.select(UserSelectors.selectLoginError);
-
   constructor(
     private readonly fb: FormBuilder,
     private readonly store: Store,
@@ -29,6 +26,7 @@ export class LoginComponent {
       login: this.authForm.value.email,
       password: this.authForm.value.password,
     };
+
     this.store.dispatch(UserActions.LoginUser({ user }));
   }
 }

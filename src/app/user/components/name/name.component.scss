@@ -1,10 +1,9 @@
 @import '~src/styles/style-import';
 
-.form-field {
+.user-name {
   @include form-error;
-  margin-top: 30px;
 
-  .user-pass {
+  .user-name__input {
     width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Language } from '../../models/models';
-import { LanguageService } from '../../services/language.service';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'rsm-select-language',

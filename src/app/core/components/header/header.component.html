@@ -1,9 +1,9 @@
 <header [class.sticky-header]="isSticky$ | async">
   <div class="container flex flex-wrap align-items-center justify-content-between">
     <img routerLink="" src="/assets/logo.svg" alt="Logo" class="logo">
-    <rsm-search *ngIf="isAuth" class="search"></rsm-search>
+    <rsm-search *ngIf="isAuth$ | async" class="search"></rsm-search>
     <rsm-select-language class="language"></rsm-select-language>
-    <div class="sign-in" *ngIf="!isAuth; else userProfile">
+    <div class="sign-in" *ngIf="(isAuth$ | async) === false; else userProfile">
       <button
         routerLink="/user/login"
         pRipple
@@ -23,4 +23,3 @@
     </ng-template>
   </div>
 </header>
-

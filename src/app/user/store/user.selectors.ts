@@ -18,3 +18,8 @@ export const selectLoginError = createSelector(
   selectUserStore,
   (state: UserState) => state.error,
 );
+
+export const selectUserName = createSelector(
+  selectUserStore,
+  (state: UserState) => state.userInfo?.user?.name,
+);

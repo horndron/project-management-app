@@ -4,6 +4,7 @@ import {
   distinctUntilChanged,
   fromEvent, map, Observable, throttleTime,
 } from 'rxjs';
+import * as UserSelectors from '../../../user/store/user.selectors';
 import { HEADER_SCROLL_FOR_STICKY, HEADER_THROTTLE_TIME } from './header.constants';
 
 @Component({
@@ -12,7 +13,7 @@ import { HEADER_SCROLL_FOR_STICKY, HEADER_THROTTLE_TIME } from './header.constan
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements AfterViewInit {
-  isAuth = true;
+  isAuth$ = this.store.select(UserSelectors.selectIsLoggedIn);
 
   isSticky$!: Observable<boolean>;
 

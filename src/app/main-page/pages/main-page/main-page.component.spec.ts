@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { MainPageComponent } from './main-page.component';
 
 describe('MainPageComponent', () => {
@@ -8,9 +8,10 @@ describe('MainPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainPageComponent ]
+      declarations: [MainPageComponent],
+      imports: [TranslateModule.forRoot()],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

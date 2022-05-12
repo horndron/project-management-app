@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ProgressService } from 'src/app/core/services/progress.service';
+import { ProgressService } from 'src/app/core/services/progress/progress.service';
 
 @Component({
   selector: 'rsm-user-form',
