@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Nullable } from 'src/app/models/core';
 import { environment } from 'src/environments/environment';
-import { LoginResponseModel, LoginRequestModel } from 'src/app/models/user';
+import { LoginRequestModel, LoginResponseModel } from '../../models/user';
 import { UrlPath } from '../user.constants';
 
 const BASE_URL = environment.baseUrl;
