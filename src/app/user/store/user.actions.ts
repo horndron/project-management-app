@@ -18,6 +18,20 @@ export const GetUserSuccess = createAction(
   props<{ token: string, login: string }>(),
 );
 
+export const GetUserById = createAction(
+  `${actionSource} Get User By Id`,
+  props<{ token: string, id: string }>(),
+);
+
+export const GetUserByIdSuccess = createAction(
+  `${actionSource} Get User By Id Success`,
+  props<{ user: LoginResponseModel }>(),
+);
+
+export const GetUserByIdFailed = createAction(
+  `${actionSource} Get User By Id Failed`,
+);
+
 export const LoginUserSuccess = createAction(
   `${actionSource} Login User Success`,
   props<{ userInfo: UserModel }>(),

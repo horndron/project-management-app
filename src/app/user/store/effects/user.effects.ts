@@ -5,6 +5,7 @@ import {
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
+import { TranslateService } from '@ngx-translate/core';
 import {
   catchError, EMPTY, map, mergeMap, Observable, of, tap,
 } from 'rxjs';
@@ -32,7 +33,9 @@ export class UserEffects {
               login: response.login,
             },
           })),
-          tap(() => this.router.navigateByUrl('/')),
+          tap(() => this.notificationService.success(
+            this.translateService.instant('USER.MESSAGES.SUCCESS_EDIT'),
+          )),
         );
       }
 
@@ -46,11 +49,10 @@ export class UserEffects {
     concatLatestFrom(() => this.currentUser$),
     mergeMap(([, currUser]) => {
       if (currUser && currUser.user) {
-        return this.userHttpService.deleteUser(currUser.user.id)
-          .pipe(
-            map(() => UserActions.DeleteUserSuccess()),
-            tap(() => this.router.navigateByUrl('/')),
-          );
+        return this.userHttpService.deleteUser(currUser.user.id).pipe(
+          map(() => UserActions.DeleteUserSuccess()),
+          tap(() => this.router.navigateByUrl('/')),
+        );
       }
 
       return EMPTY;
@@ -64,13 +66,18 @@ export class UserEffects {
     private readonly router: Router,
     private readonly store: Store,
     private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService,
   ) {}
 
-  private handleError(message: string): Observable<TypedAction<'[User] Login User Failed'>> {
+  private handleError(
+    message: string,
+  ): Observable<TypedAction<'[User] Login User Failed'>> {
     this.notificationService.error(message);
 
-    return of(UserActions.LoginUserFailed({
-      error: message,
-    }));
+    return of(
+      UserActions.LoginUserFailed({
+        error: message,
+      }),
+    );
   }
 }

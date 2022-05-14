@@ -25,6 +25,10 @@ export class UserHttpService {
     return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`);
   }
 
+  public getUserById(id: string): Observable<LoginResponseModel> {
+    return this.http.get<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`);
+  }
+
   public editUser(id: string, userInfo: LoginRequestModel): Observable<LoginResponseModel> {
     return this.http.put<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`, userInfo);
   }
