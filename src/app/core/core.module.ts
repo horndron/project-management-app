@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
 import { ConfirmationService as PrimeConfirmationService } from 'primeng/api';
 import { NotificationComponent } from './components/notification/notification.component';
 import { AuthGuard } from './guards/auth.guard';
