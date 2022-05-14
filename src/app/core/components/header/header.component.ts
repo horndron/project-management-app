@@ -8,7 +8,7 @@ import {
   Observable,
   throttleTime,
 } from 'rxjs';
-import { UserModel } from 'src/app/user/models/user.models';
+import { UserModel } from 'src/app/models/user';
 import * as UserSelectors from '../../../user/store/user.selectors';
 import * as UserActions from '../../../user/store/user.actions';
 import {

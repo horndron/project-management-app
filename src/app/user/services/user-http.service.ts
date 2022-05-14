@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { LoginRequestModel, LoginResponseModel } from '../models/user.models';
+import { LoginRequestModel, LoginResponseModel } from '../../models/user';
 import { UrlPath } from '../user.constants';
 
 const BASE_URL = environment.baseUrl;
