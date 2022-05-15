@@ -10,13 +10,10 @@
   width: 50rem;
   padding: 3rem;
   margin-top: 4rem;
-
-  @extend %std-tile;
 }
 
 .header {
   text-align: center;
-  color: $text-color;
   margin: 2rem 0;
 }
 
