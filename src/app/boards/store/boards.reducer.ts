@@ -13,6 +13,10 @@ const reducer = createReducer(
     ...state,
     boards: [...state.boards, board],
   })),
+  on(BoardsActions.setCurrentBoard, (state, { board }) => ({
+    ...state,
+    currentBoard: board,
+  })),
 );
 
 export function boardsReducer(state: BoardsState, action: Action) {
