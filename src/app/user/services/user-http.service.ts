@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { Nullable } from 'src/app/models/core';
 import { environment } from 'src/environments/environment';
 import { LoginResponseModel, LoginRequestModel } from 'src/app/models/user';
 import { UrlPath } from '../user.constants';
@@ -35,5 +37,9 @@ export class UserHttpService {
 
   public deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${BASE_URL}${UrlPath.USERS}/${id}`);
+  }
+
+  public getUser$(id: string): Observable<Nullable<LoginResponseModel>> {
+    return this.http.get<Nullable<LoginResponseModel>>(`${BASE_URL}${UrlPath.USERS}/${id}`);
   }
 }

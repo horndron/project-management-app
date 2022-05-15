@@ -129,5 +129,9 @@
       "USERS": "Found in task members",
       "DESCRIPTION": "Found in description"
     }
+  },
+  "NOT_FOUND_PAGE": {
+    "TITLE": "Not found",
+    "HOME": "Go to home"
   }
 }

@@ -1,18 +1,23 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import {
-  Actions,
-  createEffect,
-  ofType,
-  concatLatestFrom,
+  Actions, createEffect, ofType, concatLatestFrom,
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { isEmpty } from 'lodash';
+import {
+  forkJoin, Observable, catchError, of,
+} from 'rxjs';
+import {
+  map, switchMap, tap,
+} from 'rxjs/operators';
+import { isEmpty, set } from 'lodash';
+import { TasksService } from '../services/tasks/tasks.service';
+import { ColumnsService } from '../services/columns/columns.service';
+import { UserHttpService } from '../../user/services/user-http.service';
 
 import { BoardsService } from '../services/boards/boards.service';
 import { Board } from '../../models/board';
+import { Task } from '../../models/task';
 import * as BoardsActions from './boards.actions';
 import * as fromBoards from './boards.selectors';
 import { NotificationService } from '../../core/services/notification/notification.service';
@@ -26,6 +31,9 @@ export class BoardsEffects {
     private readonly boardsService: BoardsService,
     private readonly notificationService: NotificationService,
     private readonly translateService: TranslateService,
+    private readonly userService: UserHttpService,
+    private readonly columnsService: ColumnsService,
+    private readonly tasksService: TasksService,
   ) {}
 
   getBoards$: Observable<Action> = createEffect(() => this.actions$.pipe(
@@ -39,7 +47,9 @@ export class BoardsEffects {
     switchMap(({ board }) => this.boardsService.create$(board)),
     switchMap((createdBoard: Nullable<Board>) => {
       if (!createdBoard) {
-        this.notificationService.error(this.translateService.instant('MESSAGES.ERROR_CREATE'));
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_CREATE'),
+        );
         return [];
       }
 
@@ -49,19 +59,47 @@ export class BoardsEffects {
 
   deleteBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.deleteBoard),
-    switchMap(({ id }) => this.boardsService.delete$(id)),
+    switchMap(({ id }) => this.boardsService.remove$(id)),
     concatLatestFrom(() => this.store.select(fromBoards.getBoards)),
     switchMap(([deletedId, boards]) => {
       if (isEmpty(deletedId)) {
-        this.notificationService.error(this.translateService.instant('MESSAGES.ERROR_DELETE'));
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_DELETE'),
+        );
         return [];
       }
 
-      this.notificationService.success(this.translateService.instant('MESSAGES.SUCCESS_DELETE'));
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_DELETE'),
+      );
 
-      const updatedBoards: Board[] = boards.filter((board: Board) => board.id !== deletedId);
+      const updatedBoards: Board[] = boards.filter(
+        (board: Board) => board.id !== deletedId,
+      );
 
       return [BoardsActions.setBoards({ boards: updatedBoards })];
     }),
+  ));
+
+  getCurrentBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.loadCurrentBoard),
+    switchMap(({ id }) => this.boardsService.getOne$(id)),
+    switchMap((board) => this.columnsService.getAll$(board.id).pipe(
+      switchMap((columns) => forkJoin(
+        columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
+          switchMap((tasks: Task[]) => forkJoin(tasks.map(
+            (task) => this.userService.getUser$(task.userId).pipe(
+              tap((user) => set(task, 'user', user)),
+              map(() => task),
+            ),
+          ))),
+          tap((tasks: Task[]) => set(column, 'tasks', tasks)),
+        )),
+      ).pipe(
+        tap(() => set(board, 'columns', columns)),
+      )),
+      switchMap(() => [BoardsActions.setCurrentBoard({ board })]),
+    )),
+    catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
   ));
 }

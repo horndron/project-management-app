@@ -10,6 +10,7 @@ import {
 
 import { environment } from '../../../../environments/environment';
 import { Nullable } from '../../../models/core';
+import { EntityPaths } from '../../../constants/api';
 
 @Injectable({
   providedIn: 'root',
@@ -20,17 +21,21 @@ export class BoardsService {
   constructor(private readonly http: HttpClient) {}
 
   getAll$(): Observable<Board[]> {
-    return this.http.get<Board[]>(`${environment.baseUrl}${this.entityName}`).pipe(catchError(() => of([])));
+    return this.http.get<Board[]>(`${environment.baseUrl}${EntityPaths.Boards}`).pipe(catchError(() => of([])));
   }
 
   create$(board: Partial<Board>): Observable<Nullable<Board>> {
-    return this.http.post<Board>(`${environment.baseUrl}${this.entityName}`, board).pipe(catchError(() => of(null)));
+    return this.http.post<Board>(`${environment.baseUrl}${EntityPaths.Boards}`, board).pipe(catchError(() => of(null)));
   }
 
-  delete$(id: string): Observable<string> {
-    return this.http.delete<void>(`${environment.baseUrl}${this.entityName}/${id}`).pipe(
+  remove$(id: string): Observable<string> {
+    return this.http.delete<void>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`).pipe(
       map(() => id),
       catchError(() => of('')),
     );
+  }
+
+  getOne$(id: string): Observable<Board> {
+    return this.http.get<Board>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`);
   }
 }
