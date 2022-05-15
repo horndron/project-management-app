@@ -29,6 +29,7 @@ export const userReducer = createReducer(
       user: null,
       token,
     },
+    isLoggedIn: true,
   })),
   on(UserActions.GetUserByIdSuccess, (state, { user }): UserState => ({
     ...state,

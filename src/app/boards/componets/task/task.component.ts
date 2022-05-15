@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { ConfirmationService } from 'src/app/core/services/confirmation/confirmation.service';
 import { Task } from 'src/app/models/task';
 
 @Component({
@@ -8,4 +14,12 @@ import { Task } from 'src/app/models/task';
 })
 export class TaskComponent {
   @Input() task: Task;
+
+  @Output() deleteTask = new EventEmitter<string>();
+
+  constructor(private readonly confirmationService: ConfirmationService) { }
+
+  remove(): void {
+    this.confirmationService.delete(() => this.deleteTask.emit());
+  }
 }

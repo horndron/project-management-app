@@ -22,7 +22,8 @@
     >
       <div class="task-placeholder" *cdkDragPlaceholder></div>
       <rsm-task
-      [task]="task"
+        [task]="task"
+        (deleteTask)="deleteTask(task.id)"
     ></rsm-task>
     </div>
 

@@ -111,6 +111,44 @@ export class BoardsEffects {
     }),
   ));
 
+  deleteTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.deleteTask),
+    switchMap(({ id, boardId, columnId }) => this.tasksService.remove$(id, boardId, columnId)),
+    concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
+    switchMap(([deletedParameters, board]) => {
+      if (!deletedParameters || !board) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_DELETE'),
+        );
+
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_DELETE'),
+      );
+
+      const filteredColumns = board?.columns?.filter(
+        (column) => column.id !== deletedParameters?.columnId,
+      );
+      const taskColumn = board?.columns?.filter(
+        (column) => column.id === deletedParameters?.columnId,
+      )[0];
+
+      const updatedBoard: Board = {
+        ...board,
+        columns: [
+          ...filteredColumns, {
+            ...taskColumn,
+            tasks: taskColumn.tasks.filter((task) => task.id !== deletedParameters.id),
+          },
+        ],
+      };
+
+      return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
+    }),
+  ));
+
   getCurrentBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.loadCurrentBoard),
     switchMap(({ id }) => this.boardsService.getOne$(id)),

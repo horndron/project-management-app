@@ -8,6 +8,7 @@
       cdkDropList
       [cdkDropListData]="column.tasks"
       (cdkDropListDropped)="onDropTasks($event)"
+      [boardId]="board.id"
       (deleteColumn)="deleteColumn(column.id)"
     ></rsm-board-column>
   </div>

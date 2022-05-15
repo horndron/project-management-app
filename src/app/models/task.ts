@@ -14,4 +14,12 @@ export interface Task {
 
 export interface TaskUpdate extends Task {
   previousColumnId?: string;
+  columnId: string;
+  boardId: string;
+  user: LoginResponseModel;
+}
+
+export interface RemovedTaskParameters {
+  id: string;
+  columnId: string;
 }

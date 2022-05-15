@@ -1,5 +1,12 @@
 <div class="top flex justify-content-between">
   <h3 class="title">{{ task.title }}</h3>
-  <i class="pi pi-trash"></i>
+  <button 
+    pButton 
+    pRipple
+    type="button" 
+    icon="pi pi-trash" 
+    class="p-button-rounded p-button-danger p-button-text"
+    (click)="remove()">
+  </button>
 </div>
 <p class="description">{{ task.description }}</p>
