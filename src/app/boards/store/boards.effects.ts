@@ -44,7 +44,7 @@ export class BoardsEffects {
 
   addBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.addBoard),
-    switchMap(({ board }) => this.boardsService.createBoard$(board)),
+    switchMap(({ board }) => this.boardsService.create$(board)),
     switchMap((createdBoard: Nullable<Board>) => {
       if (!createdBoard) {
         this.notificationService.error(
@@ -59,7 +59,7 @@ export class BoardsEffects {
 
   deleteBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.deleteBoard),
-    switchMap(({ id }) => this.boardsService.deleteBoard$(id)),
+    switchMap(({ id }) => this.boardsService.remove$(id)),
     concatLatestFrom(() => this.store.select(fromBoards.getBoards)),
     switchMap(([deletedId, boards]) => {
       if (isEmpty(deletedId)) {
@@ -83,10 +83,10 @@ export class BoardsEffects {
 
   getCurrentBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.loadCurrentBoard),
-    switchMap(({ id }) => this.boardsService.getBoard$(id)),
-    switchMap((board) => this.columnsService.getColumns$(board.id).pipe(
+    switchMap(({ id }) => this.boardsService.getOne$(id)),
+    switchMap((board) => this.columnsService.getAll$(board.id).pipe(
       switchMap((columns) => forkJoin(
-        columns.map((column) => this.tasksService.getTasks$(board.id, column.id).pipe(
+        columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
           switchMap((tasks: Task[]) => forkJoin(tasks.map(
             (task) => this.userService.getUser$(task.userId).pipe(
               tap((user) => set(task, 'user', user)),

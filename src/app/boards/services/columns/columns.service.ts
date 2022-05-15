@@ -16,7 +16,7 @@ import { EntityPaths } from '../../../constants/api';
 export class ColumnsService {
   constructor(private readonly http: HttpClient) {}
 
-  getColumns$(boardId: string): Observable<Column[]> {
+  getAll$(boardId: string): Observable<Column[]> {
     return this.http.get<Column[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Boards}`)
       .pipe(catchError(() => of([])));
   }

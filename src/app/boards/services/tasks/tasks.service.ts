@@ -17,7 +17,7 @@ import { Nullable } from '../../../models/core';
 export class TasksService {
   constructor(private readonly http: HttpClient) {}
 
-  getTasks$(boardId: string, columnId: string): Observable<Task[]> {
+  getAll$(boardId: string, columnId: string): Observable<Task[]> {
     return this.http.get<Task[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/tasks`)
       .pipe(catchError(() => of([])));
   }

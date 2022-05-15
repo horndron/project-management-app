@@ -24,18 +24,18 @@ export class BoardsService {
     return this.http.get<Board[]>(`${environment.baseUrl}${EntityPaths.Boards}`).pipe(catchError(() => of([])));
   }
 
-  createBoard$(board: Partial<Board>): Observable<Nullable<Board>> {
+  create$(board: Partial<Board>): Observable<Nullable<Board>> {
     return this.http.post<Board>(`${environment.baseUrl}${EntityPaths.Boards}`, board).pipe(catchError(() => of(null)));
   }
 
-  deleteBoard$(id: string): Observable<string> {
+  remove$(id: string): Observable<string> {
     return this.http.delete<void>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`).pipe(
       map(() => id),
       catchError(() => of('')),
     );
   }
 
-  getBoard$(id: string): Observable<Board> {
+  getOne$(id: string): Observable<Board> {
     return this.http.get<Board>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`);
   }
 }
