@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { ROUTES } from '../constants/routes';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: ':id',
     component: BoardsPageComponent,
+  },
+  {
+    path: `${ROUTES.SEARCH}/:searchValue`,
+    component: SearchPageComponent,
   },
 ];
 

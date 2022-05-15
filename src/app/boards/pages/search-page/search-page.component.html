@@ -1,0 +1,11 @@
+<div class="container">
+  <h2 class="search-title">{{ 'SEARCH.SEARCH_RESULTS' | translate }}</h2>
+  <h3 class="search-subtitle">{{ 'SEARCH.RESULTS.TITLE' | translate }}: {{ titleResults.length }}</h3>
+  <rsm-task *ngFor="let task of titleResults" [task]="task"></rsm-task>
+  <h3 class="search-subtitle">{{ 'SEARCH.RESULTS.ID' | translate }}: {{ idResults.length }}</h3>
+  <rsm-task *ngFor="let task of idResults" [task]="task"></rsm-task>
+  <h3 class="search-subtitle">{{ 'SEARCH.RESULTS.USERS' | translate }}: {{ membersResults.length }}</h3>
+  <rsm-task *ngFor="let task of membersResults" [task]="task"></rsm-task>
+  <h3 class="search-subtitle">{{ 'SEARCH.RESULTS.DESCRIPTION' | translate }}: {{ descriptionResults.length }}</h3>
+  <rsm-task *ngFor="let task of descriptionResults" [task]="task"></rsm-task>
+</div>

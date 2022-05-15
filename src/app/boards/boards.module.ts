@@ -13,6 +13,7 @@ import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
 import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 import { TaskComponent } from './componets/task/task.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TaskComponent } from './componets/task/task.component';
     CreateBoardDialogComponent,
     BoardColumnComponent,
     TaskComponent,
+    SearchPageComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { LoginRequestModel, LoginResponseModel, UserModel } from '../models/user.models';
+import { LoginRequestModel, LoginResponseModel, UserModel } from '../../models/user';
 
 const actionSource = '[User]';
 

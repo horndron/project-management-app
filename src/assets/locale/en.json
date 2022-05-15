@@ -120,5 +120,14 @@
   },
   "COLUMN": {
     "BUTTON": "Add a task"
+  },
+  "SEARCH": {
+    "SEARCH_RESULTS": "Search results",
+    "RESULTS": {
+      "TITLE": "Found in title",
+      "ID": "Found in task ID",
+      "USERS": "Found in task members",
+      "DESCRIPTION": "Found in description"
+    }
   }
 }
