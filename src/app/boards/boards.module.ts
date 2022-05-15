@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardElementComponent } from './componets/board-element/board-element.component';
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';

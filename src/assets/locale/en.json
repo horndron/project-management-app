@@ -120,5 +120,9 @@
   },
   "COLUMN": {
     "BUTTON": "Add a task"
+  },
+  "NOT_FOUND_PAGE": {
+    "TITLE": "Not found",
+    "HOME": "Go to home"
   }
 }
