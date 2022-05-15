@@ -38,6 +38,10 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
     this.store.dispatch(BoardsActions.loadCurrentBoard({ id: this.boardId }));
   }
 
+  deleteColumn(id: string): void {
+    this.store.dispatch(BoardsActions.deleteColumn({ id, boardId: this.boardId }));
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();

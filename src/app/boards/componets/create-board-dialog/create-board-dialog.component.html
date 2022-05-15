@@ -33,6 +33,12 @@
         formControlName="description"
         [placeholder]="'BOARDS.DESCRIPTION' | translate"
       > 
+      <small 
+        *ngIf="descriptionControl?.errors?.['required'] && isFormTouched" 
+        class="p-error block"
+      >
+      {{ 'ERRORS.REQUIRED' | translate }}
+    </small>
     </div>
     <div class="buttons-container flex justify-content-between">
       <p-button 

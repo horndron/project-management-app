@@ -1,7 +1,14 @@
 <div class="colunm">
   <div class="title flex justify-content-between align-center">
     <input  type="text" pInputText [(ngModel)]="column.title">
-    <i class="pi pi-trash"></i>
+    <button 
+      pButton 
+      pRipple
+      type="button" 
+      icon="pi pi-trash" 
+      class="p-button-text"
+      (click)="remove()">
+    </button>
   </div>
   <div
     class="tasks"

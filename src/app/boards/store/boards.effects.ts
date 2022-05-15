@@ -1,15 +1,19 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 import {
-  Actions, createEffect, ofType, concatLatestFrom,
+  Actions,
+  createEffect,
+  ofType,
+  concatLatestFrom,
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import {
-  forkJoin, Observable, catchError, of,
+  Observable,
+  catchError,
+  of,
+  forkJoin,
 } from 'rxjs';
-import {
-  switchMap, tap,
-} from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
@@ -17,11 +21,11 @@ import { UserHttpService } from '../../user/services/user-http.service';
 
 import { BoardsService } from '../services/boards/boards.service';
 import { Board } from '../../models/board';
-import { Task } from '../../models/task';
 import * as BoardsActions from './boards.actions';
 import * as fromBoards from './boards.selectors';
 import { NotificationService } from '../../core/services/notification/notification.service';
 import { Nullable } from '../../models/core';
+import { Task } from '../../models/task';
 
 @Injectable()
 export class BoardsEffects {
@@ -81,18 +85,38 @@ export class BoardsEffects {
     }),
   ));
 
+  deleteColumn$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.deleteColumn),
+    switchMap(({ id, boardId }) => this.columnsService.remove$(id, boardId)),
+    concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
+    switchMap(([deletedId, board]) => {
+      if (isEmpty(deletedId) || !board) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_DELETE'),
+        );
+
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_DELETE'),
+      );
+
+      const updatedBoard: Board = {
+        ...board,
+        columns: board?.columns?.filter((column) => column.id !== deletedId) || [],
+      };
+
+      return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
+    }),
+  ));
+
   getCurrentBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.loadCurrentBoard),
     switchMap(({ id }) => this.boardsService.getOne$(id)),
     switchMap((board) => this.columnsService.getAll$(board.id).pipe(
       switchMap((columns) => forkJoin(
         columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
-          // switchMap((tasks: Task[]) => forkJoin(tasks.map(
-          //   (task) => this.userService.getUser$(task.userId).pipe(
-          //     tap((user) => set(task, 'user', user)),
-          //     map(() => task),
-          //   ),
-          // ))),
           tap((tasks: Task[]) => set(column, 'tasks', tasks)),
         )),
       ).pipe(

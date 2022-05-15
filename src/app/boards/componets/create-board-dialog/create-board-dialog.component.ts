@@ -32,12 +32,16 @@ export class CreateBoardDialogComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       title: ['', [Validators.required]],
-      description: [],
+      description: ['', [Validators.required]],
     });
   }
 
   get titleControl(): FormControl {
     return this.formGroup.get('title') as FormControl;
+  }
+
+  get descriptionControl(): FormControl {
+    return this.formGroup.get('description') as FormControl;
   }
 
   get isFormValid(): boolean {
