@@ -1,7 +1,7 @@
 @import '~src/styles/style-import';
 
 :host ::ng-deep .card {
-  .p-card .p-card-body:hover {
+  .p-card:hover {
     cursor: pointer;
     box-shadow: 0px 5px 10px 2px lighten($green-color, 20%);
   }

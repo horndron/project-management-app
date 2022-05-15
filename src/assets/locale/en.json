@@ -132,7 +132,7 @@
     }
   },
   "NOT_FOUND_PAGE": {
-    "TITLE": "Not found",
+    "TITLE": "Page not found",
     "HOME": "Go to home"
   }
 }
