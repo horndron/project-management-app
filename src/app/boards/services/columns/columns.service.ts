@@ -17,7 +17,7 @@ export class ColumnsService {
   constructor(private readonly http: HttpClient) {}
 
   getAll$(boardId: string): Observable<Column[]> {
-    return this.http.get<Column[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Boards}`)
+    return this.http.get<Column[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}`)
       .pipe(catchError(() => of([])));
   }
 }

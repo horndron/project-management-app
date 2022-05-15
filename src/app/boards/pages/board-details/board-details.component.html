@@ -1,1 +1,9 @@
-<p>board-details works!</p>
+<ng-container *ngIf="board">
+  <h1>{{ board.title }}</h1>
+
+  <div class="columns" *ngFor="let column of board.columns">
+    <rsm-board-column [column]="column"></rsm-board-column>
+  </div>
+
+</ng-container>
+

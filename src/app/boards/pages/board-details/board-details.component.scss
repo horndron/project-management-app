@@ -1,0 +1,10 @@
+@import '~src/styles/style-import';
+
+:host {
+  display: block;
+  padding: 0 1em;
+
+  h1 {
+    margin-left: 7px;
+  }
+}

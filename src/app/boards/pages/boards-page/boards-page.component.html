@@ -1,14 +1,14 @@
 <div class="container">
-  <p-button 
-    icon="pi pi-plus" 
+  <p-button
+    icon="pi pi-plus"
     class="btn"
-    [label]="'BOARDS.ADD_BOARD' | translate" 
+    [label]="'BOARDS.ADD_BOARD' | translate"
     (click)="showDialog()"
   >
   </p-button>
   <div class="card-container flex flex-wrap">
-    <rsm-board-element 
-      *ngFor="let board of (boards$ | async)" 
+    <rsm-board-element
+      *ngFor="let board of (boards$ | async)"
       [id]="board.id"
       [title]="board.title"
       [description]="board.description"
