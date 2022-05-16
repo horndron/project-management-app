@@ -3,7 +3,12 @@
     <input  type="text" pInputText [(ngModel)]="column.title">
     <i class="pi pi-trash"></i>
   </div>
-  <div class="tasks" cdkDropList (cdkDropListDropped)="drop($event)">
+  <div
+    class="tasks"
+    cdkDropList
+    [cdkDropListData]="column.tasks"
+    (cdkDropListDropped)="drop($event)"
+  >
     <div class="task" *ngFor="let task of column.tasks" cdkDrag>
       <div class="task-placeholder" *cdkDragPlaceholder></div>
       <rsm-task
