@@ -13,6 +13,8 @@ import { UserHttpService } from '../../services/user-http.service';
 import { UrlPath } from '../../user.constants';
 import * as UserActions from '../user.actions';
 
+const USER_INFO = 'userInfo';
+
 @Injectable()
 export class AuthEffects {
   public createUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
@@ -40,15 +42,26 @@ export class AuthEffects {
     ofType(UserActions.GetUserSuccess),
     switchMap((action) => this.userHttpService.getAllUsers().pipe(
       map((users) => users.find((responseUser) => responseUser.login === action.login)),
-      map((currentUser) => UserActions.LoginUserSuccess({
-        userInfo: {
+      map((currentUser) => {
+        const userInfo = {
           user: currentUser!,
           token: action.token,
-        },
-      })),
-      tap(() => this.router.navigateByUrl(`/${UrlPath.BOARDS}`)),
+        };
+        localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
+        return UserActions.LoginUserSuccess({ userInfo });
+      }),
+      tap(() => this.router.navigateByUrl(UrlPath.BOARDS)),
     )),
     catchError((responseError) => this.handleError(responseError, responseError.error.message)),
+  ));
+
+  public getUserById$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(UserActions.GetUserById),
+    switchMap(({ id }) => this.userHttpService.getUserById(id).pipe(
+      map((currentUser) => UserActions.GetUserByIdSuccess({ user: currentUser })),
+      tap(() => this.router.navigateByUrl(UrlPath.BOARDS)),
+    )),
+    catchError(() => of(UserActions.GetUserByIdFailed())),
   ));
 
   constructor(
