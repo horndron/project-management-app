@@ -80,7 +80,8 @@
     "PASSWORD_ERROR_SPECIAL": "по крайней мере 1 спецсимвол",
     "MESSAGES": {
       "ERROR_SIGNUP": "Пользователь с таким Email уже зарегистрирован",
-      "ERROR_LOGIN": "Пользователь не найден"
+      "ERROR_LOGIN": "Пользователь не найден",
+      "SUCCESS_EDIT": "Данные пользователя изменены"
     }
   },
   "NOTIFICATION": {
