@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/models/board';
@@ -28,12 +28,11 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
     this.store.select(fromBoards.getCurrentBoard)
       .pipe(takeUntil(this.destroy$))
       .subscribe((board) => {
+        console.log(this.boardId);
         this.board = board?.id === this.boardId ? board : null;
       });
 
     this.store.dispatch(BoardsActions.loadCurrentBoard({ id: this.boardId }));
-
-    console.log(this.boardId);
   }
 
   ngOnDestroy(): void {

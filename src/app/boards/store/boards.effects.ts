@@ -87,12 +87,12 @@ export class BoardsEffects {
     switchMap((board) => this.columnsService.getAll$(board.id).pipe(
       switchMap((columns) => forkJoin(
         columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
-          switchMap((tasks: Task[]) => forkJoin(tasks.map(
-            (task) => this.userService.getUser$(task.userId).pipe(
-              tap((user) => set(task, 'user', user)),
-              map(() => task),
-            ),
-          ))),
+          // switchMap((tasks: Task[]) => forkJoin(tasks.map(
+          //   (task) => this.userService.getUser$(task.userId).pipe(
+          //     tap((user) => set(task, 'user', user)),
+          //     map(() => task),
+          //   ),
+          // ))),
           tap((tasks: Task[]) => set(column, 'tasks', tasks)),
         )),
       ).pipe(

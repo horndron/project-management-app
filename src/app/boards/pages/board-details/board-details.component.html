@@ -1,8 +1,8 @@
 <ng-container *ngIf="board">
   <h1>{{ board.title }}</h1>
 
-  <div class="columns" *ngFor="let column of board.columns">
-    <rsm-board-column [column]="column"></rsm-board-column>
+  <div class="columns">
+    <rsm-board-column *ngFor="let column of board.columns" [column]="column"></rsm-board-column>
   </div>
 
 </ng-container>
