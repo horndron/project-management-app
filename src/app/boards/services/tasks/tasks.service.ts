@@ -23,7 +23,7 @@ export class TasksService {
     boardId: string,
     columnId: string,
   ): Observable<Nullable<RemovedTaskParameters>> {
-    return this.http.delete<RemovedTaskParameters>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}`).pipe(
+    return this.http.delete<RemovedTaskParameters>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}/${id}`).pipe(
       map(() => ({ id, columnId })),
       catchError(() => of(null)),
     );

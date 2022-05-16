@@ -9,8 +9,10 @@
       [cdkDropListData]="column.tasks"
       (cdkDropListDropped)="onDropTasks($event)"
       [boardId]="board.id"
-      (deleteColumn)="deleteColumn(column.id)"
-    ></rsm-board-column>
+      (deleteColumn)="deleteColumn($event)"
+      (deleteTask)="deleteTask($event)"
+    >
+    </rsm-board-column>
   </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>

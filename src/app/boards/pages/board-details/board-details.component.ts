@@ -9,6 +9,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
 import { Column } from 'src/app/models/column';
+import { Task } from 'src/app/models/task';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -42,6 +43,14 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
 
   deleteColumn(id: string): void {
     this.store.dispatch(BoardsActions.deleteColumn({ id, boardId: this.boardId }));
+  }
+
+  deleteTask(task: Task): void {
+    this.store.dispatch(BoardsActions.deleteTask({
+      id: task.id,
+      columnId: task.columnId,
+      boardId: this.boardId,
+    }));
   }
 
   addColumn(column: Partial<Column>): void {

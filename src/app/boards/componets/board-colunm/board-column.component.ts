@@ -8,7 +8,7 @@ import {
 import { Store } from '@ngrx/store';
 import { ConfirmationService } from 'src/app/core/services/confirmation/confirmation.service';
 import { Column } from 'src/app/models/column';
-import * as BoardsActions from '../../store/boards.actions';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'rsm-board-column',
@@ -20,6 +20,7 @@ export class BoardColumnComponent {
   @Input() column: Column;
 
   @Output() deleteColumn = new EventEmitter<string>();
+  @Output() deleteTask = new EventEmitter<Task>();
 
   constructor(
     private readonly confirmationService: ConfirmationService,
@@ -34,11 +35,7 @@ export class BoardColumnComponent {
     this.confirmationService.delete(() => this.deleteColumn.emit());
   }
 
-  deleteTask(id: string): void {
-    this.store.dispatch(BoardsActions.deleteTask({
-      id,
-      columnId: this.column.id,
-      boardId: this.boardId,
-    }));
+  handleDeleteTask(task: Task): void {
+    this.deleteTask.emit({ ...task, columnId: this.column.id });
   }
 }
