@@ -10,6 +10,7 @@ import {
 } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { UserHttpService } from '../../services/user-http.service';
+import { UrlPath } from '../../user.constants';
 import * as UserActions from '../user.actions';
 
 @Injectable()
@@ -45,7 +46,7 @@ export class AuthEffects {
           token: action.token,
         },
       })),
-      tap(() => this.router.navigateByUrl('')),
+      tap(() => this.router.navigateByUrl(`/${UrlPath.BOARDS}`)),
     )),
     catchError((responseError) => this.handleError(responseError, responseError.error.message)),
   ));

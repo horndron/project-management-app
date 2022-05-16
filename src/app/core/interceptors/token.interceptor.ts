@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import * as UserSelectors from '../../user/store/user.selectors';
+import * as UserActions from '../../user/store/user.actions';
 import { HttpMethods } from '../../user/user.constants';
 
 enum AuthPath {
@@ -57,6 +58,8 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(newRequest).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse && err.status === 401) {
+          localStorage.clear();
+          this.store.dispatch(UserActions.ClearData());
           this.router.navigate(['/user', 'login']);
         }
 

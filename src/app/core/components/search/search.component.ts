@@ -31,7 +31,9 @@ export class SearchComponent implements OnInit, OnDestroy {
         catchError((error) => of(error)),
       )
       .subscribe((searchTerm) => {
-        this.router.navigate([ROUTES.BOARDS, ROUTES.SEARCH, searchTerm]);
+        if (searchTerm) {
+          this.router.navigate([ROUTES.BOARDS, ROUTES.SEARCH, searchTerm]);
+        }
       });
   }
 
