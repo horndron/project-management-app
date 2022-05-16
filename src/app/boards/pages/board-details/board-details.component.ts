@@ -8,6 +8,7 @@ import { Nullable } from 'src/app/models/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
+import { Column } from 'src/app/models/column';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -20,6 +21,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   board: Nullable<Board>;
   boardId: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  isDialogVisible = false;
 
   constructor(
     private readonly store: Store,
@@ -40,6 +42,20 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
 
   deleteColumn(id: string): void {
     this.store.dispatch(BoardsActions.deleteColumn({ id, boardId: this.boardId }));
+  }
+
+  addColumn(column: Partial<Column>): void {
+    this.store.dispatch(BoardsActions.addColumn({
+      column: {
+        ...column,
+        order: (this.board?.columns.length || 0) + 1,
+      },
+      boardId: this.boardId,
+    }));
+  }
+
+  showDialog(): void {
+    this.isDialogVisible = true;
   }
 
   ngOnDestroy(): void {

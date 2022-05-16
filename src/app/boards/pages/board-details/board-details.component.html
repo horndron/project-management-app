@@ -16,6 +16,7 @@
     <p-progressSpinner></p-progressSpinner>
   </div>
 </div>
-
-
-
+<rsm-create-column-dialog
+  [(isDialogVisible)]="isDialogVisible"
+  (addColumn)="addColumn($event)"
+></rsm-create-column-dialog>

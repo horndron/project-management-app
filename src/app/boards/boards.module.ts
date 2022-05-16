@@ -18,6 +18,7 @@ import { TaskComponent } from './componets/task/task.component';
 import { BoardDetailsComponent } from './pages/board-details/board-details.component';
 import { TaskSortingOrderPipe } from './pipes/task-sorting-order.pipe';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { CreateColumnDialogComponent } from './componets/create-column-dialog/create-column-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     BoardDetailsComponent,
     TaskSortingOrderPipe,
     SearchPageComponent,
+    CreateColumnDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -17,11 +17,11 @@ export const setBoards = createAction(`${actionSource} SET_BOARDS`, props<{ boar
 
 export const addBoard = createAction(`${actionSource} ADD_BOARD`, props<{ board: Partial<Board> }>());
 
-export const addColumn = createAction(`${actionSource} ADD_COLUMN`, props<{ column: Column }>());
+export const addColumn = createAction(`${actionSource} ADD_COLUMN`, props<{ column: Partial<Column>, boardId: string }>());
 
 export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ board: Board }>());
 
-export const pushColumn = createAction(`${actionSource} PUSH_C`, props<{ boardId: string, column: Column }>());
+export const pushColumn = createAction(`${actionSource} PUSH_COLUMN`, props<{ column: Column }>());
 
 export const pushTask = createAction(`${actionSource} PUSH_BOARD`, props<{ boardId: string, columnId: string, task: Task }>());
 

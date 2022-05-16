@@ -113,6 +113,7 @@
   },
   "BOARDS": {
     "ADD_BOARD": "Add board",
+    "ADD_COLUMN": "Add column",
     "TITLE": "Title",
     "DESCRIPTION": "Description"
   },
@@ -120,7 +121,7 @@
     "REQUIRED": "This is required information"
   },
   "COLUMN": {
-    "BUTTON": "Add a task"
+    "BUTTON": "Add task"
   },
   "SEARCH": {
     "SEARCH_RESULTS": "Search results",

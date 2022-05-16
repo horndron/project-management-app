@@ -15,10 +15,11 @@ import {
 } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
+
+import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
 import { UserHttpService } from '../../user/services/user-http.service';
-
 import { BoardsService } from '../services/boards/boards.service';
 import { Board } from '../../models/board';
 import * as BoardsActions from './boards.actions';
@@ -58,6 +59,21 @@ export class BoardsEffects {
       }
 
       return [BoardsActions.pushBoard({ board: createdBoard })];
+    }),
+  ));
+
+  addColumn$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.addColumn),
+    switchMap(({ column, boardId }) => this.columnsService.create$(column, boardId)),
+    switchMap((createdColumn: Nullable<Column>) => {
+      if (!createdColumn) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_CREATE'),
+        );
+        return [];
+      }
+
+      return [BoardsActions.pushColumn({ column: createdColumn })];
     }),
   ));
 

@@ -17,6 +17,13 @@ const reducer = createReducer(
     ...state,
     currentBoard: board,
   })),
+  on(BoardsActions.pushColumn, (state, { column }) => ({
+    ...state,
+    currentBoard: state.currentBoard ? {
+      ...state.currentBoard,
+      columns: [...state.currentBoard.columns, column],
+    } : null,
+  })),
 );
 
 export function boardsReducer(state: BoardsState, action: Action) {
