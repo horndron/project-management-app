@@ -4,7 +4,7 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfirmationService } from 'src/app/core/services/confirmation/confirmation.service';
-import { LoginRequestModel } from '../../models/user.models';
+import { LoginRequestModel } from '../../../models/user';
 import * as UserActions from '../../store/user.actions';
 import * as UserSelectors from '../../store/user.selectors';
 import { PasswordValidator } from '../../validators/password.validator';

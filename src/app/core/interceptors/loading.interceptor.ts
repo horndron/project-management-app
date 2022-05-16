@@ -6,7 +6,9 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import {
+  catchError, Observable, tap, throwError,
+} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ProgressService } from '../services/progress/progress.service';
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Nullable } from 'src/app/models/core';
 import { environment } from 'src/environments/environment';
-import { LoginRequestModel, LoginResponseModel } from '../models/user.models';
+import { LoginRequestModel, LoginResponseModel } from '../../models/user';
 import { UrlPath } from '../user.constants';
 
 const BASE_URL = environment.baseUrl;
@@ -25,6 +25,10 @@ export class UserHttpService {
 
   public getAllUsers(): Observable<LoginResponseModel[]> {
     return this.http.get<LoginResponseModel[]>(`${BASE_URL}${UrlPath.USERS}`);
+  }
+
+  public getUserById(id: string): Observable<LoginResponseModel> {
+    return this.http.get<LoginResponseModel>(`${BASE_URL}${UrlPath.USERS}/${id}`);
   }
 
   public editUser(id: string, userInfo: LoginRequestModel): Observable<LoginResponseModel> {
