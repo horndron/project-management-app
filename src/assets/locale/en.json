@@ -81,7 +81,7 @@
     "MESSAGES": {
       "ERROR_SIGNUP": "This login already exists!",
       "ERROR_LOGIN": "User wasn't found",
-      "SUCCESS_EDIT": "User data was edited successfully"
+      "SUCCESS_EDIT": "User data has been updated"
     }
   },
   "NOTIFICATION": {
