@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       .pipe(
         debounceTime(DEBOUNCE_TIME),
         distinctUntilChanged(),
-        catchError((error) => of(error)),
       )
       .subscribe((searchTerm) => {
         if (searchTerm) {

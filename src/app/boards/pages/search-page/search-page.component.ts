@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import {
-  pluck,
   Subscription,
   switchMap,
   tap,
   forkJoin,
   mergeMap,
   from,
+  map,
+  filter,
 } from 'rxjs';
 import { Task } from 'src/app/models/task';
 import { UserHttpService } from 'src/app/user/services/user-http.service';
@@ -31,9 +32,7 @@ enum SearchFields {
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   private boards: Board[] = [];
-  private routerSub$ = new Subscription();
-  private userSub$ = new Subscription();
-  private subscriptions: Subscription[] = [];
+  private subscriptions = new Subscription();
   private searchValue = '';
 
   public idResults: Task[] = [];
@@ -51,8 +50,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.routerSub$ = this.route.params.pipe(
-      pluck(SEARCH_VALUE),
+    this.subscriptions.add(this.route.params.pipe(
+      map((params: Params) => params[SEARCH_VALUE]),
       tap((query: string) => {
         this.searchValue = query.toLowerCase();
         this.resetOldSearchData();
@@ -95,13 +94,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     )
       .subscribe(() => {
         this.searchLoaded = true;
-      });
-
-    this.subscriptions.push(this.routerSub$);
+      }));
   }
 
   public ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.subscriptions.unsubscribe();
   }
 
   private filterTasks(arr: Task[], param: keyof Task): Task[] {
@@ -114,28 +111,24 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   private findUserNamesById(arr: Task[]): void {
     arr.forEach((task) => {
       if (task.userId) {
-        this.userSub$ = this.userService
+        this.subscriptions.add(this.userService
           .getUserById(task.userId)
-          .subscribe((user) => {
-            if (
-              user.name
-                .toLowerCase()
-                .includes(this.searchValue)
-            ) {
-              this.membersResults.push(task);
-            }
-          });
-
-        this.subscriptions.push(this.userSub$);
+          .pipe(
+            map((user) => user.name.toLowerCase()),
+            filter((userName) => userName.includes(this.searchValue)),
+          )
+          .subscribe(() => {
+            this.membersResults.push(task);
+          }));
       }
     });
   }
 
   private resetOldSearchData(): void {
-    this.idResults.length = 0;
-    this.titleResults.length = 0;
-    this.membersResults.length = 0;
-    this.descriptionResults.length = 0;
+    this.idResults = [];
+    this.titleResults = [];
+    this.membersResults = [];
+    this.descriptionResults = [];
     this.searchLoaded = false;
   }
 }
