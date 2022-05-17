@@ -102,4 +102,32 @@ export class BoardsEffects {
     )),
     catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
   ));
+
+  changeBoardTitle$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.changeBoardTitle),
+    switchMap(({ id, board }) => this.boardsService.changeOne$(id, board)),
+    concatLatestFrom(() => this.store.select(fromBoards.getBoards)),
+    switchMap(([changedBoard, boards]) => {
+      if (isEmpty(changedBoard)) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_EDIT_TITLE'),
+        );
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_EDIT_TITLE'),
+      );
+
+      const updatedBoards: Board[] = boards.map((board: Board) => {
+        if (board.id === changedBoard?.id) {
+          board = { ...changedBoard };
+        }
+
+        return board;
+      });
+
+      return [BoardsActions.setBoards({ boards: updatedBoards })];
+    }),
+  ));
 }

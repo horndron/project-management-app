@@ -18,3 +18,5 @@ export const addBoard = createAction(`${actionSource} ADD_BOARD`, props<{ board:
 export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ board: Board }>());
 
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
+
+export const changeBoardTitle = createAction(`${actionSource} CHANGE_BOARD_TITLE`, props<{ id: string, board: Partial<Board> }>());

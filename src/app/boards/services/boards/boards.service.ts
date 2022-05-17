@@ -38,4 +38,8 @@ export class BoardsService {
   getOne$(id: string): Observable<Board> {
     return this.http.get<Board>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`);
   }
+
+  changeOne$(id: string, board: Partial<Board>): Observable<Nullable<Board>> {
+    return this.http.put<Board>(`${environment.baseUrl}${EntityPaths.Boards}/${id}`, board).pipe(catchError(() => of(null)));
+  }
 }
