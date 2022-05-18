@@ -27,7 +27,7 @@ export class ColumnsService {
       title: column.title,
       order: column.order,
     };
-    return this.http.put<Column>(`${environment.baseUrl}${EntityPaths.Boards}
-      /${boardId}/${EntityPaths.Columns}/${column.id}`, columnBody).pipe(catchError(() => of(null)));
+    return this.http.put<Column>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${column.id}`, columnBody)
+      .pipe(catchError(() => of(null)));
   }
 }

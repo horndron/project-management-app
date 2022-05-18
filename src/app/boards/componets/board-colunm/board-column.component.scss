@@ -18,19 +18,11 @@
 
   .title {
     background-color: $primary-color;
-
-    .p-inputtext {
-      width: calc(100% - $delete-icon-width);
-      color: $white-color;
-      background-color: $primary-color;
-      border: none;
-      box-shadow: none;
-    }
+    padding: 0 10px;
 
     i {
       height: 22px;
       color: $white-color;
-      margin: 10px auto auto;
       cursor: pointer;
     }
   }

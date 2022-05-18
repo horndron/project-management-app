@@ -1,8 +1,8 @@
 <div class="board-title" (click)="edit($event)">
-  <h4 id="board-name" *ngIf="!editMode">{{ title }}</h4>
-  <div *ngIf="editMode" class="flex flex-column">
+  <h4 class="board-name" *ngIf="!editMode">{{ title }}</h4>
+  <div *ngIf="editMode" class="flex flex-column edit-title">
     <input [(ngModel)]="title" pInputText>
-    <div class="edit-buttons flex justify-content-around">
+    <div class="edit-buttons flex justify-content-between">
       <button (click)="save($event)" pButton pRipple>Submit</button>
       <button (click)="cancel($event)" pButton pRipple>Cancel</button>
     </div>

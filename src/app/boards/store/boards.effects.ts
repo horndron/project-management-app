@@ -5,7 +5,7 @@ import {
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import {
-  forkJoin, Observable, catchError, of, EMPTY,
+  forkJoin, Observable, catchError, of,
 } from 'rxjs';
 import {
   switchMap, tap,
@@ -151,7 +151,10 @@ export class BoardsEffects {
       if (currentBoard) {
         const updatedColumns: Column[] = currentBoard.columns.map((column: Column) => {
           if (column.id === changedColumn?.id) {
-            column = { ...changedColumn };
+            column = {
+              ...column,
+              title: changedColumn.title,
+            };
           }
 
           return column;
@@ -165,7 +168,7 @@ export class BoardsEffects {
         return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
       }
 
-      return EMPTY;
+      return [];
     }),
   ));
 
