@@ -6,6 +6,10 @@
     background: linear-gradient(140.77deg, #F5CE12 -20.7%, #8CB120 46.22%, #05704E 100.74%);
     transition: $hover-speed;
 
+    .logo {
+      cursor: pointer;
+    }
+
     &.sticky-header {
       position: fixed;
       width: 100%;

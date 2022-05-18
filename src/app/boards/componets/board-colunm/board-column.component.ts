@@ -1,7 +1,5 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
-import { Task } from '../../../models/task';
-import { COLUMN } from './mock';
+import { Component, Input } from '@angular/core';
+import { Column } from 'src/app/models/column';
 
 @Component({
   selector: 'rsm-board-column',
@@ -9,13 +7,5 @@ import { COLUMN } from './mock';
   styleUrls: ['./board-column.component.scss'],
 })
 export class BoardColumnComponent {
-  title = COLUMN.name;
-
-  tasks: Task[] = COLUMN.tasks as Task[];
-
-  list = [];
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
-  }
+  @Input() column: Column;
 }
