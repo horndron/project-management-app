@@ -8,7 +8,7 @@ import {
   forkJoin, Observable, catchError, of, EMPTY,
 } from 'rxjs';
 import {
-  map, switchMap, tap,
+  switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
 import { Column } from 'src/app/models/column';
@@ -88,12 +88,12 @@ export class BoardsEffects {
     switchMap((board) => this.columnsService.getAll$(board.id).pipe(
       switchMap((columns) => forkJoin(
         columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
-          switchMap((tasks: Task[]) => forkJoin(tasks.map(
-            (task) => this.userService.getUser$(task.userId).pipe(
-              tap((user) => set(task, 'user', user)),
-              map(() => task),
-            ),
-          ))),
+          // switchMap((tasks: Task[]) => forkJoin(tasks.map(
+          //   (task) => this.userService.getUser$(task.userId).pipe(
+          //     tap((user) => set(task, 'user', user)),
+          //     map(() => task),
+          //   ),
+          // ))),
           tap((tasks: Task[]) => set(column, 'tasks', tasks)),
         )),
       ).pipe(
@@ -166,6 +166,17 @@ export class BoardsEffects {
       }
 
       return EMPTY;
+    }),
+  ));
+
+  updateTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.updateTasks),
+    switchMap(({ tasks }) => forkJoin(
+      [...tasks.map((task) => this.tasksService.update$(task))],
+    )),
+    switchMap((tasks) => {
+      const { boardId } = tasks[0];
+      return [BoardsActions.loadCurrentBoard({ id: boardId })];
     }),
   ));
 }

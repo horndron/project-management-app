@@ -2,10 +2,18 @@
   <div class="title flex justify-content-between align-center">
     <!-- <input  type="text" pInputText [(ngModel)]="title"> -->
     <rsm-title [title]="column.title" (changeTitle)="changeTitle($event)"></rsm-title>
-    <img src="/assets/delete-white.svg" alt="">
+    <i class="pi pi-trash"></i>
   </div>
-  <div class="tasks" cdkDropList (cdkDropListDropped)="drop($event)">
-    <div class="task" *ngFor="let task of tasks" cdkDrag>
+  <div
+    class="tasks"
+
+  >
+    <div
+      class="task"
+      *ngFor="let task of (column.tasks | taskSortingOrder)"
+      cdkDrag
+      [attr.data-id]="task.id"
+    >
       <div class="task-placeholder" *cdkDragPlaceholder></div>
       <rsm-task
       [task]="task"

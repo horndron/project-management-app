@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { Board } from 'src/app/models/board';
+import { Nullable } from 'src/app/models/core';
 import { StoreFeature } from '../../constants/store.enum';
 import { BoardsState } from './boards.state';
-import { Nullable } from '../../models/core';
 
 const rootSelector = createFeatureSelector<BoardsState>(StoreFeature.Boards);
 

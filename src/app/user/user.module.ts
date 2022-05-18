@@ -12,7 +12,6 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { UserRoutingModule } from './user-routing.module';
-import { UserHttpService } from './services/user-http.service';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
 import { EditComponent } from './pages/edit/edit.component';
@@ -41,9 +40,6 @@ import { NameComponent } from './components/name/name.component';
     InputTextModule,
     PasswordModule,
     TranslateModule.forChild(),
-  ],
-  providers: [
-    UserHttpService,
   ],
 })
 export class UserModule { }
