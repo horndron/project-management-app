@@ -43,7 +43,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  drop(event: CdkDragDrop<Task[]>) {
+  onDropTasks(event: CdkDragDrop<Task[]>) {
     const currentColumnTasks = BoardDetailsComponent.onSortingTasks(event.container.data);
     const tasksUpdate: TaskUpdate[] = [];
 

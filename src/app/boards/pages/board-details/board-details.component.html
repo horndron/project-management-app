@@ -7,7 +7,7 @@
       [attr.data-id]="column.id"
       cdkDropList
       [cdkDropListData]="column.tasks"
-      (cdkDropListDropped)="drop($event)"
+      (cdkDropListDropped)="onDropTasks($event)"
     ></rsm-board-column>
   </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
