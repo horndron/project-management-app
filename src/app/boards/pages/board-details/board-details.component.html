@@ -1,20 +1,19 @@
-<ng-container *ngIf="board">
-  <h1>{{ board.title }}</h1>
-  <div class="board-columns">
-    <div class="columns" cdkDropListGroup>
-      <rsm-board-column
-        *ngFor="let column of board.columns"
-        [column]="column"
-        [attr.data-id]="column.id"
-        cdkDropList
-        [cdkDropListData]="column.tasks"
-        (cdkDropListDropped)="drop($event)"
-      ></rsm-board-column>
-    </div>
+<h1  *ngIf="board">{{ board.title }}</h1>
+<div class="board-columns">
+  <div  *ngIf="board" class="columns" cdkDropListGroup>
+    <rsm-board-column
+      *ngFor="let column of board.columns"
+      [column]="column"
+      [attr.data-id]="column.id"
+      cdkDropList
+      [cdkDropListData]="column.tasks"
+      (cdkDropListDropped)="drop($event)"
+    ></rsm-board-column>
   </div>
-</ng-container>
-<div class="progress-container" *ngIf="progressService.dataLoading$ | async">
-  <p-progressSpinner></p-progressSpinner>
+  <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 </div>
+
 
 
