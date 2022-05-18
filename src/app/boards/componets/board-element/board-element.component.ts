@@ -25,8 +25,6 @@ export class BoardElementComponent {
   @Output() deleteBoard = new EventEmitter<string>();
   @Output() changeBoardTitle = new EventEmitter<{ id: string, currentBoard: Partial<Board> }>();
 
-  public editMode = false;
-
   constructor(
     private readonly confirmationService: ConfirmationService,
     private readonly router: Router,
@@ -38,30 +36,14 @@ export class BoardElementComponent {
     this.confirmationService.delete(() => this.deleteBoard.emit(this.id));
   }
 
-  edit(event: Event): void {
-    event.stopPropagation();
-
-    this.editMode = true;
-  }
-
-  cancel(event: Event): void {
-    event.stopPropagation();
-
-    this.editMode = false;
-  }
-
-  save(event: Event): void {
-    event.stopPropagation();
-
+  changeTitle(title: string): void {
     this.changeBoardTitle.emit({
       id: this.id,
       currentBoard: {
-        title: this.title,
+        title,
         description: this.description,
       },
     });
-
-    this.editMode = false;
   }
 
   navigateToBoard() {

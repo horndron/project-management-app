@@ -14,6 +14,7 @@ import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
 import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 import { TaskComponent } from './componets/task/task.component';
+import { TitleComponent } from './componets/title/title.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TaskComponent } from './componets/task/task.component';
     CreateBoardDialogComponent,
     BoardColumnComponent,
     TaskComponent,
+    TitleComponent,
   ],
   imports: [
     CommonModule,

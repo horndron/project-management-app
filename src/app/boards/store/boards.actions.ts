@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Column } from 'src/app/models/column';
 import { Nullable } from 'src/app/models/core';
 
 import { Board } from '../../models/board';
@@ -20,3 +21,5 @@ export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ boar
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
 
 export const changeBoardTitle = createAction(`${actionSource} CHANGE_BOARD_TITLE`, props<{ id: string, board: Partial<Board> }>());
+
+export const changeColumnTitle = createAction(`${actionSource} CHANGE_COLUMN_TITLE`, props<{ boardId: string, column: Partial<Column> }>());

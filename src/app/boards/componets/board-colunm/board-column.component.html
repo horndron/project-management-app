@@ -1,6 +1,7 @@
 <div class="colunm">
   <div class="title flex justify-content-between align-center">
-    <input  type="text" pInputText [(ngModel)]="title">
+    <!-- <input  type="text" pInputText [(ngModel)]="title"> -->
+    <rsm-title [title]="column.title" (changeTitle)="changeTitle($event)"></rsm-title>
     <img src="/assets/delete-white.svg" alt="">
   </div>
   <div class="tasks" cdkDropList (cdkDropListDropped)="drop($event)">

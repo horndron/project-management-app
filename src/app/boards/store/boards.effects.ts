@@ -5,12 +5,13 @@ import {
 } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import {
-  forkJoin, Observable, catchError, of,
+  forkJoin, Observable, catchError, of, EMPTY,
 } from 'rxjs';
 import {
   map, switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
+import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
 import { UserHttpService } from '../../user/services/user-http.service';
@@ -128,6 +129,43 @@ export class BoardsEffects {
       });
 
       return [BoardsActions.setBoards({ boards: updatedBoards })];
+    }),
+  ));
+
+  changeColumnTitle$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.changeColumnTitle),
+    switchMap(({ boardId, column }) => this.columnsService.changeOne$(boardId, column)),
+    concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
+    switchMap(([changedColumn, currentBoard]) => {
+      if (isEmpty(changedColumn)) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_EDIT_TITLE'),
+        );
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_EDIT_TITLE'),
+      );
+
+      if (currentBoard) {
+        const updatedColumns: Column[] = currentBoard.columns.map((column: Column) => {
+          if (column.id === changedColumn?.id) {
+            column = { ...changedColumn };
+          }
+
+          return column;
+        });
+
+        const updatedBoard = {
+          ...currentBoard,
+          columns: updatedColumns,
+        };
+
+        return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
+      }
+
+      return EMPTY;
     }),
   ));
 }

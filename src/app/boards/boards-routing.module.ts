@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { ROUTES } from '../constants/routes';
+import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: BoardsPageComponent,
+    component: BoardColumnComponent,
   },
 ];
 
