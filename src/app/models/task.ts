@@ -1,4 +1,4 @@
-import { LoginResponseModel } from '../user/models/user.models';
+import { LoginResponseModel } from './user';
 
 export interface Task {
   id: string;

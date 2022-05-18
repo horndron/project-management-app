@@ -24,6 +24,6 @@ export class UserInformationComponent {
   public onLogout(): void {
     localStorage.clear();
     this.store.dispatch(UserActions.ClearData());
-    this.router.navigateByUrl(`${this.routes.ROOT}`);
+    this.router.navigateByUrl(`${ROUTES.ROOT}`);
   }
 }

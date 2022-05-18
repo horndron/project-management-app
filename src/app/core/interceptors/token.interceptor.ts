@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ROUTES } from 'src/app/constants/routes';
 import * as UserSelectors from '../../user/store/user.selectors';
+import * as UserActions from '../../user/store/user.actions';
 import { HttpMethods } from '../../user/user.constants';
 
 enum AuthPath {
@@ -57,7 +59,9 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(newRequest).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse && err.status === 401) {
-          this.router.navigateByUrl('/');
+          localStorage.clear();
+          this.store.dispatch(UserActions.ClearData());
+          this.router.navigateByUrl(`${ROUTES.USER}${ROUTES.LOGIN}`);
         }
 
         return throwError(() => err);

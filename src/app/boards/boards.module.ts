@@ -8,12 +8,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardElementComponent } from './componets/board-element/board-element.component';
 import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
 import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 import { TaskComponent } from './componets/task/task.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { TaskComponent } from './componets/task/task.component';
     CreateBoardDialogComponent,
     BoardColumnComponent,
     TaskComponent,
+    SearchPageComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { TaskComponent } from './componets/task/task.component';
     ButtonModule,
     CardModule,
     ReactiveFormsModule,
+    ProgressSpinnerModule,
     TranslateModule,
     InputTextModule,
     DragDropModule,
