@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-=======
->>>>>>> develop
 import { LoginResponseModel } from './user';
 
 export interface Task {
