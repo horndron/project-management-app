@@ -3,8 +3,8 @@
   <div *ngIf="editMode" class="flex flex-column edit-title">
     <input [(ngModel)]="title" pInputText>
     <div class="edit-buttons flex justify-content-between">
-      <button (click)="save($event)" pButton pRipple>Submit</button>
-      <button (click)="cancel($event)" pButton pRipple>Cancel</button>
+      <button (click)="save($event)" pButton pRipple>{{ 'BUTTONS.SUBMIT' | translate }}</button>
+      <button (click)="cancel($event)" pButton pRipple>{{ 'BUTTONS.CANCEL' | translate }}</button>
     </div>
   </div>
 </div>

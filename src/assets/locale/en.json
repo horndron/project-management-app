@@ -111,7 +111,8 @@
   },
   "BUTTONS": {
     "SAVE": "Save",
-    "CANCEL": "Cancel"
+    "CANCEL": "Cancel",
+    "SUBMIT": "Submit"
   },
   "BOARDS": {
     "ADD_BOARD": "Add board",
