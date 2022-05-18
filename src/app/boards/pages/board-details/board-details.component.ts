@@ -49,7 +49,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
 
     if (event.previousContainer === event.container) {
       if (event.previousIndex < event.currentIndex) {
-        for (let i = event.previousIndex; i <= event.currentIndex; i++) {
+        for (let i = event.previousIndex; i <= event.currentIndex; i += 1) {
           if (i === event.previousIndex) {
             tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
               currentColumnTasks[i],
@@ -63,7 +63,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
           }
         }
       } else {
-        for (let i = event.currentIndex; i <= event.previousIndex; i++) {
+        for (let i = event.currentIndex; i <= event.previousIndex; i += 1) {
           if (i === event.previousIndex) {
             tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
               currentColumnTasks[i],
@@ -89,14 +89,14 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       changedTask.columnId = currentColumnId;
       tasksUpdate.push(changedTask);
 
-      for (let i = event.previousIndex + 1; i < previousColumnTasks.length; i++) {
+      for (let i = event.previousIndex + 1; i < previousColumnTasks.length; i += 1) {
         tasksUpdate.push(BoardDetailsComponent.onTaskOrderMinus(
           previousColumnTasks[i],
           previousColumnTasks[i].order,
         ));
       }
 
-      for (let i = event.currentIndex; i < currentColumnTasks.length; i++) {
+      for (let i = event.currentIndex; i < currentColumnTasks.length; i += 1) {
         tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
           currentColumnTasks[i],
           currentColumnTasks[i].order,
