@@ -11,24 +11,4 @@ import { COLUMN } from './mock';
 })
 export class BoardColumnComponent {
   @Input() column: Column;
-  tasks = COLUMN.tasks as Task[];
-  drop(event: CdkDragDrop<Task[]>) {
-    console.log('tasks', event.container.data);
-    console.log('tasks', event.container.data);
-    console.log('event', event);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
 }

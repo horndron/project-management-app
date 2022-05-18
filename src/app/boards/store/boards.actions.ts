@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Nullable } from 'src/app/models/core';
+import { TaskUpdate } from 'src/app/models/task';
 
 import { Board } from '../../models/board';
 
@@ -18,3 +19,5 @@ export const addBoard = createAction(`${actionSource} ADD_BOARD`, props<{ board:
 export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ board: Board }>());
 
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
+
+export const updateTasks = createAction(`${actionSource} UPDATE_TASK`, props<{ tasks: TaskUpdate[] }>());

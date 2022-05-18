@@ -2,10 +2,19 @@
   <h1>{{ board.title }}</h1>
   <div class="board-columns">
     <div class="columns" cdkDropListGroup>
-      <rsm-board-column *ngFor="let column of board.columns" [column]="column" ></rsm-board-column>
+      <rsm-board-column
+        *ngFor="let column of board.columns"
+        [column]="column"
+        [attr.data-id]="column.id"
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        (cdkDropListDropped)="drop($event)"
+      ></rsm-board-column>
     </div>
   </div>
-
-
 </ng-container>
+<div class="progress-container" *ngIf="progressService.dataLoading$ | async">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
 

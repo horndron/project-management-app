@@ -8,7 +8,7 @@ import {
   forkJoin, Observable, catchError, of,
 } from 'rxjs';
 import {
-  map, switchMap, tap,
+  switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
 import { TasksService } from '../services/tasks/tasks.service';
@@ -101,5 +101,16 @@ export class BoardsEffects {
       switchMap(() => [BoardsActions.setCurrentBoard({ board })]),
     )),
     catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
+  ));
+
+  updateTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.updateTasks),
+    switchMap(({ tasks }) => forkJoin(
+      [...tasks.map((task) => this.tasksService.update$(task))],
+    )),
+    switchMap((tasks) => {
+      const { boardId } = tasks[0];
+      return [BoardsActions.loadCurrentBoard({ id: boardId })];
+    }),
   ));
 }
