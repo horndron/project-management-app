@@ -18,7 +18,7 @@ export class TasksService {
   constructor(private readonly http: HttpClient) {}
 
   getAll$(boardId: string, columnId: string): Observable<Task[]> {
-    return this.http.get<Task[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/tasks`)
+    return this.http.get<Task[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}`)
       .pipe(catchError(() => of([])));
   }
 

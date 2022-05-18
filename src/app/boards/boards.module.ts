@@ -17,6 +17,7 @@ import { BoardColumnComponent } from './componets/board-colunm/board-column.comp
 import { TaskComponent } from './componets/task/task.component';
 import { BoardDetailsComponent } from './pages/board-details/board-details.component';
 import { TaskSortingOrderPipe } from './pipes/task-sorting-order.pipe';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TaskSortingOrderPipe } from './pipes/task-sorting-order.pipe';
     TaskComponent,
     BoardDetailsComponent,
     TaskSortingOrderPipe,
+    SearchPageComponent,
   ],
   imports: [
     CommonModule,

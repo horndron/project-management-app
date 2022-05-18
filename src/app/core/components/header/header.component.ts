@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     const userInfo: UserModel = JSON.parse(
       localStorage.getItem(USER_INFO) || '{}',
     );
+
     if (!isEmpty(userInfo)) {
       this.store.dispatch(
         UserActions.GetUserById({

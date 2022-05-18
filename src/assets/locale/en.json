@@ -81,7 +81,7 @@
     "MESSAGES": {
       "ERROR_SIGNUP": "This login already exists!",
       "ERROR_LOGIN": "User wasn't found",
-      "SUCCESS_EDIT": "User data was edited successfully"
+      "SUCCESS_EDIT": "User data has been updated"
     }
   },
   "NOTIFICATION": {
@@ -121,6 +121,15 @@
   },
   "COLUMN": {
     "BUTTON": "Add a task"
+  },
+  "SEARCH": {
+    "SEARCH_RESULTS": "Search results",
+    "RESULTS": {
+      "TITLE": "Found in title",
+      "ID": "Found in task ID",
+      "USERS": "Found in task members",
+      "DESCRIPTION": "Found in description"
+    }
   },
   "NOT_FOUND_PAGE": {
     "TITLE": "Not found",

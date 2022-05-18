@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
+import { LoginResponseModel } from 'src/app/models/user';
 import { UserHttpService } from './user-http.service';
-import { LoginResponseModel } from '../../models/user';
 import { UrlPath } from '../user.constants';
 
 describe('UserHttpService', () => {
