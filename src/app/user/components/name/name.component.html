@@ -1,7 +1,9 @@
 <div class="user-name">
   <span class="p-float-label" [formGroup]="authForm">
     <input id="float-name" type="text" pInputText name="userName" class="user-name__input" [formControlName]="'name'"
-      [class.ng-invalid]="name?.invalid && name?.dirty">
+      [class.ng-invalid]="name?.invalid && name?.dirty"
+      [placeholder]="'USER.NAME' | translate"
+    >
   </span>
   <small id="name-help" class="p-error block" *ngIf="name?.dirty || name?.touched">
     <span *ngIf="name?.hasError('required')">{{ 'USER.NAME_ERROR' | translate }}</span>

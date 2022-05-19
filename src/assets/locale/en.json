@@ -61,6 +61,7 @@
   "USER": {
     "NAME": "Name*",
     "PASSWORD": "Password*",
+    "EMAIL": "Email*",
     "LOGIN": "Login",
     "SIGN_IN": "Sign in",
     "NOT_REGISTERED": "Not registered?",

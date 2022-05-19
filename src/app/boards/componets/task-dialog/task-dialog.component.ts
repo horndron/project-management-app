@@ -76,7 +76,7 @@ export class TaskDialogComponent implements OnInit {
     this.save.emit({
       title: this.titleControl.value,
       description: this.descriptionControl.value,
-      done: this.doneControl.value,
+      done: this.doneControl.value || false,
       userId: this.userControl.value,
       order: this.task?.order || 0,
     });

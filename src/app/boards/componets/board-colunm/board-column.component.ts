@@ -44,7 +44,9 @@ export class BoardColumnComponent {
       ...task,
       columnId: this.column.id,
       boardId: this.boardId,
-      order: Math.max(...this.column?.tasks.map((t) => t.order) || []) + 1,
+      order: this.column.tasks.length
+        ? Math.max(...this.column?.tasks.map((t) => t.order) || []) + 1
+        : 0,
     });
   }
 

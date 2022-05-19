@@ -19,7 +19,6 @@ import { isEmpty } from 'lodash';
 import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
-import { UserHttpService } from '../../user/services/user-http.service';
 import { BoardsService } from '../services/boards/boards.service';
 import { Board } from '../../models/board';
 import * as BoardsActions from './boards.actions';
@@ -36,7 +35,6 @@ export class BoardsEffects {
     private readonly boardsService: BoardsService,
     private readonly notificationService: NotificationService,
     private readonly translateService: TranslateService,
-    private readonly userService: UserHttpService,
     private readonly columnsService: ColumnsService,
     private readonly tasksService: TasksService,
   ) {}
@@ -64,10 +62,10 @@ export class BoardsEffects {
 
   addTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.addTask),
-    switchMap(({ task }) => (task.boardId && task.columnId ? this.tasksService.create$({
+    switchMap(({ task }) => ((task.boardId && task.columnId) ? this.tasksService.create$({
       title: task?.title,
-      done: task?.done,
-      order: task?.order,
+      done: task?.done || false,
+      order: task?.order || 0,
       description: task?.description,
       userId: task?.userId,
     }, task!.boardId, task?.columnId) : of(null))),
