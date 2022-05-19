@@ -1,4 +1,12 @@
-<h1  *ngIf="board">{{ board.title }}</h1>
+<h1 *ngIf="board">{{ board?.title }}</h1>
+  <p-button
+    *ngIf="board"
+    icon="pi pi-plus"
+    class="btn"
+    [label]="'BOARDS.ADD_COLUMN' | translate"
+    (click)="showDialog()"
+  >
+</p-button>
 <div class="board-columns">
   <div  *ngIf="board" class="columns" cdkDropListGroup>
     <rsm-board-column
@@ -8,13 +16,20 @@
       cdkDropList
       [cdkDropListData]="column.tasks"
       (cdkDropListDropped)="onDropTasks($event)"
-      (changeColumnTitle)="changeColumnTitle($event)"
-    ></rsm-board-column>
+      [boardId]="board.id"
+      (deleteColumn)="deleteColumn(column.id)"
+      (deleteTask)="deleteTask($event)"
+      (updateTask)="updateTask($event)"
+      (addTask)="addTask($event)"
+    (changeColumnTitle)="changeColumnTitle($event)"
+    >
+    </rsm-board-column>
   </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>
   </div>
 </div>
-
-
-
+<rsm-create-column-dialog
+  [(isDialogVisible)]="isDialogVisible"
+  (addColumn)="addColumn($event)"
+></rsm-create-column-dialog>

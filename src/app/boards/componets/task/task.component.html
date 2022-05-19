@@ -1,5 +1,22 @@
-<div class="top flex justify-content-between">
-  <h3 class="title">{{ task.title }}</h3>
-  <i class="pi pi-trash"></i>
+<div (click)="showDialog()">
+  <div class="top flex justify-content-between">
+    <h3 class="title">{{ task.title }}</h3>
+    <button 
+      *ngIf="!isModifyDisabled"
+      pButton 
+      pRipple
+      type="button" 
+      icon="pi pi-trash" 
+      class="p-button-rounded p-button-danger p-button-text"
+      (click)="remove($event)">
+    </button>
+  </div>
+  <p class="description">{{ task.description }}</p>
+  <rsm-task-dialog
+    *ngIf="task"
+    [task]="task"
+    [(isDialogVisible)]="isDialogVisible"
+    (save)="update($event)"
+    [isModifyDisabled]="isModifyDisabled"
+  ></rsm-task-dialog>
 </div>
-<p class="description">{{ task.description }}</p>

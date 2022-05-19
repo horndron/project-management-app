@@ -23,3 +23,8 @@ export const selectUserName = createSelector(
   selectUserStore,
   (state: UserState) => state.userInfo?.user?.name,
 );
+
+export const selectUsers = createSelector(
+  selectUserStore,
+  (state: UserState) => state.users,
+);

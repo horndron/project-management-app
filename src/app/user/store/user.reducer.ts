@@ -3,6 +3,7 @@ import { UserState } from 'src/app/models/user';
 import * as UserActions from './user.actions';
 
 export const initialUserState: UserState = {
+  users: [],
   userInfo: null,
   isLoggedIn: false,
   error: '',
@@ -85,5 +86,9 @@ export const userReducer = createReducer(
     ...state,
     userInfo: null,
     isLoggedIn: false,
+  })),
+  on(UserActions.SetUsers, (state, { users }) => ({
+    ...state,
+    users,
   })),
 );

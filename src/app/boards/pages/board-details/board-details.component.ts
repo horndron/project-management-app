@@ -9,6 +9,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
 import { Column } from 'src/app/models/column';
+import * as UsersActions from 'src/app/user/store/user.actions';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -21,6 +22,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   board: Nullable<Board>;
   boardId: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  isDialogVisible = false;
 
   constructor(
     private readonly store: Store,
@@ -37,6 +39,43 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       });
 
     this.store.dispatch(BoardsActions.loadCurrentBoard({ id: this.boardId }));
+    this.store.dispatch(UsersActions.LoadUsers());
+  }
+
+  deleteColumn(id: string): void {
+    this.store.dispatch(BoardsActions.deleteColumn({ id, boardId: this.boardId }));
+  }
+
+  deleteTask(task: Task): void {
+    this.store.dispatch(BoardsActions.deleteTask({
+      id: task.id,
+      columnId: task.columnId,
+      boardId: this.boardId,
+    }));
+  }
+
+  addColumn(column: Partial<Column>): void {
+    this.store.dispatch(BoardsActions.addColumn({
+      column: {
+        ...column,
+        order: this.board?.columns.length
+          ? Math.max(...this.board?.columns.map((board) => board.order) || []) + 1
+          : 0,
+      },
+      boardId: this.boardId,
+    }));
+  }
+
+  updateTask(task: Partial<Task>): void {
+    this.store.dispatch(BoardsActions.updateTasks({ tasks: [task as TaskUpdate] }));
+  }
+
+  addTask(task: Partial<Task>): void {
+    this.store.dispatch(BoardsActions.addTask({ task }));
+  }
+
+  showDialog(): void {
+    this.isDialogVisible = true;
   }
 
   ngOnDestroy(): void {

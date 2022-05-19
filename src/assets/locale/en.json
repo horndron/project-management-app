@@ -61,6 +61,7 @@
   "USER": {
     "NAME": "Name*",
     "PASSWORD": "Password*",
+    "EMAIL": "Email*",
     "LOGIN": "Login",
     "SIGN_IN": "Sign in",
     "NOT_REGISTERED": "Not registered?",
@@ -116,14 +117,15 @@
   },
   "BOARDS": {
     "ADD_BOARD": "Add board",
-    "TITLE": "Title",
-    "DESCRIPTION": "Description"
+    "ADD_COLUMN": "Add column",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*"
   },
   "ERRORS": {
     "REQUIRED": "This is required information"
   },
   "COLUMN": {
-    "BUTTON": "Add a task"
+    "BUTTON": "Add task"
   },
   "SEARCH": {
     "SEARCH_RESULTS": "Search results",
@@ -134,8 +136,17 @@
       "DESCRIPTION": "Found in description"
     }
   },
+  "TASK": {
+    "ADD": "Add task",
+    "UPDATE": "Edit task",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
+    "DONE": "Task is done",
+    "NOT_DONE": "Task is not done",
+    "USER": "User"
+  },
   "NOT_FOUND_PAGE": {
-    "TITLE": "Not found",
+    "TITLE": "Page not found",
     "HOME": "Go to home"
   }
 }

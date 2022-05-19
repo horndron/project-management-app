@@ -40,7 +40,7 @@ describe('UserHttpService', () => {
   it('should call getAllUsers and return an array of Users', (done: DoneFn) => {
     const mockUsersArray: LoginResponseModel[] = [mockResponse];
 
-    service.getAllUsers().subscribe((res) => {
+    service.getAllUsers$().subscribe((res) => {
       expect(res).toEqual(mockUsersArray);
       done();
     });
