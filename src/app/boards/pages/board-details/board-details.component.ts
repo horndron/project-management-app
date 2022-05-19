@@ -83,6 +83,13 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  changeColumnTitle(event: { currentColumn: Partial<Column> }): void {
+    this.store.dispatch(BoardsActions.changeColumnTitle({
+      boardId: this.boardId,
+      column: event.currentColumn,
+    }));
+  }
+
   onDropTasks(event: CdkDragDrop<Task[]>) {
     const currentColumnTasks = BoardDetailsComponent.onSortingTasks(event.container.data);
     const tasksUpdate: TaskUpdate[] = [];

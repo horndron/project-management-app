@@ -17,6 +17,7 @@ import { BoardsPageComponent } from './pages/boards-page/boards-page.component';
 import { CreateBoardDialogComponent } from './componets/create-board-dialog/create-board-dialog.component';
 import { BoardColumnComponent } from './componets/board-colunm/board-column.component';
 import { TaskComponent } from './componets/task/task.component';
+import { TitleComponent } from './componets/title/title.component';
 import { BoardDetailsComponent } from './pages/board-details/board-details.component';
 import { TaskSortingOrderPipe } from './pipes/task-sorting-order.pipe';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
@@ -30,6 +31,7 @@ import { TaskDialogComponent } from './componets/task-dialog/task-dialog.compone
     CreateBoardDialogComponent,
     BoardColumnComponent,
     TaskComponent,
+    TitleComponent,
     BoardDetailsComponent,
     TaskSortingOrderPipe,
     SearchPageComponent,

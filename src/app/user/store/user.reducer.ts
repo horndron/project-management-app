@@ -38,7 +38,6 @@ export const userReducer = createReducer(
       user,
       token: state.userInfo!.token,
     },
-    isLoggedIn: true,
   })),
   on(UserActions.GetUserByIdFailed, (state): UserState => ({
     ...state,

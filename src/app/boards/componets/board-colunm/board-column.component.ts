@@ -1,3 +1,4 @@
+
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import {
   Component,
@@ -20,10 +21,12 @@ export class BoardColumnComponent {
   @Input() boardId: string;
   @Input() column: Column;
 
+
   @Output() deleteColumn = new EventEmitter<string>();
   @Output() deleteTask = new EventEmitter<Task>();
   @Output() updateTask = new EventEmitter<Partial<Task>>();
   @Output() addTask = new EventEmitter<Partial<Task>>();
+  @Output() changeColumnTitle = new EventEmitter<{ currentColumn: Partial<Column> }>();
 
   constructor(private readonly confirmationService: ConfirmationService) { }
 
@@ -61,5 +64,15 @@ export class BoardColumnComponent {
 
   showDialog(): void {
     this.isDialogVisible = true;
+  }
+
+  changeTitle(title: string): void {
+    this.changeColumnTitle.emit({
+      currentColumn: {
+        id: this.column.id,
+        title,
+        order: this.column.order,
+      },
+    });
   }
 }

@@ -32,6 +32,13 @@ export class BoardsPageComponent implements OnInit {
     this.store.dispatch(BoardsActions.addBoard({ board }));
   }
 
+  changeBoardTitle(event: { id: string, currentBoard: Partial<Board> }): void {
+    this.store.dispatch(BoardsActions.changeBoardTitle({
+      id: event.id,
+      board: event.currentBoard,
+    }));
+  }
+
   showDialog(): void {
     this.isDialogVisible = true;
   }

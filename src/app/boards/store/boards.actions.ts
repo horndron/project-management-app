@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { TaskUpdate } from 'src/app/models/task';
 
+import { TaskUpdate } from 'src/app/models/task';
 import { Column } from 'src/app/models/column';
 import { Nullable } from 'src/app/models/core';
 import { Board } from '../../models/board';
@@ -29,6 +29,10 @@ export const addTask = createAction(`${actionSource} ADD_TASK`, props<{ task: Pa
 export const pushTask = createAction(`${actionSource} PUSH_TASK`, props<{ columnId: string, task: Partial<Task> }>());
 
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
+
+export const changeBoardTitle = createAction(`${actionSource} CHANGE_BOARD_TITLE`, props<{ id: string, board: Partial<Board> }>());
+
+export const changeColumnTitle = createAction(`${actionSource} CHANGE_COLUMN_TITLE`, props<{ boardId: string, column: Partial<Column> }>());
 
 export const updateTasks = createAction(`${actionSource} UPDATE_TASK`, props<{ tasks: TaskUpdate[] }>());
 
