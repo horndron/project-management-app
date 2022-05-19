@@ -4,13 +4,13 @@
     *ngIf="board"
     class="columns"
     cdkDropList
-    [cdkDropListData]="board.columns"
+    [cdkDropListData]="columns"
     cdkDropListOrientation="horizontal"
     (cdkDropListDropped)="onDropColumn($event)"
     cdkDropListGroup
   >
     <div class="column"
-    *ngFor="let column of board.columns"
+    *ngFor="let column of columns"
     cdkDrag
     >
       <rsm-board-column

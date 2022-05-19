@@ -5,10 +5,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/models/board';
 import { Nullable } from 'src/app/models/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
-import { Column } from 'src/app/models/column';
+import { Column, ColumnUpdate } from 'src/app/models/column';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -20,6 +20,7 @@ import * as BoardsActions from '../../store/boards.actions';
 export class BoardDetailsComponent implements OnInit, OnDestroy {
   board: Nullable<Board>;
   boardId: string;
+  columns: Column[];
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
@@ -34,6 +35,9 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((board) => {
         this.board = board?.id === this.boardId ? board : null;
+        this.columns = this.board
+          ? BoardDetailsComponent.onSortingColumns(this.board.columns)
+          : [];
       });
 
     this.store.dispatch(BoardsActions.loadCurrentBoard({ id: this.boardId }));
@@ -111,32 +115,21 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   }
 
   onDropColumn(event: CdkDragDrop<Column[]>) {
-    console.log('event', event);
-    console.log('event.container.data', event.container.data);
     if (event.previousIndex !== event.currentIndex) {
-      const columnsUpdate: Column[] = [];
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      let newColumns = this.columns.map((column, index) => {
+        const newColumn = { ...column } as ColumnUpdate;
+        newColumn.newOrder = newColumn.order > 0 ? -index - 1 : index + 1;
+        return newColumn;
+      });
+      newColumns = BoardDetailsComponent.onSortingColumns(newColumns).reverse();
 
-      if (event.previousIndex < event.currentIndex) {
-        for (let i = event.previousIndex; i <= event.currentIndex; i += 1) {
-          const newColumn = { ...event.container.data[i] };
-          newColumn.order = i === event.previousIndex
-            ? event.currentIndex + 1
-            : i + 1;
-
-          columnsUpdate.push(newColumn);
-        }
-      } else {
-        for (let i = event.currentIndex; i <= event.previousIndex; i += 1) {
-          const newColumn = { ...event.container.data[i] };
-          newColumn.order = i === event.previousIndex
-            ? event.currentIndex + 1
-            : i + 1;
-
-          columnsUpdate.push(newColumn);
-        }
-      }
       this.store.dispatch(BoardsActions.updateOrderColumns({
-        columns: columnsUpdate,
+        columns: newColumns,
         boardId: (this.board as Board).id,
       }));
     }
@@ -157,5 +150,9 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   static onSortingTasks(tasks: Task[]): Task[] {
     const tasksSorted = [...tasks];
     return tasksSorted.sort((a, b) => a.order - b.order);
+  }
+  static onSortingColumns(columns: Column[]): Column[] {
+    const columnsSorted = [...columns];
+    return columnsSorted.sort((a, b) => Math.abs(a.order) - Math.abs(b.order));
   }
 }

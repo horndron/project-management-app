@@ -6,7 +6,7 @@ import {
   of,
 } from 'rxjs';
 
-import { Column } from '../../../models/column';
+import { Column, ColumnUpdate } from '../../../models/column';
 import { environment } from '../../../../environments/environment';
 import { EntityPaths } from '../../../constants/api';
 
@@ -21,13 +21,12 @@ export class ColumnsService {
       .pipe(catchError(() => of([])));
   }
 
-  update$(column: Column, boardId: string): Observable<Column | null> {
-    console.log(column);
+  update$(column: ColumnUpdate, boardId: string): Observable<Column | null> {
     return this.http.put<Column>(
       `${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${column.id}`,
       {
         title: column.title,
-        order: column.order,
+        order: column.newOrder,
       },
     ).pipe(catchError(() => of(null)));
   }

@@ -11,7 +11,6 @@ import {
   switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
-import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
 import { UserHttpService } from '../../user/services/user-http.service';
@@ -121,9 +120,7 @@ export class BoardsEffects {
       [...columns.map((column) => this.columnsService.update$(column, boardId))],
     )),
     concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
-    switchMap(([results, board]) => {
-      console.log(results);
-      console.log(board);
+    switchMap(([, board]) => {
       const boardId = (board as Board).id;
       return [BoardsActions.loadCurrentBoard({ id: boardId })];
     }),
