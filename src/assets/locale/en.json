@@ -114,8 +114,8 @@
   "BOARDS": {
     "ADD_BOARD": "Add board",
     "ADD_COLUMN": "Add column",
-    "TITLE": "Title",
-    "DESCRIPTION": "Description"
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*"
   },
   "ERRORS": {
     "REQUIRED": "This is required information"
@@ -131,6 +131,15 @@
       "USERS": "Found in task members",
       "DESCRIPTION": "Found in description"
     }
+  },
+  "TASK": {
+    "ADD": "Add task",
+    "UPDATE": "Edit task",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
+    "DONE": "Task is done",
+    "NOT_DONE": "Task is not done",
+    "USER": "User"
   },
   "NOT_FOUND_PAGE": {
     "TITLE": "Page not found",

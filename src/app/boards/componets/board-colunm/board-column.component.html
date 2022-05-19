@@ -10,10 +10,7 @@
       (click)="remove()">
     </button>
   </div>
-  <div
-    class="tasks"
-
-  >
+  <div class="tasks">
     <div
       class="task"
       *ngFor="let task of (column.tasks | taskSortingOrder)"
@@ -23,16 +20,21 @@
       <div class="task-placeholder" *cdkDragPlaceholder></div>
       <rsm-task
         [task]="task"
-        (deleteTask)="handleDeleteTask(task)"
+        (deleteTask)="handleDeleteTask($event)"
+        (updateTask)="handleUpdateTask($event, task.id)"
     ></rsm-task>
     </div>
-
   </div>
   <button
     pRipple
     pButton
     icon="pi pi-plus"
     label="{{ 'COLUMN.BUTTON' | translate }}"
+    (click)="showDialog()"
   >
   </button>
 </div>
+<rsm-task-dialog
+  [(isDialogVisible)]="isDialogVisible"
+  (save)="handleAddTask($event)"
+></rsm-task-dialog>

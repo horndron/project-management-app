@@ -4,6 +4,7 @@ import { TaskUpdate } from 'src/app/models/task';
 import { Column } from 'src/app/models/column';
 import { Nullable } from 'src/app/models/core';
 import { Board } from '../../models/board';
+import { Task } from '../../models/task';
 
 const actionSource = '[BOARDS]';
 
@@ -23,7 +24,9 @@ export const pushBoard = createAction(`${actionSource} PUSH_BOARD`, props<{ boar
 
 export const pushColumn = createAction(`${actionSource} PUSH_COLUMN`, props<{ column: Column }>());
 
-export const pushTask = createAction(`${actionSource} PUSH_BOARD`, props<{ boardId: string, columnId: string, task: Task }>());
+export const addTask = createAction(`${actionSource} ADD_TASK`, props<{ task: Partial<Task> }>());
+
+export const pushTask = createAction(`${actionSource} PUSH_TASK`, props<{ columnId: string, task: Partial<Task> }>());
 
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
 

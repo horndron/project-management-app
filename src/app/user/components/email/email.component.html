@@ -2,7 +2,6 @@
   <span class="p-float-label" [formGroup]="authForm">
     <input id="float-email" type="email" pInputText name="email" class="user-email" [formControlName]="'email'"
       [class.ng-invalid]="email?.invalid && email?.dirty">
-    <label for="float-email">Email*</label>
   </span>
   <small id="email-help" class="p-error block" *ngIf="email?.dirty || email?.touched">
     <span *ngIf="email?.hasError('required')">

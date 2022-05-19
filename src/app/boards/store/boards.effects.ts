@@ -13,8 +13,8 @@ import {
   of,
   forkJoin,
 } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { isEmpty, set } from 'lodash';
+import { map, switchMap } from 'rxjs/operators';
+import { isEmpty } from 'lodash';
 
 import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
@@ -59,6 +59,27 @@ export class BoardsEffects {
       }
 
       return [BoardsActions.pushBoard({ board: createdBoard })];
+    }),
+  ));
+
+  addTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.addTask),
+    switchMap(({ task }) => (task.boardId && task.columnId ? this.tasksService.create$({
+      title: task?.title,
+      done: task?.done,
+      order: task?.order,
+      description: task?.description,
+      userId: task?.userId,
+    }, task!.boardId, task?.columnId) : of(null))),
+    switchMap((createdTask: Nullable<Task>) => {
+      if (!createdTask) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_CREATE'),
+        );
+        return [];
+      }
+
+      return [BoardsActions.pushTask({ columnId: createdTask.columnId, task: createdTask })];
     }),
   ));
 
@@ -120,7 +141,8 @@ export class BoardsEffects {
 
       const updatedBoard: Board = {
         ...board,
-        columns: board?.columns?.filter((column) => column.id !== deletedId) || [],
+        columns:
+            board?.columns?.filter((column) => column.id !== deletedId) || [],
       };
 
       return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
@@ -154,9 +176,12 @@ export class BoardsEffects {
       const updatedBoard: Board = {
         ...board,
         columns: [
-          ...filteredColumns, {
+          ...filteredColumns,
+          {
             ...taskColumn,
-            tasks: taskColumn.tasks.filter((task) => task.id !== deletedParameters.id),
+            tasks: taskColumn.tasks.filter(
+              (task) => task.id !== deletedParameters.id,
+            ),
           },
         ],
       };
@@ -167,17 +192,16 @@ export class BoardsEffects {
 
   getCurrentBoard$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(BoardsActions.loadCurrentBoard),
-    switchMap(({ id }) => this.boardsService.getOne$(id)),
-    switchMap((board) => this.columnsService.getAll$(board.id).pipe(
-      switchMap((columns) => forkJoin(
-        columns.map((column) => this.tasksService.getAll$(board.id, column.id).pipe(
-          tap((tasks: Task[]) => set(column, 'tasks', tasks)),
-        )),
-      ).pipe(
-        tap(() => set(board, 'columns', columns)),
-      )),
-      switchMap(() => [BoardsActions.setCurrentBoard({ board })]),
+    switchMap(({ id }) => this.boardsService.getOne$(id).pipe(
+      map((board) => ({
+        ...board,
+        columns: board.columns.map((column) => ({
+          ...column,
+          tasks: column.tasks.map((task) => ({ ...task, columnId: column.id, boardId: id })),
+        })),
+      })),
     )),
+    switchMap((board) => [BoardsActions.setCurrentBoard({ board })]),
     catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
   ));
 

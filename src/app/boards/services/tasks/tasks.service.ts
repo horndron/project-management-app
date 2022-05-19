@@ -34,9 +34,11 @@ export class TasksService {
       .pipe(catchError(() => of([])));
   }
 
-  getOne$(id: string, boardId: string, columnId: string): Observable<Nullable<Task>> {
-    return this.http.get<Task>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}/${id}`)
-      .pipe(catchError(() => of(null)));
+  create$(task: Partial<Task>, boardId: string, columnId: string): Observable<Nullable<Task>> {
+    return this.http.post<Task>(
+      `${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}`,
+      task,
+    ).pipe(catchError(() => of(null)));
   }
 
   update$(task: TaskUpdate): Observable<Task> {

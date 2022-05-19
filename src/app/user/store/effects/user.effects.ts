@@ -7,7 +7,14 @@ import { Action, Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { TranslateService } from '@ngx-translate/core';
 import {
-  catchError, EMPTY, map, mergeMap, Observable, of, tap,
+  catchError,
+  EMPTY,
+  map,
+  mergeMap,
+  Observable,
+  of,
+  switchMap,
+  tap,
 } from 'rxjs';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
 import { UserHttpService } from '../../services/user-http.service';
@@ -17,6 +24,23 @@ import * as UserSelectors from '../user.selectors';
 @Injectable()
 export class UserEffects {
   private currentUser$ = this.store.select(UserSelectors.selectCurrentUser);
+
+  constructor(
+    private readonly actions$: Actions,
+    private readonly userHttpService: UserHttpService,
+    private readonly router: Router,
+    private readonly store: Store,
+    private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService,
+  ) {}
+
+  public getAllUsers$: Observable<Action> = createEffect(
+    () => this.actions$.pipe(
+      ofType(UserActions.LoadUsers),
+      switchMap(() => this.userHttpService.getAllUsers$()),
+      switchMap((users) => [UserActions.SetUsers({ users })]),
+    ),
+  );
 
   public editUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.EditUser),
@@ -59,15 +83,6 @@ export class UserEffects {
     }),
     catchError((responseError) => this.handleError(responseError.error.message)),
   ));
-
-  constructor(
-    private readonly actions$: Actions,
-    private readonly userHttpService: UserHttpService,
-    private readonly router: Router,
-    private readonly store: Store,
-    private readonly notificationService: NotificationService,
-    private readonly translateService: TranslateService,
-  ) {}
 
   private handleError(
     message: string,
