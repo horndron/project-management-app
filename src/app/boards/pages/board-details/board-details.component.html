@@ -1,4 +1,7 @@
-<h1 *ngIf="board">{{ board?.title }}</h1>
+<div class="board-title flex align-items-baseline">
+  <img src="/assets/back_button.svg" alt="back" (click)="onBack()">
+  <h1 *ngIf="board">{{ board?.title }}</h1>
+</div>
   <p-button
     *ngIf="board"
     icon="pi pi-plus"

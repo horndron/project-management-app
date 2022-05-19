@@ -10,6 +10,7 @@ import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
 import { Column, ColumnUpdate } from 'src/app/models/column';
 import * as UsersActions from 'src/app/user/store/user.actions';
+import { Location } from '@angular/common';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -28,6 +29,7 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly store: Store,
     private readonly route: ActivatedRoute,
+    private readonly location: Location,
     public readonly progressService: ProgressService,
   ) { }
 
@@ -92,6 +94,10 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       boardId: this.boardId,
       column: event.currentColumn,
     }));
+  }
+
+  onBack() {
+    this.location.back();
   }
 
   onDropTasks(event: CdkDragDrop<Task[]>) {
