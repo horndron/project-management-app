@@ -12,36 +12,31 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Board } from '../../../models/board';
+import { Column } from '../../../models/column';
 
 @Component({
-  selector: 'rsm-create-board-dialog',
-  templateUrl: './create-board-dialog.component.html',
-  styleUrls: ['./create-board-dialog.component.scss'],
+  selector: 'rsm-create-column-dialog',
+  templateUrl: './create-column-dialog.component.html',
+  styleUrls: ['./create-column-dialog.component.scss'],
 })
-export class CreateBoardDialogComponent implements OnInit {
+export class CreateColumnDialogComponent implements OnInit {
   formGroup: FormGroup;
 
   @Input() isDialogVisible = false;
 
   @Output() isDialogVisibleChange = new EventEmitter<boolean>();
-  @Output() addBoard = new EventEmitter<Partial<Board>>();
+  @Output() addColumn = new EventEmitter<Partial<Column>>();
 
   constructor(private readonly formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
     });
   }
 
   get titleControl(): FormControl {
     return this.formGroup.get('title') as FormControl;
-  }
-
-  get descriptionControl(): FormControl {
-    return this.formGroup.get('description') as FormControl;
   }
 
   get isFormValid(): boolean {
@@ -53,10 +48,10 @@ export class CreateBoardDialogComponent implements OnInit {
   }
 
   save() {
-    this.addBoard.emit({
+    this.addColumn.emit({
       title: this.formGroup.get('title')?.value,
-      description: this.formGroup.get('description')?.value,
     });
+
     this.cancel();
     this.formGroup.reset();
   }

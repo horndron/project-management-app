@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   catchError,
+  map,
   Observable,
   of,
 } from 'rxjs';
 
 import { EntityPaths } from '../../../constants/api';
-import { Task, TaskUpdate } from '../../../models/task';
+import { RemovedTaskParameters, Task, TaskUpdate } from '../../../models/task';
 import { environment } from '../../../../environments/environment';
 import { Nullable } from '../../../models/core';
 
@@ -17,14 +18,27 @@ import { Nullable } from '../../../models/core';
 export class TasksService {
   constructor(private readonly http: HttpClient) {}
 
+  remove$(
+    id: string,
+    boardId: string,
+    columnId: string,
+  ): Observable<Nullable<RemovedTaskParameters>> {
+    return this.http.delete<RemovedTaskParameters>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}/${id}`).pipe(
+      map(() => ({ id, columnId })),
+      catchError(() => of(null)),
+    );
+  }
+
   getAll$(boardId: string, columnId: string): Observable<Task[]> {
     return this.http.get<Task[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}`)
       .pipe(catchError(() => of([])));
   }
 
-  getTask(boardId: string, columnId: string, taskId: string): Observable<Nullable<Task>> {
-    return this.http.get<Task>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}/${taskId}`)
-      .pipe(catchError(() => of(null)));
+  create$(task: Partial<Task>, boardId: string, columnId: string): Observable<Nullable<Task>> {
+    return this.http.post<Task>(
+      `${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${columnId}/${EntityPaths.Tasks}`,
+      task,
+    ).pipe(catchError(() => of(null)));
   }
 
   update$(task: TaskUpdate): Observable<Task> {

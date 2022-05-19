@@ -36,7 +36,7 @@ export class ConfirmationService {
     this.confirmationService.confirm({
       message: this.translateService.instant('MESSAGES.DELETE'),
       header: this.translateService.instant('HEADERS.DELETE'),
-      icon: PrimeIcons.CIRCLE,
+      icon: PrimeIcons.EXCLAMATION_CIRCLE,
       accept: () => {
         deleteHandler();
       },

@@ -10,6 +10,11 @@
     padding: 0 1rem;
   }
 
+  .btn {
+    margin-top: 20px;
+    margin-left: 1rem;
+  }
+
   .board-columns {
     position: relative;
     width: 100%;
@@ -30,10 +35,10 @@
       flex-shrink: 0;
     }
 
-    // .cdk-drag-dragging {
-    //   flex-shrink: 0;
-    //   z-index: 10;
-    // }
+    .cdk-drag-dragging {
+      flex-shrink: 0;
+      z-index: 10;
+    }
 
     .column-placeholder {
       background: $grey-color;
@@ -58,4 +63,5 @@
       z-index: 1;
     }
   }
+  padding: 0 1em;
 }

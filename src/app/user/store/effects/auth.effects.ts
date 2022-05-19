@@ -40,7 +40,7 @@ export class AuthEffects {
 
   public getUser$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(UserActions.GetUserSuccess),
-    switchMap((action) => this.userHttpService.getAllUsers().pipe(
+    switchMap((action) => this.userHttpService.getAllUsers$().pipe(
       map((users) => users.find((responseUser) => responseUser.login === action.login)),
       map((currentUser) => {
         const userInfo = {

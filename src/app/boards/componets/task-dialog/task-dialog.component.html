@@ -1,10 +1,10 @@
 <p-dialog
   [(visible)]="isDialogVisible"
-  [header]="'BOARDS.ADD_BOARD' | translate"  
+  [header]="task ? ('TASK.UPDATE' | translate) : ('TASK.ADD' | translate)"  
   styleClass="form-dialog"
   [modal]="true"
   [draggable]="false"
-  (onHide)="cancel()"
+  (onHide)="handleCancel()"
 >
   <form 
     class="form p-d-flex p-flex-column p-ai-center"
@@ -16,7 +16,7 @@
         type="text" 
         class="p-inputtext"
         formControlName="title"
-        [placeholder]="'BOARDS.TITLE' | translate"
+        [placeholder]="'TASK.TITLE' | translate"
       > 
       <small 
         *ngIf="titleControl?.errors?.['required'] && isFormTouched" 
@@ -31,7 +31,7 @@
         type="text" 
         class="p-inputtext"
         formControlName="description"
-        [placeholder]="'BOARDS.DESCRIPTION' | translate"
+        [placeholder]="'TASK.DESCRIPTION' | translate"
       > 
       <small 
         *ngIf="descriptionControl?.errors?.['required'] && isFormTouched" 
@@ -40,17 +40,31 @@
         {{ 'ERRORS.REQUIRED' | translate }}
       </small>
     </div>
+    <div class="field">
+      <p-dropdown
+        [options]="users"
+        optionLabel="name"
+        optionValue="id"
+        [placeholder]="'TASK.USER' | translate"
+        formControlName="user"
+        id="user"
+      ></p-dropdown>
+    </div>
+    <div class="field-checkbox">
+      <p-checkbox formControlName="done" id="done" showClear="true"  [binary]="true"></p-checkbox>
+      <label for="binary">{{ doneControl.value ? ('TASK.DONE' | translate) : ('TASK.NOT_DONE' | translate) }}</label>
+    </div>
     <div class="buttons-container flex justify-content-between">
       <p-button 
         [label]="'BUTTONS.SAVE' | translate"
-        [disabled]="!isFormValid"
-        (onClick)="save()"
+        [disabled]="!isFormValid || isModifyDisabled"
+        (onClick)="handleSave()"
         styleClass="button p-button"
       ></p-button>
 
       <p-button 
         [label]="'BUTTONS.CANCEL' | translate"
-        (onClick)="cancel()"
+        (onClick)="handleSave()"
         styleClass="button p-button-secondary"
       ></p-button>
     </div>

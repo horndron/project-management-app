@@ -1,4 +1,12 @@
-<h1  *ngIf="board">{{ board.title }}</h1>
+<h1 *ngIf="board">{{ board?.title }}</h1>
+  <p-button
+    *ngIf="board"
+    icon="pi pi-plus"
+    class="btn"
+    [label]="'BOARDS.ADD_COLUMN' | translate"
+    (click)="showDialog()"
+  >
+</p-button>
 <div class="board-columns">
   <div
     *ngIf="board"
@@ -19,6 +27,12 @@
         cdkDropList
         [cdkDropListData]="column.tasks"
         (cdkDropListDropped)="onDropTasks($event)"
+        [boardId]="board.id"
+        (deleteColumn)="deleteColumn(column.id)"
+        (deleteTask)="deleteTask($event)"
+        (updateTask)="updateTask($event)"
+        (addTask)="addTask($event)"
+        (changeColumnTitle)="changeColumnTitle($event)"
       ></rsm-board-column>
       <div class="column-placeholder" *cdkDragPlaceholder></div>
     </div>
@@ -30,6 +44,7 @@
     <p-progressSpinner></p-progressSpinner>
   </div>
 </div>
-
-
-
+<rsm-create-column-dialog
+  [(isDialogVisible)]="isDialogVisible"
+  (addColumn)="addColumn($event)"
+></rsm-create-column-dialog>

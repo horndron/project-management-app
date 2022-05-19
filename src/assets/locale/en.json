@@ -61,6 +61,7 @@
   "USER": {
     "NAME": "Name*",
     "PASSWORD": "Password*",
+    "EMAIL": "Email*",
     "LOGIN": "Login",
     "SIGN_IN": "Sign in",
     "NOT_REGISTERED": "Not registered?",
@@ -98,7 +99,9 @@
     "ERROR_DELETE": "Unable to delete data",
     "SUCCESS_DELETE": "Data has been successfully deleted",
     "SUCCESS_CREATE": "Data has been successfully created",
-    "ERROR_CREATE": "Unable to create"
+    "ERROR_CREATE": "Unable to create",
+    "SUCCESS_EDIT_TITLE": "Title has been successfully updated",
+    "ERROR_EDIT_TITLE": "Unable to update"
   },
   "HEADERS": {
     "DELETE": "Delete confirmation"
@@ -109,19 +112,21 @@
   },
   "BUTTONS": {
     "SAVE": "Save",
-    "CANCEL": "Cancel"
+    "CANCEL": "Cancel",
+    "SUBMIT": "Submit"
   },
   "BOARDS": {
     "ADD_BOARD": "Add board",
-    "TITLE": "Title",
-    "DESCRIPTION": "Description",
+    "ADD_COLUMN": "Add column",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
     "EMPTY": "So far there is nothing..."
   },
   "ERRORS": {
     "REQUIRED": "This is required information"
   },
   "COLUMN": {
-    "BUTTON": "Add a task"
+    "BUTTON": "Add task"
   },
   "SEARCH": {
     "SEARCH_RESULTS": "Search results",
@@ -132,8 +137,17 @@
       "DESCRIPTION": "Found in description"
     }
   },
+  "TASK": {
+    "ADD": "Add task",
+    "UPDATE": "Edit task",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
+    "DONE": "Task is done",
+    "NOT_DONE": "Task is not done",
+    "USER": "User"
+  },
   "NOT_FOUND_PAGE": {
-    "TITLE": "Not found",
+    "TITLE": "Page not found",
     "HOME": "Go to home"
   }
 }

@@ -17,6 +17,7 @@ export interface UserModel {
 
 export interface UserState {
   userInfo: UserModel | null,
+  users: LoginResponseModel[];
   isLoggedIn: boolean,
   error: string,
 }

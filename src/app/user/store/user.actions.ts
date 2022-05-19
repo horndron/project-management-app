@@ -73,3 +73,12 @@ export const DeleteUserFailed = createAction(
 export const ClearData = createAction(
   `${actionSource} Clear Data`,
 );
+
+export const LoadUsers = createAction(
+  `${actionSource} Load users`,
+);
+
+export const SetUsers = createAction(
+  `${actionSource} Set users`,
+  props<{ users: LoginResponseModel[] }>(),
+);

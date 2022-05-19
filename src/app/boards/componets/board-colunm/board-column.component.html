@@ -1,7 +1,14 @@
 <div class="colunm">
-  <div class="title flex justify-content-between align-center">
-    <input  type="text" pInputText [(ngModel)]="column.title">
-    <i class="pi pi-trash"></i>
+  <div class="title flex justify-content-between align-items-center">
+    <rsm-title [title]="column.title" (changeTitle)="changeTitle($event)"></rsm-title>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-trash"
+      class="p-button-text"
+      (click)="remove()">
+    </button>
   </div>
   <div class="tasks">
     <div
@@ -12,16 +19,22 @@
     >
       <div class="task-placeholder" *cdkDragPlaceholder></div>
       <rsm-task
-      [task]="task"
+        [task]="task"
+        (deleteTask)="handleDeleteTask($event)"
+        (updateTask)="handleUpdateTask($event, task.id)"
     ></rsm-task>
     </div>
-
   </div>
   <button
     pRipple
     pButton
     icon="pi pi-plus"
     label="{{ 'COLUMN.BUTTON' | translate }}"
+    (click)="showDialog()"
   >
   </button>
 </div>
+<rsm-task-dialog
+  [(isDialogVisible)]="isDialogVisible"
+  (save)="handleAddTask($event)"
+></rsm-task-dialog>
