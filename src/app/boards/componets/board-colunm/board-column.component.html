@@ -3,10 +3,7 @@
     <input  type="text" pInputText [(ngModel)]="column.title">
     <i class="pi pi-trash"></i>
   </div>
-  <div
-    class="tasks"
-
-  >
+  <div class="tasks">
     <div
       class="task"
       *ngFor="let task of (column.tasks | taskSortingOrder)"

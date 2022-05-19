@@ -1,14 +1,27 @@
 <h1  *ngIf="board">{{ board.title }}</h1>
 <div class="board-columns">
-  <div  *ngIf="board" class="columns" cdkDropListGroup>
-    <rsm-board-column
-      *ngFor="let column of board.columns"
-      [column]="column"
-      [attr.data-id]="column.id"
-      cdkDropList
-      [cdkDropListData]="column.tasks"
-      (cdkDropListDropped)="onDropTasks($event)"
-    ></rsm-board-column>
+  <div
+    *ngIf="board"
+    class="columns"
+    cdkDropList
+    [cdkDropListData]="board.columns"
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="onDropColumn($event)"
+    cdkDropListGroup
+  >
+    <div class="column"
+    *ngFor="let column of board.columns"
+    cdkDrag
+    >
+      <rsm-board-column
+        [column]="column"
+        [attr.data-id]="column.id"
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        (cdkDropListDropped)="onDropTasks($event)"
+      ></rsm-board-column>
+      <div class="column-placeholder" *cdkDragPlaceholder></div>
+    </div>
   </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>

@@ -2,13 +2,13 @@
 
 :host {
   display: flex;
-  flex-shrink: 0;
-  max-height: calc(100vh - 25px - $board-title-height - $header-height - $footer-height);
-  width: 275px;
-  margin: 0 7px 25px;
+  max-height: calc(100vh - 1.5em - 25px - $board-title-height - $header-height - $footer-height);
+  width: 100%;
+  margin: 0;
   background-color: $light-grey-color;
   border: 2px solid $primary-color;
   border-radius: 3px;
+  cursor: move;
 
   .colunm {
     width: 100%;
@@ -57,7 +57,7 @@
   }
 
   .p-button {
-    width: 100%;
+    width: 130px;
     font-size: 14px;
     color: #000;
     text-align: left;

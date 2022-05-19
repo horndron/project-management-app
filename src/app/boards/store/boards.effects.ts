@@ -11,6 +11,7 @@ import {
   switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
+import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
 import { UserHttpService } from '../../user/services/user-http.service';
@@ -103,13 +104,27 @@ export class BoardsEffects {
     catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
   ));
 
-  updateTask$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(BoardsActions.updateTasks),
+  updateOrderTasks$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.updateOrderTasks),
     switchMap(({ tasks }) => forkJoin(
       [...tasks.map((task) => this.tasksService.update$(task))],
     )),
     switchMap((tasks) => {
       const { boardId } = tasks[0];
+      return [BoardsActions.loadCurrentBoard({ id: boardId })];
+    }),
+  ));
+
+  updateOrderColumns$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.updateOrderColumns),
+    switchMap(({ columns, boardId }) => forkJoin(
+      [...columns.map((column) => this.columnsService.update$(column, boardId))],
+    )),
+    concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
+    switchMap(([results, board]) => {
+      console.log(results);
+      console.log(board);
+      const boardId = (board as Board).id;
       return [BoardsActions.loadCurrentBoard({ id: boardId })];
     }),
   ));

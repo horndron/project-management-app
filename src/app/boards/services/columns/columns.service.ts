@@ -20,4 +20,15 @@ export class ColumnsService {
     return this.http.get<Column[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}`)
       .pipe(catchError(() => of([])));
   }
+
+  update$(column: Column, boardId: string): Observable<Column | null> {
+    console.log(column);
+    return this.http.put<Column>(
+      `${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${column.id}`,
+      {
+        title: column.title,
+        order: column.order,
+      },
+    ).pipe(catchError(() => of(null)));
+  }
 }

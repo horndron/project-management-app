@@ -8,6 +8,7 @@ import { Nullable } from 'src/app/models/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
+import { Column } from 'src/app/models/column';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -44,19 +45,20 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   }
 
   onDropTasks(event: CdkDragDrop<Task[]>) {
-    const currentColumnTasks = BoardDetailsComponent.onSortingTasks(event.container.data);
+    const currentColumnTasks = BoardDetailsComponent
+      .onSortingTasks(event.container.data) as TaskUpdate[];
     const tasksUpdate: TaskUpdate[] = [];
 
     if (event.previousContainer === event.container) {
       if (event.previousIndex < event.currentIndex) {
         for (let i = event.previousIndex; i <= event.currentIndex; i += 1) {
           if (i === event.previousIndex) {
-            tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
+            tasksUpdate.push(BoardDetailsComponent.onOrderPlus(
               currentColumnTasks[i],
               event.currentIndex,
             ));
           } else {
-            tasksUpdate.push(BoardDetailsComponent.onTaskOrderMinus(
+            tasksUpdate.push(BoardDetailsComponent.onOrderMinus(
               currentColumnTasks[i],
               currentColumnTasks[i].order,
             ));
@@ -65,12 +67,12 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       } else {
         for (let i = event.currentIndex; i <= event.previousIndex; i += 1) {
           if (i === event.previousIndex) {
-            tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
+            tasksUpdate.push(BoardDetailsComponent.onOrderPlus(
               currentColumnTasks[i],
               event.currentIndex,
             ));
           } else {
-            tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
+            tasksUpdate.push(BoardDetailsComponent.onOrderPlus(
               currentColumnTasks[i],
               currentColumnTasks[i].order,
             ));
@@ -79,9 +81,9 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       }
     } else {
       const previousColumnTasks = BoardDetailsComponent
-        .onSortingTasks(event.previousContainer.data);
+        .onSortingTasks(event.previousContainer.data) as TaskUpdate[];
       const currentColumnId = event.container.element.nativeElement.getAttribute('data-id') as string;
-      const changedTask: TaskUpdate = BoardDetailsComponent.onTaskOrderPlus(
+      const changedTask: TaskUpdate = BoardDetailsComponent.onOrderPlus(
         previousColumnTasks[event.previousIndex],
         event.currentIndex,
       );
@@ -90,34 +92,66 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
       tasksUpdate.push(changedTask);
 
       for (let i = event.previousIndex + 1; i < previousColumnTasks.length; i += 1) {
-        tasksUpdate.push(BoardDetailsComponent.onTaskOrderMinus(
+        tasksUpdate.push(BoardDetailsComponent.onOrderMinus(
           previousColumnTasks[i],
           previousColumnTasks[i].order,
         ));
       }
 
       for (let i = event.currentIndex; i < currentColumnTasks.length; i += 1) {
-        tasksUpdate.push(BoardDetailsComponent.onTaskOrderPlus(
+        tasksUpdate.push(BoardDetailsComponent.onOrderPlus(
           currentColumnTasks[i],
           currentColumnTasks[i].order,
         ));
       }
     }
     if (tasksUpdate.length > 1 || event.container !== event.previousContainer) {
-      this.store.dispatch(BoardsActions.updateTasks({ tasks: tasksUpdate }));
+      this.store.dispatch(BoardsActions.updateOrderTasks({ tasks: tasksUpdate }));
     }
   }
 
-  static onTaskOrderPlus(task: Task, order: number): TaskUpdate {
-    const newTask = { ...task } as TaskUpdate;
+  onDropColumn(event: CdkDragDrop<Column[]>) {
+    console.log('event', event);
+    console.log('event.container.data', event.container.data);
+    if (event.previousIndex !== event.currentIndex) {
+      const columnsUpdate: Column[] = [];
+
+      if (event.previousIndex < event.currentIndex) {
+        for (let i = event.previousIndex; i <= event.currentIndex; i += 1) {
+          const newColumn = { ...event.container.data[i] };
+          newColumn.order = i === event.previousIndex
+            ? event.currentIndex + 1
+            : i + 1;
+
+          columnsUpdate.push(newColumn);
+        }
+      } else {
+        for (let i = event.currentIndex; i <= event.previousIndex; i += 1) {
+          const newColumn = { ...event.container.data[i] };
+          newColumn.order = i === event.previousIndex
+            ? event.currentIndex + 1
+            : i + 1;
+
+          columnsUpdate.push(newColumn);
+        }
+      }
+      this.store.dispatch(BoardsActions.updateOrderColumns({
+        columns: columnsUpdate,
+        boardId: (this.board as Board).id,
+      }));
+    }
+  }
+
+  static onOrderPlus(elem: TaskUpdate, order: number): TaskUpdate {
+    const newTask = { ...elem };
     newTask.order = order + 1;
     return newTask;
   }
 
-  static onTaskOrderMinus(task: Task, order: number): TaskUpdate {
-    const newTask = { ...task } as TaskUpdate;
+  static onOrderMinus(elem: TaskUpdate, order: number): TaskUpdate {
+    const newTask = { ...elem };
     newTask.order = order - 1;
-    return newTask;
+    return (newTask as TaskUpdate);
   }
 
   static onSortingTasks(tasks: Task[]): Task[] {
