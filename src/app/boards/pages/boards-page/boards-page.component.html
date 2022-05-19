@@ -6,7 +6,7 @@
     (click)="showDialog()"
   >
   </p-button>
-  <div class="card-container flex flex-wrap" *ngIf="(progressService.dataLoading$ | async) === false && (boards$ | async)!.length > 0">
+  <div class="card-container flex flex-wrap justify-content-between" *ngIf="(progressService.dataLoading$ | async) === false && (boards$ | async)!.length > 0">
     <rsm-board-element
       *ngFor="let board of (boards$ | async)"
       [id]="board.id"

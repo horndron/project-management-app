@@ -10,6 +10,18 @@
   border-radius: 3px;
   cursor: move;
 
+  @media (max-width: $breakpoint599) {
+    & {
+      max-height: calc(100vh - 1.5em - 25px - $board-title-height - $header-height - $footer-height-mobile);
+    }
+  }
+
+  @media (max-width: $breakpoint449) {
+    & {
+      max-height: calc(100vh - 1.5em - 25px - $board-title-height - $header-height-mobile - $footer-height-mobile);
+    }
+  }
+
   .colunm {
     width: 100%;
     max-height: 100%;

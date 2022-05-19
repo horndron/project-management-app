@@ -57,6 +57,10 @@
         order: 1;
         margin-bottom: 15px;
 
+        a {
+          font-size: 14px;
+        }
+
         @media (max-width: $breakpoint429) {
           & {
             width: auto;
@@ -64,7 +68,7 @@
             margin-bottom: 0;
 
             a {
-              margin: auto 0 15px;
+              margin: auto 0 5px;
             }
           }
         }
