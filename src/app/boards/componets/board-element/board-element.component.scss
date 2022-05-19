@@ -1,20 +1,38 @@
 @import '~src/styles/style-import';
 
-:host ::ng-deep .card {
-  .p-card:hover {
-    cursor: pointer;
-    box-shadow: 0px 5px 10px 2px lighten($green-color, 20%);
+
+
+:host ::ng-deep {
+  width: 31%;
+
+  @media(max-width: $breakpoint991) {
+    & {
+      width: 48%;
+    }
   }
 
-  .p-card {
-    width: 26vw;
-    min-width: 300px;
-    height: 150px;
-    margin: 20px 40px 20px 0;
+  @media(max-width: $breakpoint649) {
+    & {
+      width: 100%;
+    }
   }
 
-  .p-card .p-card-content {
-    padding: 0;
+  .card {
+    .p-card:hover {
+      cursor: pointer;
+      box-shadow: 0px 5px 10px 2px lighten($green-color, 20%);
+    }
+
+    .p-card {
+      width: 100%;
+      min-width: 300px;
+      height: 150px;
+      margin: 20px 0;
+    }
+
+    .p-card .p-card-content {
+      padding: 0;
+    }
   }
 }
 

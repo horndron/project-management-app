@@ -8,3 +8,7 @@ export interface Column {
   order: number;
   tasks: Task[];
 }
+
+export interface ColumnUpdate extends Column {
+  newOrder?: number;
+}

@@ -2,6 +2,7 @@ import { Store } from '@ngrx/store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { ProgressService } from 'src/app/core/services/progress/progress.service';
 import { Board } from '../../../models/board';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
@@ -16,7 +17,10 @@ export class BoardsPageComponent implements OnInit {
   boards$: Observable<Board[]>;
   isDialogVisible = false;
 
-  constructor(private readonly store: Store) { }
+  constructor(
+    private readonly store: Store,
+    public readonly progressService: ProgressService,
+  ) { }
 
   ngOnInit(): void {
     this.boards$ = this.store.select(fromBoards.getBoards);

@@ -7,8 +7,7 @@ import {
   of,
 } from 'rxjs';
 
-import { Nullable } from 'src/app/models/core';
-import { Column } from '../../../models/column';
+import { Column, ColumnUpdate } from '../../../models/column';
 import { environment } from '../../../../environments/environment';
 import { Nullable } from '../../../models/core';
 import { EntityPaths } from '../../../constants/api';
@@ -33,6 +32,16 @@ export class ColumnsService {
   getAll$(boardId: string): Observable<Column[]> {
     return this.http.get<Column[]>(`${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}`)
       .pipe(catchError(() => of([])));
+  }
+
+  update$(column: ColumnUpdate, boardId: string): Observable<Column | null> {
+    return this.http.put<Column>(
+      `${environment.baseUrl}${EntityPaths.Boards}/${boardId}/${EntityPaths.Columns}/${column.id}`,
+      {
+        title: column.title,
+        order: column.newOrder,
+      },
+    ).pipe(catchError(() => of(null)));
   }
 
   changeOne$(boardId: string, column: Partial<Column>): Observable<Nullable<Column>> {

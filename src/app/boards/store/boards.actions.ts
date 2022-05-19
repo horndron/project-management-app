@@ -30,6 +30,13 @@ export const pushTask = createAction(`${actionSource} PUSH_TASK`, props<{ column
 
 export const deleteBoard = createAction(`${actionSource} DELETE_BOARD`, props<{ id: string }>());
 
+export const updateOrderTasks = createAction(`${actionSource} UPDATE_ORDER_TASK`, props<{ tasks: TaskUpdate[] }>());
+
+export const updateOrderColumns = createAction(`${actionSource} UPDATE_ODER_COLUMN`, props<{
+  columns: Column[],
+  boardId: string,
+}>());
+
 export const changeBoardTitle = createAction(`${actionSource} CHANGE_BOARD_TITLE`, props<{ id: string, board: Partial<Board> }>());
 
 export const changeColumnTitle = createAction(`${actionSource} CHANGE_COLUMN_TITLE`, props<{ boardId: string, column: Partial<Column> }>());

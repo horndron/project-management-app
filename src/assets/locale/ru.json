@@ -14,19 +14,19 @@
       "CARDS": [
         {
           "TITLE": "Бесплатно",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Пользоваться всеми функциями приложения можно абсолютно бесплатно: никаких пробных периодов и привязки банковских карт"
         },
         {
           "TITLE": "Простой интерфейс",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Интерфейс приложения разработан так, чтобы максимально упростить взаимодействие с ним и сделать все интуитивно понятным."
         },
         {
           "TITLE": "Доступно для всей команды",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Всем участникам вашей команды доступны все данные о текущем состоянии разработки вашего проекта. Кроме того, каждый участник имеет возможность их отредактировать."
         },
         {
           "TITLE": "Для любых устройств",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Приложение адаптировано для экранов планшетов и мобильных телефонов, поэтому вы можете узнать о том, чем сейчас занята ваша команда в любое время и в любом месте."
         }
       ]
     },
@@ -35,20 +35,20 @@
     },
     "TEAMS": {
       "TITLE": "Наша перспективная команда",
-      "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation",
+      "DESCRIPTION": "Над разработкой приложения трудилась команда из трех человек - студентов курса по фреймворку Angular от RSSchool под блительным надзором куратора - zheromskyV.",
       "BUTTON":"Связаться с нами",
       "TEAMMATE": [
         {
           "NAME": "Таня",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Реализовала функционал авторизации и регистрации пользователя, редактирование его личной информации и удаление аккаунта, глобальный поиск по всем таскам, возможность редактирования заголовков колонки и доски, тесты для разных сущностей Angular."
         },
         {
           "NAME": "Женя",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Задеплоила бекенд, проработала страницу со списком досок, реализовала добавление/удаление/создание досок, колонок и тасок. Также разработала хранилице для досок."
         },
         {
           "NAME": "Андрей",
-          "DESCRIPTION": "Lorem ipsum dolor sit amet, consectetur adipiscig elit, sed do eiusmod tempor incididunt ut labore aliqua. Ut enim adi minim veniam, quis nostrud exercitation"
+          "DESCRIPTION": "Создание главной страницы, шапки, подвала. Верстка компонентов колонок и карточек. Реализация drag&drop и прочие мелкие доработки."
         }
       ]
     },
@@ -119,7 +119,8 @@
     "ADD_BOARD": "Добавить доску",
     "ADD_COLUMN": "Добавить колонку",
     "TITLE": "Наименование*",
-    "DESCRIPTION": "Описание*"
+    "DESCRIPTION": "Описание*",
+    "EMPTY": "Пока что ничего нет..."
   },
   "ERRORS": {
     "REQUIRED": "Это обязательное поле"

@@ -1,4 +1,7 @@
-<h1 *ngIf="board">{{ board?.title }}</h1>
+<div class="board-title flex align-items-baseline">
+  <img src="/assets/back_button.svg" alt="back" (click)="onBack()">
+  <h1 *ngIf="board">{{ board?.title }}</h1>
+</div>
   <p-button
     *ngIf="board"
     icon="pi pi-plus"
@@ -8,22 +11,37 @@
   >
 </p-button>
 <div class="board-columns">
-  <div  *ngIf="board" class="columns" cdkDropListGroup>
-    <rsm-board-column
-      *ngFor="let column of board.columns"
-      [column]="column"
-      [attr.data-id]="column.id"
-      cdkDropList
-      [cdkDropListData]="column.tasks"
-      (cdkDropListDropped)="onDropTasks($event)"
-      [boardId]="board.id"
-      (deleteColumn)="deleteColumn(column.id)"
-      (deleteTask)="deleteTask($event)"
-      (updateTask)="updateTask($event)"
-      (addTask)="addTask($event)"
-    (changeColumnTitle)="changeColumnTitle($event)"
+  <div
+    *ngIf="board"
+    class="columns"
+    cdkDropList
+    [cdkDropListData]="columns"
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="onDropColumn($event)"
+    cdkDropListGroup
+  >
+    <div class="column"
+    *ngFor="let column of columns"
+    cdkDrag
     >
-    </rsm-board-column>
+      <rsm-board-column
+        [column]="column"
+        [attr.data-id]="column.id"
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        (cdkDropListDropped)="onDropTasks($event)"
+        [boardId]="board.id"
+        (deleteColumn)="deleteColumn(column.id)"
+        (deleteTask)="deleteTask($event)"
+        (updateTask)="updateTask($event)"
+        (addTask)="addTask($event)"
+        (changeColumnTitle)="changeColumnTitle($event)"
+      ></rsm-board-column>
+      <div class="column-placeholder" *cdkDragPlaceholder></div>
+    </div>
+  </div>
+  <div *ngIf="(progressService.dataLoading$ | async) === false && columns.length === 0">
+    <p>{{ 'BOARDS.EMPTY' | translate }}</p>
   </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>
