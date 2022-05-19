@@ -1,0 +1,153 @@
+{
+  "MAINPAGE": {
+    "BANNER": {
+      "TITLE": "Make Business Flow Easyer With Us",
+      "DESCRIPTION": "Your amazing product deserves an easy way to manage it. Our app will provide you with a nessesary instruments no matter what your idea is about."
+    },
+    "FEATURETEXT": {
+      "TITLE": "A complete feature stack ready to help you",
+      "DESCRIPTION": "This application will help you to achieve the set goals for an individual in a team or group of developers.",
+      "BUTTON": "Sign up for free"
+    },
+    "FEATURES": {
+      "TITLE": "One platform to manage work",
+      "CARDS": [
+        {
+          "TITLE": "It’s free",
+          "DESCRIPTION": "You can use all the functions of the application absolutely free: no trial periods and bank card binding"
+        },
+        {
+          "TITLE": "Easy UI",
+          "DESCRIPTION": "The application interface is designed to make it as easy as possible to interact with it and make everything intuitive."
+        },
+        {
+          "TITLE": "Available for all team",
+          "DESCRIPTION": "All of your teammates have access to all data on the current state of development of your project. In addition, each participant has the opportunity to edit them."
+        },
+        {
+          "TITLE": "For all devices",
+          "DESCRIPTION": "The application is adapted for the screens of tablets and mobile phones, so you can find out what your team is doing at any time and in any place."
+        }
+      ]
+    },
+    "VIDEO": {
+      "TITLE": "Watch how to use the app"
+    },
+    "TEAMS": {
+      "TITLE": "Our perspective team",
+      "DESCRIPTION": "A team of three people worked on the development of the application: students of the Angular framework course from RSSchool under the close supervision of the curator - zheromskyV",
+      "BUTTON":"Contact us",
+      "TEAMMATE": [
+        {
+          "NAME": "Tanya",
+          "DESCRIPTION": "Implemented the functionality of user authorization and registration, editing his personal information and deleting an account, a global search for all tasks, the ability to edit column and board titles, tests for different Angular entities."
+        },
+        {
+          "NAME": "Evgenia",
+          "DESCRIPTION": "Deploy backend, worked out the page with the list of boards, implemented adding/removing/creating boards, columns and shuffles. Also developed a storage for boards."
+        },
+        {
+          "NAME": "Andrey",
+          "DESCRIPTION": "Creating the main page, header, and basement. Layout of components of columns and cards. Implementation of drag&drop and other minor improvements."
+        }
+      ]
+    },
+    "QUESTIONBLOCK": {
+      "TITLE": "Are you ready?",
+      "BUTTONS": ["Sign in", "Join now"]
+    }
+  },
+  "HEADERMENU": ["Boards", "Edit profile", "Logout"],
+  "USER": {
+    "NAME": "Name*",
+    "PASSWORD": "Password*",
+    "EMAIL": "Email*",
+    "LOGIN": "Login",
+    "SIGN_IN": "Sign in",
+    "NOT_REGISTERED": "Not registered?",
+    "CREATE_ACCOUNT": "Create an account",
+    "NAME_ERROR": "Please enter your name",
+    "SIGN_UP": "Sign up",
+    "EDIT_HEADER": "Edit user settings",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "EMAIL_ERROR_EMPTY": "Please enter your Email",
+    "EMAIL_ERROR_INVALID": "Email is invalid",
+    "PASSWORD_ERROR_EMPTY": "Please enter your password",
+    "PASSWORD_ERROR_DIFFICULTY": "Your password isn't strong enough",
+    "PASSWORD_ERROR_LENGTH": "at least 8 characters",
+    "PASSWORD_ERROR_UPPER": "a mixture of both uppercase and lowercase letters",
+    "PASSWORD_ERROR_NUMBER": "a mixture of letters and numbers",
+    "PASSWORD_ERROR_SPECIAL": "at least one special character",
+    "MESSAGES": {
+      "ERROR_SIGNUP": "This login already exists!",
+      "ERROR_LOGIN": "User wasn't found",
+      "SUCCESS_EDIT": "User data has been updated"
+    }
+  },
+  "NOTIFICATION": {
+    "SUCCESS": "Success!",
+    "ERROR": "Error!",
+    "WARN": "Warning!",
+    "REJECT": "Reject!",
+    "CANCEL": "Cancelled!"
+  },
+  "MESSAGES": {
+    "REJECT": "You have rejected",
+    "CANCEL": "You have cancelled",
+    "DELETE": "Do you want to delete this element?",
+    "ERROR_DELETE": "Unable to delete data",
+    "SUCCESS_DELETE": "Data has been successfully deleted",
+    "SUCCESS_CREATE": "Data has been successfully created",
+    "ERROR_CREATE": "Unable to create",
+    "SUCCESS_EDIT_TITLE": "Title has been successfully updated",
+    "ERROR_EDIT_TITLE": "Unable to update"
+  },
+  "HEADERS": {
+    "DELETE": "Delete confirmation"
+  },
+  "LABELS": {
+    "ACCEPT": "Yes",
+    "REJECT": "No"
+  },
+  "BUTTONS": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "SUBMIT": "Submit"
+  },
+  "BOARDS": {
+    "ADD_BOARD": "Add board",
+    "ADD_COLUMN": "Add column",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
+    "EMPTY": "So far there is nothing..."
+  },
+  "ERRORS": {
+    "REQUIRED": "This is required information"
+  },
+  "COLUMN": {
+    "BUTTON": "Add task"
+  },
+  "SEARCH": {
+    "SEARCH_RESULTS": "Search results",
+    "RESULTS": {
+      "TITLE": "Found in title",
+      "ID": "Found in task ID",
+      "USERS": "Found in task members",
+      "DESCRIPTION": "Found in description"
+    }
+  },
+  "TASK": {
+    "ADD": "Add task",
+    "UPDATE": "Edit task",
+    "TITLE": "Title*",
+    "DESCRIPTION": "Description*",
+    "DONE": "Task is done",
+    "NOT_DONE": "Task is not done",
+    "USER": "User"
+  },
+  "NOT_FOUND_PAGE": {
+    "TITLE": "Page not found",
+    "HOME": "Go to home"
+  }
+}

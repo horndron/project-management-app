@@ -1,0 +1,9 @@
+@import '~src/styles/style-import';
+
+.signup-container {
+  @include form-container;
+
+  .auth-btn {
+    @include filled-btn;
+  }
+}

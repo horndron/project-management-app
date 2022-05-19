@@ -1,0 +1,6 @@
+<p-dropdown
+  [options]="languages"
+  [(ngModel)]="selectedLanguage"
+  (onChange)="changeLocale($event.value)"
+  optionLabel="name"
+></p-dropdown>

@@ -1,0 +1,25 @@
+<header [class.sticky-header]="isSticky$ | async">
+  <div class="container flex flex-wrap align-items-center justify-content-between">
+    <img routerLink="" src="/assets/logo.svg" alt="Logo" class="logo">
+    <rsm-search *ngIf="isAuth$ | async" class="search"></rsm-search>
+    <rsm-select-language class="language"></rsm-select-language>
+    <div class="sign-in" *ngIf="(isAuth$ | async) === false; else userProfile">
+      <button
+        routerLink="/user/login"
+        pRipple
+        pButton
+        label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.0' | translate }}"
+      ></button>
+      <button
+        routerLink="/user/sign-up"
+        pRipple
+        pButton
+        label="{{ 'MAINPAGE.QUESTIONBLOCK.BUTTONS.1' | translate }}"
+      ></button>
+    </div>
+
+    <ng-template #userProfile>
+      <rsm-user-information></rsm-user-information>
+    </ng-template>
+  </div>
+</header>

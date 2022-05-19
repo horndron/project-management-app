@@ -1,0 +1,10 @@
+<div class="board-title" (click)="edit($event)">
+  <h4 class="board-name" *ngIf="!editMode">{{ title }}</h4>
+  <div *ngIf="editMode" class="flex flex-column edit-title">
+    <input [(ngModel)]="title" pInputText>
+    <div class="edit-buttons flex justify-content-between">
+      <button (click)="save($event)" pButton pRipple>{{ 'BUTTONS.SUBMIT' | translate }}</button>
+      <button (click)="cancel($event)" pButton pRipple>{{ 'BUTTONS.CANCEL' | translate }}</button>
+    </div>
+  </div>
+</div>

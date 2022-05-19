@@ -1,0 +1,16 @@
+<div class="container flex flex-wrap justify-content-center">
+  <rsm-card-with-icon
+    [imageUrl]="'/assets/main-page/video.svg'"
+    [title]="title"
+    class="title"
+  ></rsm-card-with-icon>
+
+  <div id="video" [class.image]="!isVideo" (click)="onVideo()">
+    <img *ngIf="!isVideo; else frameVideo" src="/assets/main-page/video-preview.png" alt="">
+
+    <ng-template #frameVideo>
+      <iframe [src]="videoUrl" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+    </ng-template>
+  </div>
+</div>
+

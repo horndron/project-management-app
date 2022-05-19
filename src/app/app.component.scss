@@ -1,0 +1,13 @@
+@import '~src/styles/style-import';
+
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.wrapper {
+  background-color: $bg-color;
+  min-height: 78vh;
+}

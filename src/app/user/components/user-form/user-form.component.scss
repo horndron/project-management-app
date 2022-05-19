@@ -1,0 +1,18 @@
+@import '~src/styles/style-import';
+
+.user-form {
+  @include box-shadow;
+  background-color: $white-color;
+  width: 460px;
+  padding: 20px 40px;
+  text-align: center;
+
+  h2 {
+    font-size: 1.6em;
+    font-weight: normal;
+  }
+
+  .progress-container {
+    height: 200px;
+  }
+}

@@ -1,0 +1,9 @@
+@import '~src/styles/style-import';
+
+.user-name {
+  @include form-error;
+
+  .user-name__input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+<section class="edit-container flex align-items-center justify-content-center">
+  <rsm-user-form [formGroup]="authForm" [authForm]="authForm">
+    <h2 header>{{ 'USER.EDIT_HEADER' | translate }}</h2>
+    <rsm-name field [authForm]="authForm"></rsm-name>
+    <div error *ngIf="errorMessage$ | async">{{ errorMessage$ | async }}</div>
+    <div class="form-buttons flex justify-content-between" action-button>
+      <button pRipple pButton type="submit" [disabled]="authForm.invalid" class="edit-btn" (click)="onEditUser()">
+        {{ 'USER.SAVE' | translate }}
+      </button>
+      <button pRipple pButton type="button" class="delete-btn" (click)="onDeleteUser($event)">
+        {{ 'USER.DELETE' | translate }}
+      </button>
+    </div>
+  </rsm-user-form>
+</section>
