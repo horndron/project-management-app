@@ -13,6 +13,7 @@
       [title]="board.title"
       [description]="board.description"
       (deleteBoard)="deleteBoard(board.id)"
+      (changeBoardTitle)="changeBoardTitle($event)"
     >
     </rsm-board-element>
   </div>

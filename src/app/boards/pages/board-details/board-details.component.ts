@@ -8,6 +8,7 @@ import { Nullable } from 'src/app/models/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Task, TaskUpdate } from 'src/app/models/task';
 import { ProgressService } from 'src/app/core/services/progress/progress.service';
+import { Column } from 'src/app/models/column';
 import * as fromBoards from '../../store/boards.selectors';
 import * as BoardsActions from '../../store/boards.actions';
 
@@ -41,6 +42,13 @@ export class BoardDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
+  }
+
+  changeColumnTitle(event: { currentColumn: Partial<Column> }): void {
+    this.store.dispatch(BoardsActions.changeColumnTitle({
+      boardId: this.boardId,
+      column: event.currentColumn,
+    }));
   }
 
   onDropTasks(event: CdkDragDrop<Task[]>) {

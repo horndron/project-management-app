@@ -11,6 +11,7 @@ import {
   switchMap, tap,
 } from 'rxjs/operators';
 import { isEmpty, set } from 'lodash';
+import { Column } from 'src/app/models/column';
 import { TasksService } from '../services/tasks/tasks.service';
 import { ColumnsService } from '../services/columns/columns.service';
 import { UserHttpService } from '../../user/services/user-http.service';
@@ -101,6 +102,74 @@ export class BoardsEffects {
       switchMap(() => [BoardsActions.setCurrentBoard({ board })]),
     )),
     catchError(() => of(BoardsActions.setCurrentBoard({ board: null }))),
+  ));
+
+  changeBoardTitle$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.changeBoardTitle),
+    switchMap(({ id, board }) => this.boardsService.changeOne$(id, board)),
+    concatLatestFrom(() => this.store.select(fromBoards.getBoards)),
+    switchMap(([changedBoard, boards]) => {
+      if (isEmpty(changedBoard)) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_EDIT_TITLE'),
+        );
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_EDIT_TITLE'),
+      );
+
+      const updatedBoards: Board[] = boards.map((board: Board) => {
+        if (board.id === changedBoard?.id) {
+          board = { ...changedBoard };
+        }
+
+        return board;
+      });
+
+      return [BoardsActions.setBoards({ boards: updatedBoards })];
+    }),
+  ));
+
+  changeColumnTitle$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(BoardsActions.changeColumnTitle),
+    switchMap(({ boardId, column }) => this.columnsService.changeOne$(boardId, column)),
+    concatLatestFrom(() => this.store.select(fromBoards.getCurrentBoard)),
+    switchMap(([changedColumn, currentBoard]) => {
+      if (isEmpty(changedColumn)) {
+        this.notificationService.error(
+          this.translateService.instant('MESSAGES.ERROR_EDIT_TITLE'),
+        );
+        return [];
+      }
+
+      this.notificationService.success(
+        this.translateService.instant('MESSAGES.SUCCESS_EDIT_TITLE'),
+      );
+
+      if (currentBoard) {
+        const updatedColumns: Column[] = currentBoard.columns.map((column: Column) => {
+          if (column.id === changedColumn?.id) {
+            column = {
+              ...column,
+              title: changedColumn.title,
+            };
+          }
+
+          return column;
+        });
+
+        const updatedBoard = {
+          ...currentBoard,
+          columns: updatedColumns,
+        };
+
+        return [BoardsActions.setCurrentBoard({ board: updatedBoard })];
+      }
+
+      return [];
+    }),
   ));
 
   updateTask$: Observable<Action> = createEffect(() => this.actions$.pipe(

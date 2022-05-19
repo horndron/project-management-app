@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
+import { Board } from 'src/app/models/board';
 import { ConfirmationService } from '../../../core/services/confirmation/confirmation.service';
 import { ROUTES } from '../../../constants/routes';
 
@@ -22,6 +23,7 @@ export class BoardElementComponent {
   @Input() description: string;
 
   @Output() deleteBoard = new EventEmitter<string>();
+  @Output() changeBoardTitle = new EventEmitter<{ id: string, currentBoard: Partial<Board> }>();
 
   constructor(
     private readonly confirmationService: ConfirmationService,
@@ -32,6 +34,16 @@ export class BoardElementComponent {
     event.stopPropagation();
 
     this.confirmationService.delete(() => this.deleteBoard.emit(this.id));
+  }
+
+  changeTitle(title: string): void {
+    this.changeBoardTitle.emit({
+      id: this.id,
+      currentBoard: {
+        title,
+        description: this.description,
+      },
+    });
   }
 
   navigateToBoard() {
