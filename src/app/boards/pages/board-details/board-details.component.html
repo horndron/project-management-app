@@ -23,6 +23,9 @@
       <div class="column-placeholder" *cdkDragPlaceholder></div>
     </div>
   </div>
+  <div *ngIf="(progressService.dataLoading$ | async) === false && columns.length === 0">
+    <p>{{ 'BOARDS.EMPTY' | translate }}</p>
+  </div>
   <div class="progress-overlay flex align-items-center justify-content-center" *ngIf="progressService.dataLoading$ | async">
     <p-progressSpinner></p-progressSpinner>
   </div>

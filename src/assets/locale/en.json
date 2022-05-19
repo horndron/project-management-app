@@ -114,7 +114,8 @@
   "BOARDS": {
     "ADD_BOARD": "Add board",
     "TITLE": "Title",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "EMPTY": "So far there is nothing..."
   },
   "ERRORS": {
     "REQUIRED": "This is required information"

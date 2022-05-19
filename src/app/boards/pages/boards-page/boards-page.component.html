@@ -16,6 +16,9 @@
     >
     </rsm-board-element>
   </div>
+  <div class="card-container" *ngIf="(progressService.dataLoading$ | async) === false && (boards$ | async)!.length === 0">
+      <p>{{ 'BOARDS.EMPTY' | translate }}</p>
+  </div>
   <rsm-create-board-dialog
     [(isDialogVisible)]="isDialogVisible"
     (addBoard)="addBoard($event)"
